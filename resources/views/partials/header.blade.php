@@ -24,8 +24,14 @@
                 <a href="{{ url('/#faq') }}" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">FAQ</a>
             </nav>
             
-            <!-- CTA Buttons -->
+            <!-- Cart & CTA Buttons -->
             <div class="hidden lg:flex items-center gap-4">
+                <!-- Cart Icon -->
+                <a href="{{ route('cart') }}" class="relative p-2 text-gray-700 hover:text-[#8B4513] transition-colors">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 bg-[#8B4513] text-white text-xs rounded-full flex items-center justify-center">0</span>
+                </a>
+                
                 @guest
                     <a href="{{ route('login') }}" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">
                         Login
@@ -62,12 +68,18 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="lg:hidden hidden bg-white border-t">
         <div class="container mx-auto px-4 py-4 space-y-4">
-            <a href="#home" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Home</a>
-            <a href="#services" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Services</a>
-            <a href="#categories" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Categories</a>
-            <a href="#features" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Why Us</a>
-            <a href="#testimonials" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Reviews</a>
-            <a href="#faq" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">FAQ</a>
+            <a href="{{ url('/') }}" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Home</a>
+            <a href="{{ route('shop') }}" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2 flex items-center gap-2">
+                <i class="fas fa-store"></i> Shop
+            </a>
+            <a href="{{ url('/#services') }}" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Services</a>
+            <a href="{{ url('/#categories') }}" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Categories</a>
+            <a href="{{ url('/#features') }}" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Why Us</a>
+            <a href="{{ url('/#faq') }}" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">FAQ</a>
+            <hr class="border-gray-200">
+            <a href="{{ route('cart') }}" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2 flex items-center gap-2">
+                <i class="fas fa-shopping-cart"></i> Cart <span id="mobile-cart-count">(0)</span>
+            </a>
             <hr class="border-gray-200">
             @guest
                 <a href="{{ route('login') }}" class="block text-gray-700 hover:text-[#8B4513] font-medium py-2">Login</a>
