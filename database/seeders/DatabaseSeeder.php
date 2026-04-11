@@ -11,6 +11,7 @@ use App\Models\Testimonial;
 use App\Models\HeroSlide;
 use App\Models\SiteSetting;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -333,6 +334,215 @@ class DatabaseSeeder extends Seeder
             'answer' => 'Yes, we offer secure warehousing in both China and Tanzania. You can store your goods before shipping or after arrival. This is particularly useful for dropshipping businesses and bulk importers.',
             'sort_order' => 8,
             'is_active' => true,
+        ]);
+
+        // Products (Sample products for the shop)
+        // Electronics Category (ID: 1)
+        Product::create([
+            'category_id' => 1,
+            'name' => 'iPhone 15 Pro Max - 256GB',
+            'slug' => 'iphone-15-pro-max-256gb',
+            'description' => 'Latest iPhone with A17 Pro chip, titanium design, and advanced camera system. Available in multiple colors.',
+            'short_description' => '256GB, A17 Pro chip, Titanium design',
+            'sku' => 'IP15PM-256',
+            'price' => 1850.00,
+            'sale_price' => 1750.00,
+            'stock_quantity' => 15,
+            'image' => 'https://via.placeholder.com/400x400/8B4513/FFFFFF?text=iPhone+15',
+            'is_featured' => true,
+            'is_active' => true,
+            'sort_order' => 1,
+        ]);
+
+        Product::create([
+            'category_id' => 1,
+            'name' => 'Samsung Galaxy S24 Ultra - 512GB',
+            'slug' => 'samsung-galaxy-s24-ultra-512gb',
+            'description' => 'Powerful Android smartphone with AI features, S Pen, and 200MP camera. Perfect for business professionals.',
+            'short_description' => '512GB, S Pen included, 200MP camera',
+            'sku' => 'SGS24U-512',
+            'price' => 1650.00,
+            'stock_quantity' => 20,
+            'image' => 'https://via.placeholder.com/400x400/654321/FFFFFF?text=Galaxy+S24',
+            'is_featured' => true,
+            'is_active' => true,
+            'sort_order' => 2,
+        ]);
+
+        Product::create([
+            'category_id' => 1,
+            'name' => 'MacBook Pro 14" M3 Chip',
+            'slug' => 'macbook-pro-14-m3-chip',
+            'description' => 'Professional laptop with M3 chip, 18-hour battery life, and stunning Liquid Retina XDR display.',
+            'short_description' => 'M3 chip, 18hr battery, XDR display',
+            'sku' => 'MBP14-M3',
+            'price' => 2400.00,
+            'sale_price' => 2299.00,
+            'stock_quantity' => 8,
+            'image' => 'https://via.placeholder.com/400x400/D2691E/FFFFFF?text=MacBook+Pro',
+            'is_featured' => true,
+            'is_active' => true,
+            'sort_order' => 3,
+        ]);
+
+        Product::create([
+            'category_id' => 1,
+            'name' => 'Wireless Bluetooth Earbuds Pro',
+            'slug' => 'wireless-bluetooth-earbuds-pro',
+            'description' => 'Premium wireless earbuds with active noise cancellation, 30-hour battery life, and crystal clear sound.',
+            'short_description' => 'ANC, 30hr battery, Premium sound',
+            'sku' => 'BT-EARBUDS-PRO',
+            'price' => 89.99,
+            'sale_price' => 69.99,
+            'stock_quantity' => 50,
+            'image' => 'https://via.placeholder.com/400x400/8B4513/FFFFFF?text=Earbuds',
+            'is_featured' => false,
+            'is_active' => true,
+            'sort_order' => 4,
+        ]);
+
+        // Fashion Category (ID: 2)
+        Product::create([
+            'category_id' => 2,
+            'name' => 'Designer Leather Handbag',
+            'slug' => 'designer-leather-handbag',
+            'description' => 'Genuine Italian leather handbag with gold-tone hardware. Elegant design perfect for any occasion.',
+            'short_description' => 'Genuine leather, Gold hardware',
+            'sku' => 'BAG-LEATHER-01',
+            'price' => 299.00,
+            'stock_quantity' => 25,
+            'image' => 'https://via.placeholder.com/400x400/654321/FFFFFF?text=Handbag',
+            'is_featured' => true,
+            'is_active' => true,
+            'sort_order' => 5,
+        ]);
+
+        Product::create([
+            'category_id' => 2,
+            'name' => 'Men\'s Business Suit Set',
+            'slug' => 'mens-business-suit-set',
+            'description' => 'Premium quality business suit including jacket, trousers, and vest. Tailored fit for professional look.',
+            'short_description' => '3-piece suit, Premium quality',
+            'sku' => 'SUIT-BUS-001',
+            'price' => 189.00,
+            'sale_price' => 159.00,
+            'stock_quantity' => 30,
+            'image' => 'https://via.placeholder.com/400x400/D2691E/FFFFFF?text=Business+Suit',
+            'is_featured' => false,
+            'is_active' => true,
+            'sort_order' => 6,
+        ]);
+
+        Product::create([
+            'category_id' => 2,
+            'name' => 'Running Shoes - Sport Edition',
+            'slug' => 'running-shoes-sport-edition',
+            'description' => 'Lightweight running shoes with breathable mesh upper and cushioned sole for maximum comfort.',
+            'short_description' => 'Lightweight, Breathable, Cushioned',
+            'sku' => 'SHOES-RUN-001',
+            'price' => 79.99,
+            'stock_quantity' => 40,
+            'image' => 'https://via.placeholder.com/400x400/8B4513/FFFFFF?text=Running+Shoes',
+            'is_featured' => false,
+            'is_active' => true,
+            'sort_order' => 7,
+        ]);
+
+        // Home & Garden Category (ID: 3)
+        Product::create([
+            'category_id' => 3,
+            'name' => 'Smart Home Security Camera',
+            'slug' => 'smart-home-security-camera',
+            'description' => 'HD wireless security camera with night vision, motion detection, and two-way audio. App controlled.',
+            'short_description' => 'HD, Night vision, Motion detection',
+            'sku' => 'CAM-SEC-001',
+            'price' => 129.99,
+            'sale_price' => 99.99,
+            'stock_quantity' => 35,
+            'image' => 'https://via.placeholder.com/400x400/654321/FFFFFF?text=Security+Cam',
+            'is_featured' => true,
+            'is_active' => true,
+            'sort_order' => 8,
+        ]);
+
+        Product::create([
+            'category_id' => 3,
+            'name' => 'Modern LED Floor Lamp',
+            'slug' => 'modern-led-floor-lamp',
+            'description' => 'Adjustable LED floor lamp with multiple color temperatures and brightness levels. Touch control.',
+            'short_description' => 'Adjustable, Touch control, Modern',
+            'sku' => 'LAMP-LED-001',
+            'price' => 149.00,
+            'stock_quantity' => 20,
+            'image' => 'https://via.placeholder.com/400x400/D2691E/FFFFFF?text=LED+Lamp',
+            'is_featured' => false,
+            'is_active' => true,
+            'sort_order' => 9,
+        ]);
+
+        Product::create([
+            'category_id' => 3,
+            'name' => 'Kitchen Appliance Set',
+            'slug' => 'kitchen-appliance-set',
+            'description' => 'Complete kitchen set including blender, food processor, and electric kettle. High quality stainless steel.',
+            'short_description' => 'Blender, Processor, Kettle set',
+            'sku' => 'KIT-SET-001',
+            'price' => 249.00,
+            'sale_price' => 199.00,
+            'stock_quantity' => 15,
+            'image' => 'https://via.placeholder.com/400x400/8B4513/FFFFFF?text=Kitchen+Set',
+            'is_featured' => true,
+            'is_active' => true,
+            'sort_order' => 10,
+        ]);
+
+        // Machinery Category (ID: 4)
+        Product::create([
+            'category_id' => 4,
+            'name' => 'Industrial Air Compressor 50L',
+            'slug' => 'industrial-air-compressor-50l',
+            'description' => 'Heavy-duty 50L air compressor for industrial use. Powerful motor and durable tank construction.',
+            'short_description' => '50L tank, Heavy-duty, Industrial',
+            'sku' => 'COMP-50L-001',
+            'price' => 599.00,
+            'stock_quantity' => 10,
+            'image' => 'https://via.placeholder.com/400x400/654321/FFFFFF?text=Compressor',
+            'is_featured' => false,
+            'is_active' => true,
+            'sort_order' => 11,
+        ]);
+
+        // Beauty & Health Category (ID: 5)
+        Product::create([
+            'category_id' => 5,
+            'name' => 'Professional Hair Dryer',
+            'slug' => 'professional-hair-dryer',
+            'description' => 'Salon-quality hair dryer with ionic technology, multiple heat settings, and diffuser attachment.',
+            'short_description' => 'Ionic tech, Multiple settings',
+            'sku' => 'DRYER-HAIR-001',
+            'price' => 89.00,
+            'sale_price' => 69.00,
+            'stock_quantity' => 25,
+            'image' => 'https://via.placeholder.com/400x400/D2691E/FFFFFF?text=Hair+Dryer',
+            'is_featured' => false,
+            'is_active' => true,
+            'sort_order' => 12,
+        ]);
+
+        // Auto Parts Category (ID: 6)
+        Product::create([
+            'category_id' => 6,
+            'name' => 'Car Diagnostic Tool OBD2',
+            'slug' => 'car-diagnostic-tool-obd2',
+            'description' => 'Professional OBD2 scanner for vehicle diagnostics. Compatible with most cars after 1996.',
+            'short_description' => 'OBD2 scanner, Universal compatibility',
+            'sku' => 'OBD2-SCAN-001',
+            'price' => 79.99,
+            'stock_quantity' => 30,
+            'image' => 'https://via.placeholder.com/400x400/8B4513/FFFFFF?text=OBD2+Scanner',
+            'is_featured' => false,
+            'is_active' => true,
+            'sort_order' => 13,
         ]);
 
         // Site Settings
