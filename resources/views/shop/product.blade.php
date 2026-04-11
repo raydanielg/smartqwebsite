@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.shop')
 
 @section('title', $product->name . ' - Smart Q Store')
 

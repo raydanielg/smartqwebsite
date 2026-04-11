@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.shop')
 
 @section('title', 'Shopping Cart - Smart Q Store')
 
