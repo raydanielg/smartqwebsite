@@ -401,4 +401,59 @@
     
     // Update on page load
     document.addEventListener('DOMContentLoaded', updateCartCount);
+    
+    // Mega Menu Functionality
+    const categoriesBtn = document.getElementById('categories-btn');
+    const megaMenuPopup = document.getElementById('mega-menu-popup');
+    const megaMenuBackdrop = document.getElementById('mega-menu-backdrop');
+    const closeMegaMenu = document.getElementById('close-mega-menu');
+    const parentCategoryItems = document.querySelectorAll('.parent-category-item');
+    const childCategoriesGrids = document.querySelectorAll('.child-categories-grid');
+    
+    // Open mega menu
+    categoriesBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        megaMenuPopup.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    // Close mega menu
+    function hideMegaMenu() {
+        megaMenuPopup.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+    
+    megaMenuBackdrop?.addEventListener('click', hideMegaMenu);
+    closeMegaMenu?.addEventListener('click', hideMegaMenu);
+    
+    // Parent category hover/click - show child categories
+    parentCategoryItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const parentId = item.dataset.parentId;
+            
+            // Update active state
+            parentCategoryItems.forEach(p => {
+                p.classList.remove('bg-white', 'border-[#FF6A00]', 'text-[#FF6A00]');
+                p.classList.add('border-transparent');
+            });
+            item.classList.add('bg-white', 'border-[#FF6A00]', 'text-[#FF6A00]');
+            item.classList.remove('border-transparent');
+            
+            // Show corresponding child grid
+            childCategoriesGrids.forEach(grid => {
+                if (grid.dataset.parentId === parentId) {
+                    grid.classList.remove('hidden');
+                } else {
+                    grid.classList.add('hidden');
+                }
+            });
+        });
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !megaMenuPopup.classList.contains('hidden')) {
+            hideMegaMenu();
+        }
+    });
 </script>
