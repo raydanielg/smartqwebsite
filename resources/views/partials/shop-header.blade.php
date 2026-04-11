@@ -256,40 +256,28 @@
                 <h4 class="font-semibold mb-3 text-gray-500 text-sm uppercase">Quick Links</h4>
                 <div class="space-y-3">
                     <a href="{{ route('manufacturers') }}" class="flex items-center gap-3 py-2 text-gray-700 hover:text-[#FF6A00]">
-                        <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-check text-blue-500 text-sm"></i>
-                        </div>
-                        Verified Manufacturers
+                        <i class="fas fa-check-circle text-blue-500 w-5"></i>
+                        Verified
                     </a>
                     <a href="{{ route('order.protection') }}" class="flex items-center gap-3 py-2 text-gray-700 hover:text-[#FF6A00]">
-                        <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-shield-alt text-green-500 text-sm"></i>
-                        </div>
-                        Order Protection
+                        <i class="fas fa-shield-alt text-green-500 w-5"></i>
+                        Protection
                     </a>
                     <a href="{{ route('tax-exemption') }}" class="flex items-center gap-3 py-2 text-gray-700 hover:text-[#FF6A00]">
-                        <div class="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-percentage text-teal-500 text-sm"></i>
-                        </div>
-                        Tax Exemption
+                        <i class="fas fa-percentage text-teal-500 w-5"></i>
+                        Tax Exempt
                     </a>
                     <a href="{{ route('accio-work') }}" class="flex items-center gap-3 py-2 text-gray-700 hover:text-[#FF6A00]">
-                        <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-cogs text-purple-500 text-sm"></i>
-                        </div>
-                        Accio Work
+                        <i class="fas fa-cogs text-purple-500 w-5"></i>
+                        Custom
                     </a>
                     <a href="{{ route('buyer-central') }}" class="flex items-center gap-3 py-2 text-gray-700 hover:text-[#FF6A00]">
-                        <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-briefcase text-orange-500 text-sm"></i>
-                        </div>
-                        Buyer Central
+                        <i class="fas fa-briefcase text-orange-500 w-5"></i>
+                        Buyer Tools
                     </a>
                     <a href="{{ route('become-supplier') }}" class="flex items-center gap-3 py-2 text-gray-700 hover:text-[#FF6A00]">
-                        <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-store text-indigo-500 text-sm"></i>
-                        </div>
-                        Become a Supplier
+                        <i class="fas fa-store text-indigo-500 w-5"></i>
+                        Sell
                     </a>
                 </div>
             </div>
