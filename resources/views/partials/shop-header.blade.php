@@ -203,65 +203,23 @@
                     </div>
                 </div>
 
-                <!-- Help Center -->
-                <div class="relative group">
-                    <a href="#" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Get help and support">
-                        <div class="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center">
-                            <i class="fas fa-headset text-white text-xs"></i>
-                        </div>
-                        <span class="font-medium">Help Center</span>
-                    </a>
-                    <div class="absolute right-0 top-full mt-2 w-64 bg-white rounded-xl shadow-2xl py-3 hidden group-hover:block border z-50">
-                        <div class="px-4 py-2 border-b border-gray-100 mb-2">
-                            <span class="text-xs text-gray-500 uppercase font-semibold">Support</span>
-                        </div>
-                        <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-sm"><i class="fas fa-question-circle mr-2 text-gray-400"></i>FAQs</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-sm"><i class="fas fa-comment-dots mr-2 text-gray-400"></i>Live Chat</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-sm"><i class="fas fa-envelope mr-2 text-gray-400"></i>Contact Us</a>
-                    </div>
-                </div>
+                <!-- Help -->
+                <a href="#" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:text-[#FF6A00] transition-colors">
+                    <i class="fas fa-headset text-cyan-500"></i>
+                    <span>Help</span>
+                </a>
 
-                <!-- App & Extension -->
-                <div class="relative group">
-                    <a href="#" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Download our mobile app">
-                        <div class="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
-                            <i class="fas fa-mobile-alt text-white text-xs"></i>
-                        </div>
-                        <span class="font-medium">App & extension</span>
-                    </a>
-                    <div class="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-2xl p-4 hidden group-hover:block border z-50">
-                        <div class="text-center">
-                            <div class="w-16 h-16 bg-orange-100 rounded-xl mx-auto mb-3 flex items-center justify-center">
-                                <i class="fas fa-qrcode text-3xl text-[#FF6A00]"></i>
-                            </div>
-                            <p class="text-sm font-medium mb-2">Scan to download app</p>
-                            <p class="text-xs text-gray-500 mb-3">Shop on the go!</p>
-                            <div class="flex gap-2 justify-center">
-                                <button class="px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg">
-                                    <i class="fab fa-apple mr-1"></i>iOS
-                                </button>
-                                <button class="px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg">
-                                    <i class="fab fa-android mr-1"></i>Android
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- App -->
+                <a href="#" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:text-[#FF6A00] transition-colors">
+                    <i class="fas fa-mobile-alt text-pink-500"></i>
+                    <span>App</span>
+                </a>
 
-                <!-- Become a Supplier -->
-                <div class="relative group">
-                    <a href="{{ route('become-supplier') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Sell your products on our platform">
-                        <div class="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center">
-                            <i class="fas fa-store text-white text-xs"></i>
-                        </div>
-                        <span class="font-medium">Become a supplier</span>
-                    </a>
-                    <div class="absolute right-0 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                        <i class="fas fa-handshake mr-1"></i>
-                        Join 10,000+ suppliers. Expand your business to Africa. Free registration.
-                        <div class="absolute -top-1 right-4 w-2 h-2 bg-gray-900 rotate-45"></div>
-                    </div>
-                </div>
+                <!-- Sell -->
+                <a href="{{ route('become-supplier') }}" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:text-[#FF6A00] transition-colors">
+                    <i class="fas fa-store text-indigo-500"></i>
+                    <span>Sell</span>
+                </a>
             </div>
         </nav>
         
