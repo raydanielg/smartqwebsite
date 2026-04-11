@@ -318,4 +318,95 @@
         @endif
     </div>
 </section>
+
+@push('scripts')
+<script>
+    // Deals Carousel
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const carousel = document.getElementById('deals-carousel');
+    const dots = document.querySelectorAll('.deal-dot');
+
+    function moveCarousel(direction) {
+        currentSlide += direction;
+        if (currentSlide < 0) currentSlide = totalSlides - 1;
+        if (currentSlide >= totalSlide) currentSlide = 0;
+        updateCarousel();
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+    }
+
+    function updateCarousel() {
+        if (carousel) {
+            carousel.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+        }
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('bg-white', index === currentSlide);
+            dot.classList.toggle('bg-white/50', index !== currentSlide);
+        });
+    }
+
+    // Auto-advance carousel
+    setInterval(() => {
+        moveCarousel(1);
+    }, 4000);
+
+    // Countdown Timer
+    function updateCountdown() {
+        const hours = document.getElementById('countdown-hours');
+        const minutes = document.getElementById('countdown-minutes');
+        const seconds = document.getElementById('countdown-seconds');
+
+        if (!hours || !minutes || !seconds) return;
+
+        let h = parseInt(hours.textContent);
+        let m = parseInt(minutes.textContent);
+        let s = parseInt(seconds.textContent);
+
+        s--;
+        if (s < 0) {
+            s = 59;
+            m--;
+            if (m < 0) {
+                m = 59;
+                h--;
+                if (h < 0) {
+                    h = 23;
+                }
+            }
+        }
+
+        hours.textContent = h.toString().padStart(2, '0');
+        minutes.textContent = m.toString().padStart(2, '0');
+        seconds.textContent = s.toString().padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    // Scroll reveal animation
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.group').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(el);
+    });
+</script>
+@endpush
 @endsection
