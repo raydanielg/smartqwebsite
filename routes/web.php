@@ -35,6 +35,20 @@ Route::post('/cart/clear', [ShopController::class, 'clearCart'])->name('cart.cle
 Route::get('/checkout', [ShopController::class, 'checkout'])->name('checkout');
 Route::post('/checkout', [ShopController::class, 'processCheckout'])->name('checkout.process');
 
+// Manufacturers
+Route::get('/manufacturers', [ManufacturerController::class, 'index'])->name('manufacturers');
+Route::get('/manufacturers/{slug}', [ManufacturerController::class, 'show'])->name('manufacturers.show');
+
+// Buyer Central Pages
+Route::get('/buyer-central', [BuyerCentralController::class, 'index'])->name('buyer-central');
+Route::get('/order-protection', [BuyerCentralController::class, 'orderProtection'])->name('order.protection');
+Route::get('/tax-exemption', [BuyerCentralController::class, 'taxExemption'])->name('tax-exemption');
+Route::post('/tax-exemption', [BuyerCentralController::class, 'submitTaxExemption'])->name('tax-exemption.submit');
+Route::get('/accio-work', [BuyerCentralController::class, 'accioWork'])->name('accio-work');
+Route::post('/accio-work', [BuyerCentralController::class, 'submitAccioWork'])->name('accio-work.submit');
+Route::get('/become-supplier', [BuyerCentralController::class, 'becomeSupplier'])->name('become-supplier');
+Route::post('/become-supplier', [BuyerCentralController::class, 'submitSupplierApplication'])->name('become-supplier.submit');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
