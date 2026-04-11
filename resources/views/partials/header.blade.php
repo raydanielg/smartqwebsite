@@ -14,12 +14,14 @@
             
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center gap-8">
-                <a href="#home" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">Home</a>
-                <a href="#services" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">Services</a>
-                <a href="#categories" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">Categories</a>
-                <a href="#features" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">Why Us</a>
-                <a href="#testimonials" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">Reviews</a>
-                <a href="#faq" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">FAQ</a>
+                <a href="{{ url('/') }}" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">Home</a>
+                <a href="{{ route('shop') }}" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors flex items-center gap-1">
+                    <i class="fas fa-store text-sm"></i> Shop
+                </a>
+                <a href="{{ url('/#services') }}" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">Services</a>
+                <a href="{{ url('/#categories') }}" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">Categories</a>
+                <a href="{{ url('/#features') }}" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">Why Us</a>
+                <a href="{{ url('/#faq') }}" class="text-gray-700 hover:text-[#8B4513] font-medium transition-colors">FAQ</a>
             </nav>
             
             <!-- CTA Buttons -->
