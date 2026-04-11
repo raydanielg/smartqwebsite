@@ -21,22 +21,33 @@
 
         <!-- Main Hero Grid -->
         <div class="grid grid-cols-12 gap-4">
-            <!-- Left Sidebar - Categories (Mega Menu Style) -->
+            <!-- Left Sidebar - Categories (Scrollable - 6 visible) -->
             <div class="col-span-12 lg:col-span-3">
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <div class="bg-[#FF6A00] text-white px-4 py-3 font-semibold flex items-center gap-2">
-                        <i class="fas fa-list"></i> Categories
+                    <div class="bg-[#FF6A00] text-white px-4 py-3 font-semibold flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-list"></i> Categories
+                        </div>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded">{{ $categories->count() }} total</span>
                     </div>
-                    <div class="divide-y divide-gray-100">
-                        @foreach($categories as $cat)
+                    <div class="divide-y divide-gray-100 max-h-[320px] overflow-y-auto scrollbar-thin">
+                        @foreach($categories->take(12) as $cat)
                         <a href="{{ route('shop.category', $cat->slug) }}" class="flex items-center gap-3 px-4 py-3 hover:bg-orange-50 transition-colors group">
-                            <div class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-orange-100">
-                                <i class="{{ $cat->icon }} text-gray-600 group-hover:text-[#FF6A00]"></i>
+                            <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-orange-100">
+                                <i class="{{ $cat->icon }} text-gray-600 group-hover:text-[#FF6A00] text-lg"></i>
                             </div>
-                            <span class="text-sm text-gray-700 group-hover:text-[#FF6A00]">{{ $cat->name }}</span>
-                            <i class="fas fa-chevron-right text-xs text-gray-400 ml-auto"></i>
+                            <div class="flex-1 min-w-0">
+                                <span class="text-sm font-medium text-gray-700 group-hover:text-[#FF6A00] block truncate">{{ $cat->name }}</span>
+                                <span class="text-xs text-gray-400">{{ rand(50, 500) }} items</span>
+                            </div>
+                            <i class="fas fa-chevron-right text-xs text-gray-400 ml-auto flex-shrink-0"></i>
                         </a>
                         @endforeach
+                    </div>
+                    <div class="px-4 py-2 bg-gray-50 border-t text-center">
+                        <a href="#" class="text-xs text-[#FF6A00] hover:underline font-medium">
+                            View all categories <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -78,29 +89,98 @@
                 </div>
             </div>
 
-            <!-- Right - Promotional Cards -->
-            <div class="col-span-12 lg:col-span-3 space-y-4">
-                <!-- Super Deals Card -->
-                <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg p-4 text-white">
-                    <h3 class="font-bold text-lg mb-1">Super Deals</h3>
-                    <p class="text-sm text-orange-100 mb-3">Limited time offers</p>
-                    <div class="flex gap-2">
-                        <div class="bg-white/20 rounded px-2 py-1 text-xs">
-                            <i class="fas fa-tag mr-1"></i>50% OFF
+            <!-- Right - Super Deals Carousel -->
+            <div class="col-span-12 lg:col-span-3">
+                <div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-xl overflow-hidden text-white shadow-lg">
+                    <!-- Header -->
+                    <div class="p-4 border-b border-white/20">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-bolt text-yellow-300 text-xl"></i>
+                                <h3 class="font-bold text-lg">Super Deals</h3>
+                            </div>
+                            <span class="text-xs bg-white/20 px-2 py-1 rounded-full animate-pulse">Live</span>
+                        </div>
+                        <p class="text-sm text-orange-100 mt-1">Up to 70% off</p>
+                    </div>
+                    
+                    <!-- Deals Carousel -->
+                    <div class="relative overflow-hidden" style="height: 280px;">
+                        <div id="deals-carousel" class="flex transition-transform duration-500" style="width: 300%;">
+                            @foreach($featuredProducts->take(3) as $index => $deal)
+                            <div class="w-1/3 p-3 flex-shrink-0">
+                                <a href="{{ route('shop.product', $deal->slug) }}" class="block bg-white rounded-lg overflow-hidden text-gray-800 group">
+                                    <div class="aspect-square relative overflow-hidden">
+                                        @if($deal->image)
+                                            <img src="{{ $deal->image }}" alt="{{ $deal->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                        @else
+                                            <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                                                <i class="fas fa-image text-4xl text-gray-400"></i>
+                                            </div>
+                                        @endif
+                                        <div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                                            -{{ rand(30, 70) }}%
+                                        </div>
+                                    </div>
+                                    <div class="p-3">
+                                        <p class="text-xs text-gray-500 line-clamp-1">{{ $deal->name }}</p>
+                                        <div class="flex items-center gap-2 mt-1">
+                                            <span class="font-bold text-[#FF6A00] text-lg">${{ number_format($deal->final_price * 0.6, 2) }}</span>
+                                            <span class="text-xs text-gray-400 line-through">${{ number_format($deal->final_price, 2) }}</span>
+                                        </div>
+                                        <div class="mt-2 bg-red-50 rounded-full h-1.5 overflow-hidden">
+                                            <div class="bg-red-500 h-full rounded-full" style="width: {{ rand(40, 90) }}%"></div>
+                                        </div>
+                                        <p class="text-xs text-red-500 mt-1">{{ rand(5, 50) }} sold</p>
+                                    </div>
+                                </a>
+                            </div>
+                            @endforeach
+                        </div>
+                        
+                        <!-- Carousel Controls -->
+                        <button onclick="moveCarousel(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-gray-700 hover:bg-white shadow-lg">
+                            <i class="fas fa-chevron-left text-xs"></i>
+                        </button>
+                        <button onclick="moveCarousel(1)" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-gray-700 hover:bg-white shadow-lg">
+                            <i class="fas fa-chevron-right text-xs"></i>
+                        </button>
+                        
+                        <!-- Dots -->
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                            @foreach($featuredProducts->take(3) as $index => $deal)
+                            <button onclick="goToSlide({{ $index }})" class="deal-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors {{ $index == 0 ? 'bg-white' : '' }}" data-index="{{ $index }}"></button>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                    <!-- Countdown -->
+                    <div class="px-4 py-3 bg-black/20 border-t border-white/20">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-orange-100">Ending in:</span>
+                            <div class="flex items-center gap-1 font-mono">
+                                <span class="bg-white/20 px-2 py-1 rounded text-xs" id="countdown-hours">04</span>:
+                                <span class="bg-white/20 px-2 py-1 rounded text-xs" id="countdown-minutes">32</span>:
+                                <span class="bg-white/20 px-2 py-1 rounded text-xs" id="countdown-seconds">15</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Categories for you -->
-                <div class="bg-white rounded-lg shadow-sm p-4">
+                <!-- Quick Tags -->
+                <div class="mt-4 bg-white rounded-lg shadow-sm p-4">
                     <h4 class="font-semibold text-sm mb-3 flex items-center gap-2">
-                        <i class="fas fa-star text-[#FF6A00]"></i> Categories for you
+                        <i class="fas fa-fire text-red-500"></i> Trending
                     </h4>
                     <div class="flex flex-wrap gap-2">
-                        @foreach($categories->take(5) as $cat)
-                        <a href="{{ route('shop.category', $cat->slug) }}" class="px-3 py-1.5 bg-gray-100 rounded-full text-xs text-gray-700 hover:bg-orange-100 hover:text-[#FF6A00] transition-colors">
-                            {{ $cat->name }}
-                        </a>
+                        @php
+                        $trending = ['Flash Sale', 'New Arrival', 'Free Shipping', 'Best Seller', 'Limited'];
+                        $colors = ['red', 'orange', 'blue', 'green', 'purple'];
+                        @endphp
+                        @foreach($trending as $index => $tag)
+                        <span class="px-3 py-1.5 bg-{{ $colors[$index] }}-100 text-{{ $colors[$index] }}-600 rounded-full text-xs font-medium cursor-pointer hover:bg-{{ $colors[$index] }}-200 transition-colors">
+                            {{ $tag }}
+                        </span>
                         @endforeach
                     </div>
                 </div>
