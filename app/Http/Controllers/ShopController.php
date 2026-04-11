@@ -59,8 +59,9 @@ class ShopController extends Controller
             ->where('is_active', true)
             ->limit(4)
             ->get();
+        $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
         
-        return view('shop.product', compact('product', 'relatedProducts'));
+        return view('shop.product', compact('product', 'relatedProducts', 'categories'));
     }
     
     // Category page
@@ -95,7 +96,8 @@ class ShopController extends Controller
             }
         }
         
-        return view('shop.cart', compact('cartItems', 'total'));
+        $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
+        return view('shop.cart', compact('cartItems', 'total', 'categories'));
     }
     
     // Add to cart
@@ -228,7 +230,8 @@ class ShopController extends Controller
             }
         }
         
-        return view('shop.checkout', compact('cartItems', 'total'));
+        $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
+        return view('shop.checkout', compact('cartItems', 'total', 'categories'));
     }
     
     // Process checkout
