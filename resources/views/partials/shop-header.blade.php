@@ -144,7 +144,7 @@
 
                 <!-- Verified Manufacturers -->
                 <div class="relative group">
-                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Connect with verified suppliers and manufacturers">
+                    <a href="{{ route('manufacturers') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Connect with verified suppliers and manufacturers">
                         <i class="fas fa-badge-check text-blue-500"></i>
                         Verified manufacturers
                     </a>
@@ -158,7 +158,7 @@
 
                 <!-- Order Protection -->
                 <div class="relative group">
-                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Your orders are protected">
+                    <a href="{{ route('order.protection') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Your orders are protected">
                         <i class="fas fa-shield-alt text-green-500"></i>
                         Order protections
                     </a>
@@ -171,7 +171,7 @@
 
                 <!-- Accio Work -->
                 <div class="relative group">
-                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Custom manufacturing solutions">
+                    <a href="{{ route('accio-work') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Custom manufacturing solutions">
                         <i class="fas fa-industry text-purple-500"></i>
                         Accio Work
                     </a>
@@ -184,7 +184,7 @@
 
                 <!-- Tax Exemption -->
                 <div class="relative group">
-                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tax exemption program for businesses">
+                    <a href="{{ route('tax-exemption') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tax exemption program for businesses">
                         <i class="fas fa-calculator text-teal-500"></i>
                         Tax exemption
                     </a>
@@ -200,7 +200,7 @@
             <div class="flex items-center gap-1">
                 <!-- Buyer Central -->
                 <div class="relative group">
-                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tools and resources for buyers">
+                    <a href="{{ route('buyer-central') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tools and resources for buyers">
                         <i class="fas fa-briefcase text-[#FF6A00]"></i>
                         Buyer Central
                     </a>
@@ -275,7 +275,7 @@
 
                 <!-- Become a Supplier -->
                 <div class="relative group">
-                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Sell your products on our platform">
+                    <a href="{{ route('become-supplier') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Sell your products on our platform">
                         <i class="fas fa-store text-indigo-500"></i>
                         Become a supplier
                     </a>
