@@ -15,6 +15,13 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique(); // superadmin, admin, buyer, seller, manufacturer
+            $table->string('display_name'); // Super Admin, Admin, etc.
+            $table->string('description')->nullable();
+            $table->string('color', 7)->default('#6B7280'); // Badge color
+            $table->string('icon', 50)->default('fas fa-user'); // Font Awesome icon
+            $table->integer('level')->default(1); // Hierarchy level (1=lowest)
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
