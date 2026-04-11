@@ -116,6 +116,83 @@
         <nav class="hidden lg:flex items-center justify-between py-3 border-t border-gray-100">
             <!-- Left Navigation -->
             <div class="flex items-center gap-1">
+                <!-- Categories for you Mega Menu -->
+                <div class="relative" id="mega-menu-container">
+                    <button id="categories-btn" class="flex items-center gap-2 px-3 py-2 font-medium hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-star text-[#FF6A00]"></i>
+                        Categories
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    
+                    <!-- Mega Menu Popup -->
+                    <div id="mega-menu-popup" class="fixed inset-0 z-50 hidden">
+                        <!-- Backdrop -->
+                        <div class="absolute inset-0 bg-black/50" id="mega-menu-backdrop"></div>
+                        
+                        <!-- Popup Content -->
+                        <div class="absolute left-1/2 top-24 -translate-x-1/2 w-full max-w-5xl bg-white rounded-xl shadow-2xl overflow-hidden">
+                            <div class="flex">
+                                <!-- Left Side - Parent Categories -->
+                                <div class="w-72 bg-gray-50 border-r border-gray-200 max-h-[70vh] overflow-y-auto">
+                                    <div class="px-4 py-3 border-b border-gray-200 bg-white">
+                                        <h3 class="font-semibold text-gray-800 flex items-center gap-2">
+                                            <i class="fas fa-star text-[#FF6A00]"></i>
+                                            Categories for you
+                                        </h3>
+                                    </div>
+                                    @php
+                                        $parentCategories = \App\Models\Category::getParentCategories();
+                                    @endphp
+                                    @foreach($parentCategories as $parent)
+                                    <a href="#" 
+                                       class="parent-category-item flex items-center gap-3 px-4 py-3 hover:bg-white hover:text-[#FF6A00] transition-colors border-l-4 border-transparent hover:border-[#FF6A00] {{ $loop->first ? 'bg-white border-[#FF6A00] text-[#FF6A00]' : '' }}"
+                                       data-parent-id="{{ $parent->id }}">
+                                        <i class="{{ $parent->icon }} w-5 text-center"></i>
+                                        <span class="font-medium text-sm">{{ $parent->name }}</span>
+                                        <i class="fas fa-chevron-right text-xs ml-auto"></i>
+                                    </a>
+                                    @endforeach
+                                </div>
+                                
+                                <!-- Right Side - Child Categories Grid -->
+                                <div class="flex-1 p-6 max-h-[70vh] overflow-y-auto">
+                                    @foreach($parentCategories as $parent)
+                                    <div class="child-categories-grid {{ $loop->first ? '' : 'hidden' }}" data-parent-id="{{ $parent->id }}">
+                                        <div class="flex items-center justify-between mb-4">
+                                            <h3 class="text-xl font-bold text-gray-800">{{ $parent->name }}</h3>
+                                            <a href="{{ route('shop.category', $parent->slug) }}" class="text-[#FF6A00] text-sm hover:underline">
+                                                View all <i class="fas fa-arrow-right text-xs"></i>
+                                            </a>
+                                        </div>
+                                        <div class="grid grid-cols-4 gap-4">
+                                            @foreach($parent->children as $child)
+                                            <a href="{{ route('shop.category', $child->slug) }}" class="group text-center">
+                                                <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-2 group-hover:shadow-lg transition-shadow">
+                                                    @if($child->menu_image)
+                                                        <img src="{{ $child->menu_image }}" alt="{{ $child->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                                                    @else
+                                                        <div class="w-full h-full flex items-center justify-center">
+                                                            <i class="fas fa-image text-3xl text-gray-300"></i>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <span class="text-sm text-gray-700 group-hover:text-[#FF6A00] transition-colors">{{ $child->name }}</span>
+                                            </a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                                
+                                <!-- Close Button -->
+                                <button id="close-mega-menu" class="absolute top-4 right-4 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                    <i class="fas fa-times text-gray-600"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- All Categories Dropdown -->
                 <div class="relative group">
                     <button class="flex items-center gap-2 px-3 py-2 font-medium hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50">
@@ -123,11 +200,14 @@
                         All categories
                         <i class="fas fa-chevron-down text-xs"></i>
                     </button>
-                    <div class="absolute left-0 top-full mt-1 w-72 bg-white rounded-xl shadow-2xl py-3 hidden group-hover:block border z-50 animate-fadeIn">
+                    <div class="absolute left-0 top-full mt-1 w-72 bg-white rounded-xl shadow-2xl py-3 hidden group-hover:block border z-40 animate-fadeIn">
                         <div class="px-4 py-2 border-b border-gray-100 mb-2">
                             <span class="text-xs text-gray-500 uppercase font-semibold">Browse Categories</span>
                         </div>
-                        @foreach($categories ?? [] as $cat)
+                        @php
+                            $allCategories = \App\Models\Category::where('is_active', true)->orderBy('sort_order')->get();
+                        @endphp
+                        @foreach($allCategories ?? [] as $cat)
                             <a href="{{ route('shop.category', $cat->slug) }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-orange-50 transition-colors group/item">
                                 <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center group-hover/item:bg-orange-200 transition-colors">
                                     <i class="{{ $cat->icon }} text-[#FF6A00] text-sm"></i>
