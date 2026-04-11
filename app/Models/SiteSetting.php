@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class SiteSetting extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'key',
+        'value',
+        'type',
+        'group',
+    ];
+
+    public static function getValue($key, $default = null)
+    {
+        $setting = self::where('key', $key)->first();
+        return $setting ? $setting->value : $default;
+    }
 }

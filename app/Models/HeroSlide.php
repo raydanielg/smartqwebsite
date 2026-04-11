@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class HeroSlide extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'subtitle',
+        'description',
+        'image',
+        'button_text',
+        'button_link',
+        'secondary_button_text',
+        'secondary_button_link',
+        'sort_order',
+        'is_active',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
 }
