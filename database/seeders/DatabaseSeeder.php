@@ -677,5 +677,8 @@ class DatabaseSeeder extends Seeder
 
         // Call Category Mega Menu Seeder
         $this->call(CategoryMegaMenuSeeder::class);
+
+        // Call Product Real Images Seeder
+        $this->call(ProductRealImagesSeeder::class);
     }
 }
