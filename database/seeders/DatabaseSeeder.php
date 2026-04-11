@@ -674,5 +674,8 @@ class DatabaseSeeder extends Seeder
 
         // Call Role Seeder
         $this->call(RoleSeeder::class);
+
+        // Call Category Mega Menu Seeder
+        $this->call(CategoryMegaMenuSeeder::class);
     }
 }
