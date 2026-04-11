@@ -144,9 +144,11 @@
 
                 <!-- Verified Manufacturers -->
                 <div class="relative group">
-                    <a href="{{ route('manufacturers') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Connect with verified suppliers and manufacturers">
-                        <i class="fas fa-badge-check text-blue-500"></i>
-                        Verified manufacturers
+                    <a href="{{ route('manufacturers') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Connect with verified suppliers and manufacturers">
+                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white text-xs"></i>
+                        </div>
+                        <span class="font-medium">Verified manufacturers</span>
                     </a>
                     <!-- Tooltip -->
                     <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
@@ -158,9 +160,11 @@
 
                 <!-- Order Protection -->
                 <div class="relative group">
-                    <a href="{{ route('order.protection') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Your orders are protected">
-                        <i class="fas fa-shield-alt text-green-500"></i>
-                        Order protections
+                    <a href="{{ route('order.protection') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Your orders are protected">
+                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-white text-xs"></i>
+                        </div>
+                        <span class="font-medium">Order protections</span>
                     </a>
                     <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
                         <i class="fas fa-shield-alt mr-1"></i>
@@ -171,9 +175,11 @@
 
                 <!-- Accio Work -->
                 <div class="relative group">
-                    <a href="{{ route('accio-work') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Custom manufacturing solutions">
-                        <i class="fas fa-industry text-purple-500"></i>
-                        Accio Work
+                    <a href="{{ route('accio-work') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Custom manufacturing solutions">
+                        <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-cogs text-white text-xs"></i>
+                        </div>
+                        <span class="font-medium">Accio Work</span>
                     </a>
                     <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
                         <i class="fas fa-cogs mr-1"></i>
@@ -184,9 +190,11 @@
 
                 <!-- Tax Exemption -->
                 <div class="relative group">
-                    <a href="{{ route('tax-exemption') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tax exemption program for businesses">
-                        <i class="fas fa-calculator text-teal-500"></i>
-                        Tax exemption
+                    <a href="{{ route('tax-exemption') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tax exemption program for businesses">
+                        <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-percentage text-white text-xs"></i>
+                        </div>
+                        <span class="font-medium">Tax exemption</span>
                     </a>
                     <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
                         <i class="fas fa-percentage mr-1"></i>
@@ -200,9 +208,11 @@
             <div class="flex items-center gap-1">
                 <!-- Buyer Central -->
                 <div class="relative group">
-                    <a href="{{ route('buyer-central') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tools and resources for buyers">
-                        <i class="fas fa-briefcase text-[#FF6A00]"></i>
-                        Buyer Central
+                    <a href="{{ route('buyer-central') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tools and resources for buyers">
+                        <div class="w-6 h-6 bg-[#FF6A00] rounded-full flex items-center justify-center">
+                            <i class="fas fa-briefcase text-white text-xs"></i>
+                        </div>
+                        <span class="font-medium">Buyer Central</span>
                     </a>
                     <div class="absolute right-0 top-full mt-2 w-72 bg-white rounded-xl shadow-2xl py-3 hidden group-hover:block border z-50 animate-fadeIn">
                         <div class="px-4 py-2 border-b border-gray-100 mb-2">
@@ -234,9 +244,11 @@
 
                 <!-- Help Center -->
                 <div class="relative group">
-                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Get help and support">
-                        <i class="fas fa-headset text-cyan-500"></i>
-                        Help Center
+                    <a href="#" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Get help and support">
+                        <div class="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-headset text-white text-xs"></i>
+                        </div>
+                        <span class="font-medium">Help Center</span>
                     </a>
                     <div class="absolute right-0 top-full mt-2 w-64 bg-white rounded-xl shadow-2xl py-3 hidden group-hover:block border z-50">
                         <div class="px-4 py-2 border-b border-gray-100 mb-2">
@@ -250,9 +262,11 @@
 
                 <!-- App & Extension -->
                 <div class="relative group">
-                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Download our mobile app">
-                        <i class="fas fa-mobile-alt text-pink-500"></i>
-                        App & extension
+                    <a href="#" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Download our mobile app">
+                        <div class="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-white text-xs"></i>
+                        </div>
+                        <span class="font-medium">App & extension</span>
                     </a>
                     <div class="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-2xl p-4 hidden group-hover:block border z-50">
                         <div class="text-center">
@@ -275,9 +289,11 @@
 
                 <!-- Become a Supplier -->
                 <div class="relative group">
-                    <a href="{{ route('become-supplier') }}" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Sell your products on our platform">
-                        <i class="fas fa-store text-indigo-500"></i>
-                        Become a supplier
+                    <a href="{{ route('become-supplier') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Sell your products on our platform">
+                        <div class="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-store text-white text-xs"></i>
+                        </div>
+                        <span class="font-medium">Become a supplier</span>
                     </a>
                     <div class="absolute right-0 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
                         <i class="fas fa-handshake mr-1"></i>
