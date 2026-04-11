@@ -671,5 +671,8 @@ class DatabaseSeeder extends Seeder
         SiteSetting::create(['key' => 'facebook_url', 'value' => 'https://facebook.com/smartqstore', 'type' => 'string', 'group' => 'social']);
         SiteSetting::create(['key' => 'instagram_url', 'value' => 'https://instagram.com/smartqstore', 'type' => 'string', 'group' => 'social']);
         SiteSetting::create(['key' => 'whatsapp_number', 'value' => '+255XXXXXXXXX', 'type' => 'string', 'group' => 'social']);
+
+        // Call Role Seeder
+        $this->call(RoleSeeder::class);
     }
 }
