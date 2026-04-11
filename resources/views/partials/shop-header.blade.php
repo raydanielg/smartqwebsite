@@ -143,76 +143,37 @@
                 </div>
 
                 <!-- Verified Manufacturers -->
-                <div class="relative group">
-                    <a href="{{ route('manufacturers') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Connect with verified suppliers and manufacturers">
-                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                            <i class="fas fa-check text-white text-xs"></i>
-                        </div>
-                        <span class="font-medium">Verified manufacturers</span>
-                    </a>
-                    <!-- Tooltip -->
-                    <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                        <i class="fas fa-info-circle mr-1"></i> 
-                        All suppliers are pre-verified for quality and reliability. Shop with confidence.
-                        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-                    </div>
-                </div>
+                <a href="{{ route('manufacturers') }}" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:text-[#FF6A00] transition-colors">
+                    <i class="fas fa-check-circle text-blue-500"></i>
+                    <span>Verified</span>
+                </a>
 
                 <!-- Order Protection -->
-                <div class="relative group">
-                    <a href="{{ route('order.protection') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Your orders are protected">
-                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                            <i class="fas fa-shield-alt text-white text-xs"></i>
-                        </div>
-                        <span class="font-medium">Order protections</span>
-                    </a>
-                    <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                        <i class="fas fa-shield-alt mr-1"></i>
-                        Full refund if products don't match description. Damage protection included.
-                        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-                    </div>
-                </div>
+                <a href="{{ route('order.protection') }}" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:text-[#FF6A00] transition-colors">
+                    <i class="fas fa-shield-alt text-green-500"></i>
+                    <span>Protection</span>
+                </a>
 
                 <!-- Accio Work -->
-                <div class="relative group">
-                    <a href="{{ route('accio-work') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Custom manufacturing solutions">
-                        <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
-                            <i class="fas fa-cogs text-white text-xs"></i>
-                        </div>
-                        <span class="font-medium">Accio Work</span>
-                    </a>
-                    <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                        <i class="fas fa-cogs mr-1"></i>
-                        Custom manufacturing and OEM services for your business needs.
-                        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-                    </div>
-                </div>
+                <a href="{{ route('accio-work') }}" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:text-[#FF6A00] transition-colors">
+                    <i class="fas fa-cogs text-purple-500"></i>
+                    <span>Custom</span>
+                </a>
 
                 <!-- Tax Exemption -->
-                <div class="relative group">
-                    <a href="{{ route('tax-exemption') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tax exemption program for businesses">
-                        <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center">
-                            <i class="fas fa-percentage text-white text-xs"></i>
-                        </div>
-                        <span class="font-medium">Tax exemption</span>
-                    </a>
-                    <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                        <i class="fas fa-percentage mr-1"></i>
-                        Business customers can apply for tax-exempt purchasing and refunds.
-                        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-                    </div>
-                </div>
+                <a href="{{ route('tax-exemption') }}" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:text-[#FF6A00] transition-colors">
+                    <i class="fas fa-percentage text-teal-500"></i>
+                    <span>Tax Exempt</span>
+                </a>
             </div>
             
             <!-- Right Navigation -->
             <div class="flex items-center gap-1">
                 <!-- Buyer Central -->
                 <div class="relative group">
-                    <a href="{{ route('buyer-central') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tools and resources for buyers">
-                        <div class="w-6 h-6 bg-[#FF6A00] rounded-full flex items-center justify-center">
-                            <i class="fas fa-briefcase text-white text-xs"></i>
-                        </div>
-                        <span class="font-medium">Buyer Central</span>
+                    <a href="{{ route('buyer-central') }}" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:text-[#FF6A00] transition-colors">
+                        <i class="fas fa-briefcase text-[#FF6A00]"></i>
+                        <span>Buyer Tools</span>
                     </a>
                     <div class="absolute right-0 top-full mt-2 w-72 bg-white rounded-xl shadow-2xl py-3 hidden group-hover:block border z-50 animate-fadeIn">
                         <div class="px-4 py-2 border-b border-gray-100 mb-2">
