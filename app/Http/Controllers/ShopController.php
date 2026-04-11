@@ -187,7 +187,14 @@ class ShopController extends Controller
         return redirect()->route('cart')->with('success', 'Cart cleared');
     }
     
-    // Get cart count for header
+    // Get cart count for header (public API)
+    public function cartCount()
+    {
+        $count = $this->getCartCount();
+        return response()->json(['count' => $count]);
+    }
+    
+    // Get cart count for header (private)
     private function getCartCount()
     {
         $cart = Session::get('cart', []);
