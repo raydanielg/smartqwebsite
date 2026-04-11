@@ -25,6 +25,7 @@ Route::get('/shop/product/{slug}', [ShopController::class, 'show'])->name('shop.
 
 // Cart Routes
 Route::get('/cart', [ShopController::class, 'cart'])->name('cart');
+Route::get('/cart/count', [ShopController::class, 'cartCount'])->name('cart.count');
 Route::post('/cart/add', [ShopController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/update', [ShopController::class, 'updateCart'])->name('cart.update');
 Route::post('/cart/remove', [ShopController::class, 'removeFromCart'])->name('cart.remove');
