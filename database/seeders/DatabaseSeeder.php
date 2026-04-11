@@ -12,6 +12,7 @@ use App\Models\HeroSlide;
 use App\Models\SiteSetting;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Manufacturer;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
