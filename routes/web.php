@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,22 @@ use App\Http\Controllers\LandingController;
 
 // Landing Page
 Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+// Shop Routes
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('/shop/category/{slug}', [ShopController::class, 'category'])->name('shop.category');
+Route::get('/shop/product/{slug}', [ShopController::class, 'show'])->name('shop.product');
+
+// Cart Routes
+Route::get('/cart', [ShopController::class, 'cart'])->name('cart');
+Route::post('/cart/add', [ShopController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/update', [ShopController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/remove', [ShopController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/cart/clear', [ShopController::class, 'clearCart'])->name('cart.clear');
+
+// Checkout Routes
+Route::get('/checkout', [ShopController::class, 'checkout'])->name('checkout');
+Route::post('/checkout', [ShopController::class, 'processCheckout'])->name('checkout.process');
 
 Auth::routes();
 
