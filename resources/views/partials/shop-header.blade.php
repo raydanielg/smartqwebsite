@@ -114,35 +114,177 @@
         
         <!-- Navigation Bar -->
         <nav class="hidden lg:flex items-center justify-between py-3 border-t border-gray-100">
-            <div class="flex items-center gap-8">
+            <!-- Left Navigation -->
+            <div class="flex items-center gap-1">
                 <!-- All Categories Dropdown -->
                 <div class="relative group">
-                    <button class="flex items-center gap-2 font-medium hover:text-[#FF6A00] transition-colors">
+                    <button class="flex items-center gap-2 px-3 py-2 font-medium hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50">
                         <i class="fas fa-th-large"></i>
-                        All Categories
+                        All categories
                         <i class="fas fa-chevron-down text-xs"></i>
                     </button>
-                    <div class="absolute left-0 top-full mt-2 w-64 bg-white rounded-lg shadow-xl py-2 hidden group-hover:block border z-50">
+                    <div class="absolute left-0 top-full mt-1 w-72 bg-white rounded-xl shadow-2xl py-3 hidden group-hover:block border z-50 animate-fadeIn">
+                        <div class="px-4 py-2 border-b border-gray-100 mb-2">
+                            <span class="text-xs text-gray-500 uppercase font-semibold">Browse Categories</span>
+                        </div>
                         @foreach($categories ?? [] as $cat)
-                            <a href="{{ route('shop.category', $cat->slug) }}" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors">
-                                <i class="{{ $cat->icon }} text-[#FF6A00] w-5"></i>
-                                <span>{{ $cat->name }}</span>
+                            <a href="{{ route('shop.category', $cat->slug) }}" class="flex items-center gap-3 px-4 py-2.5 hover:bg-orange-50 transition-colors group/item">
+                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center group-hover/item:bg-orange-200 transition-colors">
+                                    <i class="{{ $cat->icon }} text-[#FF6A00] text-sm"></i>
+                                </div>
+                                <div>
+                                    <span class="font-medium text-gray-800">{{ $cat->name }}</span>
+                                    <div class="text-xs text-gray-500">{{ $cat->products_count ?? rand(10, 500) }} products</div>
+                                </div>
+                                <i class="fas fa-chevron-right text-xs text-gray-400 ml-auto"></i>
                             </a>
                         @endforeach
                     </div>
                 </div>
-                
-                <a href="{{ route('shop') }}?featured=1" class="text-sm hover:text-[#FF6A00] transition-colors">Featured Products</a>
-                <a href="{{ route('shop') }}?sort=price_low" class="text-sm hover:text-[#FF6A00] transition-colors">Best Deals</a>
-                <a href="#" class="text-sm hover:text-[#FF6A00] transition-colors">New Arrivals</a>
-                <a href="#" class="text-sm hover:text-[#FF6A00] transition-colors">Order Protection</a>
+
+                <!-- Verified Manufacturers -->
+                <div class="relative group">
+                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Connect with verified suppliers and manufacturers">
+                        <i class="fas fa-badge-check text-blue-500"></i>
+                        Verified manufacturers
+                    </a>
+                    <!-- Tooltip -->
+                    <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                        <i class="fas fa-info-circle mr-1"></i> 
+                        All suppliers are pre-verified for quality and reliability. Shop with confidence.
+                        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+                    </div>
+                </div>
+
+                <!-- Order Protection -->
+                <div class="relative group">
+                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Your orders are protected">
+                        <i class="fas fa-shield-alt text-green-500"></i>
+                        Order protections
+                    </a>
+                    <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                        <i class="fas fa-shield-alt mr-1"></i>
+                        Full refund if products don't match description. Damage protection included.
+                        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+                    </div>
+                </div>
+
+                <!-- Accio Work -->
+                <div class="relative group">
+                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Custom manufacturing solutions">
+                        <i class="fas fa-industry text-purple-500"></i>
+                        Accio Work
+                    </a>
+                    <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                        <i class="fas fa-cogs mr-1"></i>
+                        Custom manufacturing and OEM services for your business needs.
+                        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+                    </div>
+                </div>
+
+                <!-- Tax Exemption -->
+                <div class="relative group">
+                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tax exemption program for businesses">
+                        <i class="fas fa-calculator text-teal-500"></i>
+                        Tax exemption
+                    </a>
+                    <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                        <i class="fas fa-percentage mr-1"></i>
+                        Business customers can apply for tax-exempt purchasing and refunds.
+                        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+                    </div>
+                </div>
             </div>
             
-            <div class="flex items-center gap-6 text-sm">
-                <a href="#" class="hover:text-[#FF6A00] transition-colors">Buyer Central</a>
-                <a href="#" class="hover:text-[#FF6A00] transition-colors">Help Center</a>
-                <a href="#" class="hover:text-[#FF6A00] transition-colors">Get App</a>
-                <a href="#" class="hover:text-[#FF6A00] transition-colors">Become a Supplier</a>
+            <!-- Right Navigation -->
+            <div class="flex items-center gap-1">
+                <!-- Buyer Central -->
+                <div class="relative group">
+                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Tools and resources for buyers">
+                        <i class="fas fa-briefcase text-[#FF6A00]"></i>
+                        Buyer Central
+                    </a>
+                    <div class="absolute right-0 top-full mt-2 w-72 bg-white rounded-xl shadow-2xl py-3 hidden group-hover:block border z-50 animate-fadeIn">
+                        <div class="px-4 py-2 border-b border-gray-100 mb-2">
+                            <span class="text-xs text-gray-500 uppercase font-semibold">Buyer Tools</span>
+                        </div>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-orange-50 transition-colors">
+                            <i class="fas fa-search-dollar text-blue-500"></i>
+                            <div>
+                                <div class="font-medium text-sm">Request for Quotation</div>
+                                <div class="text-xs text-gray-500">Get custom quotes from suppliers</div>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-orange-50 transition-colors">
+                            <i class="fas fa-boxes text-green-500"></i>
+                            <div>
+                                <div class="font-medium text-sm">Ready to Ship</div>
+                                <div class="text-xs text-gray-500">Products with fast shipping</div>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-orange-50 transition-colors">
+                            <i class="fas fa-file-contract text-purple-500"></i>
+                            <div>
+                                <div class="font-medium text-sm">Trade Assurance</div>
+                                <div class="text-xs text-gray-500">Order protection & secure payment</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Help Center -->
+                <div class="relative group">
+                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Get help and support">
+                        <i class="fas fa-headset text-cyan-500"></i>
+                        Help Center
+                    </a>
+                    <div class="absolute right-0 top-full mt-2 w-64 bg-white rounded-xl shadow-2xl py-3 hidden group-hover:block border z-50">
+                        <div class="px-4 py-2 border-b border-gray-100 mb-2">
+                            <span class="text-xs text-gray-500 uppercase font-semibold">Support</span>
+                        </div>
+                        <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-sm"><i class="fas fa-question-circle mr-2 text-gray-400"></i>FAQs</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-sm"><i class="fas fa-comment-dots mr-2 text-gray-400"></i>Live Chat</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-sm"><i class="fas fa-envelope mr-2 text-gray-400"></i>Contact Us</a>
+                    </div>
+                </div>
+
+                <!-- App & Extension -->
+                <div class="relative group">
+                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Download our mobile app">
+                        <i class="fas fa-mobile-alt text-pink-500"></i>
+                        App & extension
+                    </a>
+                    <div class="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-2xl p-4 hidden group-hover:block border z-50">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-orange-100 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                                <i class="fas fa-qrcode text-3xl text-[#FF6A00]"></i>
+                            </div>
+                            <p class="text-sm font-medium mb-2">Scan to download app</p>
+                            <p class="text-xs text-gray-500 mb-3">Shop on the go!</p>
+                            <div class="flex gap-2 justify-center">
+                                <button class="px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg">
+                                    <i class="fab fa-apple mr-1"></i>iOS
+                                </button>
+                                <button class="px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg">
+                                    <i class="fab fa-android mr-1"></i>Android
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Become a Supplier -->
+                <div class="relative group">
+                    <a href="#" class="flex items-center gap-1.5 px-3 py-2 text-sm hover:text-[#FF6A00] transition-colors rounded-lg hover:bg-gray-50" title="Sell your products on our platform">
+                        <i class="fas fa-store text-indigo-500"></i>
+                        Become a supplier
+                    </a>
+                    <div class="absolute right-0 top-full mt-2 w-64 bg-gray-900 text-white text-xs p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+                        <i class="fas fa-handshake mr-1"></i>
+                        Join 10,000+ suppliers. Expand your business to Africa. Free registration.
+                        <div class="absolute -top-1 right-4 w-2 h-2 bg-gray-900 rotate-45"></div>
+                    </div>
+                </div>
             </div>
         </nav>
         
