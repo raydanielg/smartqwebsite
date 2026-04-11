@@ -5,6 +5,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ManufacturerController;
 use App\Http\Controllers\BuyerCentralController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,49 @@ Route::get('/accio-work', [BuyerCentralController::class, 'accioWork'])->name('a
 Route::post('/accio-work', [BuyerCentralController::class, 'submitAccioWork'])->name('accio-work.submit');
 Route::get('/become-supplier', [BuyerCentralController::class, 'becomeSupplier'])->name('become-supplier');
 Route::post('/become-supplier', [BuyerCentralController::class, 'submitSupplierApplication'])->name('become-supplier.submit');
+
+// Admin Routes
+Route::prefix('admin')->middleware(['auth', 'check.role:admin,superadmin'])->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    
+    // Super Admin Only Routes
+    Route::middleware(['check.role:superadmin'])->group(function () {
+        Route::get('/super-dashboard', [AdminController::class, 'superDashboard'])->name('admin.super.dashboard');
+        Route::get('/roles', [AdminController::class, 'roles'])->name('admin.roles');
+        Route::post('/roles/{id}/permissions', [AdminController::class, 'updateRolePermissions'])->name('admin.roles.permissions');
+        Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+        Route::post('/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
+    });
+    
+    // Users Management
+    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::post('/users', [AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/users/{id}', [AdminController::class, 'editUser'])->name('admin.users.edit');
+    Route::delete('/users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+    
+    // Products Management
+    Route::get('/products', [AdminController::class, 'products'])->name('admin.products');
+    
+    // Manufacturers Management
+    Route::get('/manufacturers', [AdminController::class, 'manufacturers'])->name('admin.manufacturers');
+    Route::post('/manufacturers/{id}/verify', [AdminController::class, 'verifyManufacturer'])->name('admin.manufacturers.verify');
+});
+
+// Role-based Dashboards
+Route::middleware(['auth'])->group(function () {
+    Route::get('/buyer/dashboard', function() {
+        return view('dashboards.buyer');
+    })->name('buyer.dashboard');
+    
+    Route::get('/seller/dashboard', function() {
+        return view('dashboards.seller');
+    })->middleware('check.role:seller')->name('seller.dashboard');
+    
+    Route::get('/manufacturer/dashboard', function() {
+        return view('dashboards.manufacturer');
+    })->middleware('check.role:manufacturer')->name('manufacturer.dashboard');
+});
 
 Auth::routes();
 
