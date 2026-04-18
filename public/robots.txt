@@ -1,2 +1,25 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: https://smartqlink.com/sitemap.xml
+
+# Disallow admin and sensitive areas
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /password/
+Disallow: /storage/
+Disallow: /bootstrap/
+Disallow: /vendor/
+
+# Crawl delay for bots
+Crawl-delay: 10
+
+# Allow Google full access
+User-agent: Googlebot
+Allow: /
+
+# Allow Bing full access
+User-agent: Bingbot
+Allow: /

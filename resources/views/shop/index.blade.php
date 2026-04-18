@@ -351,7 +351,7 @@
     function moveCarousel(direction) {
         currentSlide += direction;
         if (currentSlide < 0) currentSlide = totalSlides - 1;
-        if (currentSlide >= totalSlide) currentSlide = 0;
+        if (currentSlide >= totalSlides) currentSlide = 0;
         updateCarousel();
     }
 

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- SmartQ SEO Meta Tags --}}
+    {!! \App\Helpers\SEOHelper::render() !!}
+    
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <title>@yield('title', 'Smart Q Store - Import Products from China')</title>
-    <meta name="description" content="@yield('meta_description', 'Shop quality products imported from China. Electronics, fashion, home goods at wholesale prices.')">
+    {{-- Page Specific SEO Override --}}
+    <title>@yield('seo_title', config('seo.pages.shop.title'))</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

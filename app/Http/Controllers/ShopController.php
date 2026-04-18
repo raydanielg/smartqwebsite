@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Session;
+use App\Helpers\SEOHelper;
 
 class ShopController extends Controller
 {
@@ -47,6 +48,9 @@ class ShopController extends Controller
         $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
         $featuredProducts = Product::where('is_active', true)->where('is_featured', true)->limit(4)->get();
         
+        // Set SEO for shop page
+        SEOHelper::setPage('shop');
+        
         return view('shop.index', compact('products', 'categories', 'featuredProducts'));
     }
     
@@ -61,6 +65,9 @@ class ShopController extends Controller
             ->get();
         $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
         
+        // Set SEO for product page
+        SEOHelper::forProduct($product);
+        
         return view('shop.product', compact('product', 'relatedProducts', 'categories'));
     }
     
@@ -73,6 +80,9 @@ class ShopController extends Controller
             ->orderBy('sort_order')
             ->paginate(12);
         $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
+        
+        // Set SEO for category page
+        SEOHelper::forCategory($category);
         
         return view('shop.category', compact('category', 'products', 'categories'));
     }
