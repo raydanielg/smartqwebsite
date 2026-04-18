@@ -170,20 +170,46 @@
         color: #2563eb;
     }
 
-    @media (max-width: 576px) {
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .stat-card {
+            padding: 16px;
+        }
         .kpi-card {
-            gap: 10px;
+            gap: 12px;
         }
         .kpi-ico {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             border-radius: 12px;
         }
+        .kpi-ico i {
+            font-size: 20px;
+        }
         .stats-grid .stat-value {
-            font-size: 18px;
+            font-size: 22px;
         }
         .stats-grid .stat-label {
-            font-size: 11px;
+            font-size: 10px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+        .kpi-ico {
+            width: 44px;
+            height: 44px;
+        }
+        .kpi-ico i {
+            font-size: 18px;
+        }
+        .stats-grid .stat-value {
+            font-size: 20px;
         }
     }
 </style>
@@ -258,9 +284,9 @@
     </div>
     
     <!-- Pending Orders -->
-    <div class="stat-card content-card animate__animated animate__fadeInUp" style="animation-delay:240ms; padding:16px;">
+    <div class="stat-card animate__animated animate__fadeInUp" style="animation-delay:240ms;">
         <div class="kpi-card">
-            <div class="kpi-ico" style="background:rgba(156,39,176,0.15); color:#9c27b0;">
+            <div class="kpi-ico pending">
                 <i class="fa-solid fa-clock"></i>
             </div>
             <div class="stat-details">
