@@ -558,44 +558,128 @@
 
             <nav class="sidebar-nav">
                 <div class="nav-section">
-                    <span class="nav-label">Main</span>
+                    <span class="nav-label">MAIN</span>
                     <ul class="nav-list">
                         <li class="nav-item active">
-                            <a href="{{ route('admin.dashboard') }}" class="nav-link">Dashboard</a>
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-th-large"></i></span>
+                                <span>Dashboard</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <span class="nav-label">Shop & Content</span>
+                    <span class="nav-label">SHOP CONTROL</span>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route('admin.products') }}" class="nav-link">Products</a>
+                            <a href="{{ route('admin.products') }}" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-box"></i></span>
+                                <span>Products</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.manufacturers') }}" class="nav-link">Manufacturers</a>
+                            <a href="{{ route('admin.manufacturers') }}" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-industry"></i></span>
+                                <span>Manufacturers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-tags"></i></span>
+                                <span>Categories</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-percent"></i></span>
+                                <span>Deals & Offers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-shopping-cart"></i></span>
+                                <span>Orders</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <span class="nav-label">Management</span>
+                    <span class="nav-label">MANAGEMENT</span>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route('admin.users') }}" class="nav-link">Users</a>
+                            <a href="{{ route('admin.users') }}" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-users"></i></span>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-user-shield"></i></span>
+                                <span>Staff</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-label">SETTINGS</span>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.settings') }}" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                                <span>General Settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-paint-brush"></i></span>
+                                <span>Appearance</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-credit-card"></i></span>
+                                <span>Payment</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-truck"></i></span>
+                                <span>Shipping</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-bell"></i></span>
+                                <span>Notifications</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
 
                 @if(auth()->user()->isSuperAdmin())
                 <div class="nav-section">
-                    <span class="nav-label">System</span>
+                    <span class="nav-label">SYSTEM</span>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route('admin.roles') }}" class="nav-link">Roles</a>
+                            <a href="{{ route('admin.roles') }}" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-lock"></i></span>
+                                <span>Roles & Permissions</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.settings') }}" class="nav-link">Settings</a>
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-database"></i></span>
+                                <span>Database</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+                                <span>Logs</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -605,7 +689,8 @@
                     <ul class="nav-list">
                         <li class="nav-item">
                             <a href="{{ route('logout') }}" class="nav-link" style="color: #ef4444;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Sign Out
+                                <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
+                                <span>Sign Out</span>
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
