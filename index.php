@@ -148,6 +148,16 @@ HTML;
 }
 
 // ============================================================================
+// SHARED HOSTING COMPATIBILITY
+// ============================================================================
+
+// Change to the project root directory
+chdir(__DIR__);
+
+// Set the proper document root for Laravel
+$_SERVER['DOCUMENT_ROOT'] = __DIR__ . '/public';
+
+// ============================================================================
 // ROUTING & REDIRECTION
 // ============================================================================
 
@@ -159,7 +169,30 @@ $requestUri = preg_replace('/\?.*/', '', $requestUri);
 
 // Serve static files directly if they exist (for PHP built-in server)
 if ($requestUri !== '/' && file_exists(__DIR__ . '/public' . $requestUri)) {
-    return false;
+    // Return the actual file
+    $filePath = __DIR__ . '/public' . $requestUri;
+    $ext = pathinfo($filePath, PATHINFO_EXTENSION);
+    
+    // Set proper content type
+    $contentTypes = [
+        'css' => 'text/css',
+        'js' => 'application/javascript',
+        'jpg' => 'image/jpeg',
+        'jpeg' => 'image/jpeg',
+        'png' => 'image/png',
+        'gif' => 'image/gif',
+        'svg' => 'image/svg+xml',
+        'woff' => 'font/woff',
+        'woff2' => 'font/woff2',
+        'ttf' => 'font/ttf',
+    ];
+    
+    if (isset($contentTypes[$ext])) {
+        header('Content-Type: ' . $contentTypes[$ext]);
+    }
+    
+    readfile($filePath);
+    exit;
 }
 
 // Forward to the public index.php
