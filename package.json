@@ -19,7 +19,12 @@
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
-        "webpack": "5.76.0",
+        "webpack": "^5.106.2",
         "webpack-cli": "4.10.0"
+    },
+    "dependencies": {
+        "@heroicons/react": "^2.2.0",
+        "animate.css": "^4.1.1",
+        "aos": "^2.3.4"
     }
 }
