@@ -1,32 +1,21 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
 <p align="center">
   <img src="public/images/logo.png" alt="SmartQ Logo" width="200">
 </p>
+
+<h1 align="center">SmartQ E-Commerce Platform</h1>
+
+<p align="center">
+  <strong>Alibaba-Style Multi-Vendor E-Commerce Platform with B2B & B2C Features</strong>
+</p>
+
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/Laravel-8.x-red.svg" alt="Laravel 8.x"></a>
+  <a href="#"><img src="https://img.shields.io/badge/PHP-8.0+-blue.svg" alt="PHP 8.0+"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Tailwind-CSS-38B2AC.svg" alt="Tailwind CSS"></a>
+  <a href="#"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License MIT"></a>
+</p>
+
+---
 
 <h1 align="center">SmartQ E-Commerce Platform</h1>
 
@@ -268,26 +257,9 @@ Fully responsive across all devices:
 - [ ] Advanced analytics dashboard
 
 ---
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👨‍💻 Developer
-
-**SmartQ Team**
+MIT License - see [LICENSE](LICENSE) file.
 - Website: [www.smartq.co.tz](https://www.smartq.co.tz)
 - Email: info@smartq.co.tz
 - Location: Dar es Salaam, Tanzania
