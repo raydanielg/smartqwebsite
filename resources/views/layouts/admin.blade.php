@@ -266,6 +266,75 @@
             text-align: center;
         }
         
+        /* Pagination Styles */
+        .pagination {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+        }
+        
+        .pagination li {
+            margin: 0;
+        }
+        
+        .pagination li a,
+        .pagination li span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            padding: 0 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748b;
+            background: #f8fafc;
+            border: none;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .pagination li:hover a {
+            background: #e2e8f0;
+            color: #475569;
+        }
+        
+        .pagination li.active span,
+        .pagination li.active a {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .pagination li.disabled span {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Pagination Bar Container */
+        .pagination-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            margin-top: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .pagination-bar {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+        
         /* Sign Out Section */
         .sign-out-section {
             margin-top: auto;
@@ -728,6 +797,26 @@
     <!-- Bootstrap core JavaScript-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Submenu Toggle Script -->
+    <script>
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const navItem = event.currentTarget.closest('.has-submenu');
+            const submenu = navItem.querySelector('.submenu');
+            const arrow = navItem.querySelector('.submenu-arrow');
+            
+            if (submenu.style.maxHeight && submenu.style.maxHeight !== '0px') {
+                submenu.style.maxHeight = '0px';
+                submenu.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                submenu.style.display = 'block';
+                submenu.style.maxHeight = '500px';
+                arrow.style.transform = 'rotate(90deg)';
+            }
+        }
+    </script>
     
     @yield('scripts')
 </body>
