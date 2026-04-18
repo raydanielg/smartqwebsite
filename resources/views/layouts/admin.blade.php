@@ -185,9 +185,42 @@
             flex-shrink: 0;
         }
         
+        /* Simple icons - Malkia style (no background color) */
+        .nav-icon.simple {
+            width: 24px;
+            height: 24px;
+            background: transparent !important;
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+        
+        .nav-item.active .nav-link .nav-icon.simple {
+            color: white;
+            background: transparent !important;
+        }
+        
         .nav-text {
             font-size: 14px;
             font-weight: 500;
+        }
+        
+        /* Sign Out Section */
+        .sign-out-section {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .sign-out-link {
+            color: #ef4444 !important;
+        }
+        
+        .sign-out-link:hover {
+            background: #fef2f2 !important;
+        }
+        
+        .sign-out-link .nav-icon.simple {
+            color: #ef4444 !important;
         }
         
         /* Main Content Area */

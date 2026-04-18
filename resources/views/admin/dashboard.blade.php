@@ -261,10 +261,10 @@
     <div class="stat-card animate__animated animate__fadeInUp" style="animation-delay:160ms;">
         <div class="kpi-card">
             <div class="kpi-ico revenue">
-                <i class="fa-solid fa-dollar-sign"></i>
+                <i class="fa-solid fa-money-bill-wave"></i>
             </div>
             <div class="stat-details">
-                <h3 class="stat-value">${{ number_format($stats['revenue'] ?? 0, 0) }}</h3>
+                <h3 class="stat-value">TZS {{ number_format($stats['revenue'] ?? 0, 0) }}</h3>
                 <p class="stat-label">Total Revenue</p>
             </div>
         </div>
@@ -339,7 +339,7 @@
                                     {{ ucfirst($order->status) }}
                                 </span>
                             </td>
-                            <td style="text-align:right; font-weight:600;">${{ number_format($order->grand_total, 2) }}</td>
+                            <td style="text-align:right; font-weight:600;">TZS {{ number_format($order->grand_total, 2) }}</td>
                         </tr>
                     @empty
                         <tr>
