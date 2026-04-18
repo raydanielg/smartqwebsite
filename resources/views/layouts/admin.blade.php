@@ -204,6 +204,68 @@
             font-weight: 500;
         }
         
+        /* Submenu Styles */
+        .has-submenu {
+            position: relative;
+        }
+        
+        .submenu-arrow {
+            margin-left: auto;
+            font-size: 12px;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-item.active .submenu-arrow {
+            color: white;
+        }
+        
+        .submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0,0,0,0.02);
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .submenu-item {
+            margin: 0;
+        }
+        
+        .submenu-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px 10px 48px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            margin: 2px 8px;
+        }
+        
+        .submenu-link:hover {
+            background: var(--sidebar-hover);
+            color: var(--text-primary);
+        }
+        
+        .submenu-link.active {
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+            color: white;
+            box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+        }
+        
+        .submenu-link i {
+            font-size: 14px;
+            width: 20px;
+            text-align: center;
+        }
+        
         /* Sign Out Section */
         .sign-out-section {
             margin-top: auto;
