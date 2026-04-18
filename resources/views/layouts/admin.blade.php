@@ -358,13 +358,62 @@
             fill: currentColor !important;
         }
         
-        /* Pagination text */
-        .pagination .text-sm,
+        /* Pagination Bar - Clean Atomic Style */
+        .pagination-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            background: transparent;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+        
+        .pagination-bar .pagination {
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            background: #f8fafc;
+            padding: 8px !important;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .pagination-bar .pagination li a,
+        .pagination-bar .pagination li span {
+            border: none !important;
+            background: transparent !important;
+            color: #64748b !important;
+            min-width: 36px !important;
+            height: 36px !important;
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+        }
+        
+        .pagination-bar .pagination li:hover a {
+            background: #e2e8f0 !important;
+            color: #475569 !important;
+        }
+        
+        .pagination-bar .pagination li.active span,
+        .pagination-bar .pagination li.active a {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3) !important;
+        }
+        
+        .pagination-bar .pagination li.disabled span {
+            opacity: 0.3 !important;
+            background: transparent !important;
+        }
+        
+        /* Results text */
+        .pagination-bar .text-sm,
         .pagination-results {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 12px;
-            text-align: center;
+            color: #94a3b8;
+            font-size: 13px;
+            margin-right: 16px;
+            font-weight: 500;
         }
         
         /* Pagination Bar Container */
