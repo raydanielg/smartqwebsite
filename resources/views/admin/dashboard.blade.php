@@ -372,15 +372,12 @@
         .chart-card {
             background: white;
             border-radius: 16px;
-            padding: 24px;
+            padding: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         
         .chart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         
         .chart-title {
@@ -395,11 +392,6 @@
         
         .chart-title i {
             color: #FFC107;
-        }
-        
-        .chart-filters {
-            display: flex;
-            gap: 8px;
         }
         
         .chart-container {
@@ -901,22 +893,23 @@
                     data: {!! json_encode($chartData ?? []) !!},
                     borderColor: '#FFC107',
                     backgroundColor: 'rgba(255, 193, 7, 0.1)',
-                    borderWidth: 3,
+                    borderWidth: 2,
                     fill: true,
                     tension: 0.4,
-                    pointRadius: 4,
+                    pointRadius: 3,
                     pointBackgroundColor: '#FFC107',
                     pointBorderColor: '#fff',
-                    pointBorderWidth: 2,
+                    pointBorderWidth: 1,
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
+                aspectRatio: 2.5,
                 plugins: { legend: { display: false } },
                 scales: {
-                    y: { beginAtZero: true, grid: { color: '#F3F4F6' }, ticks: { color: '#6B7280' } },
-                    x: { grid: { display: false }, ticks: { color: '#6B7280' } }
+                    y: { beginAtZero: true, grid: { color: '#F3F4F6' }, ticks: { color: '#6B7280', font: { size: 11 } } },
+                    x: { grid: { display: false }, ticks: { color: '#6B7280', font: { size: 11 } } }
                 }
             }
         });
@@ -940,8 +933,9 @@
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
-                cutout: '70%',
+                maintainAspectRatio: true,
+                aspectRatio: 1,
+                cutout: '65%',
                 plugins: { legend: { display: false } }
             }
         });
