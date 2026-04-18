@@ -4,39 +4,68 @@
 
 @push('styles')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <style>
     /* Font from auth pages */
     .admin-content {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     }
 
-    /* KPI Cards */
+    /* Stats Grid - Powerful Styling */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+
+    /* KPI Cards - Powerful */
+    .stat-card {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.02);
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
     .kpi-card {
         display: flex;
-        gap: 12px;
+        gap: 16px;
         align-items: center;
     }
     
     .kpi-ico {
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     
     .kpi-ico i {
-        font-size: 18px;
+        font-size: 24px;
     }
     
-    .stats-grid .stat-card {
-        min-width: 0;
-    }
+    /* Color Variants for Icons */
+    .kpi-ico.users { background: linear-gradient(135deg, #FFC107, #FF9800); color: white; }
+    .kpi-ico.products { background: linear-gradient(135deg, #FF9800, #FF5722); color: white; }
+    .kpi-ico.orders { background: linear-gradient(135deg, #FF5722, #E91E63); color: white; }
+    .kpi-ico.revenue { background: linear-gradient(135deg, #4CAF50, #8BC34A); color: white; }
+    .kpi-ico.manufacturers { background: linear-gradient(135deg, #2196F3, #03A9F4); color: white; }
+    .kpi-ico.pending { background: linear-gradient(135deg, #9C27B0, #E91E63); color: white; }
     
     .stats-grid .stat-details {
         min-width: 0;
+        flex: 1;
     }
     
     .stats-grid .stat-value {
@@ -44,39 +73,48 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        font-size: 20px;
-        font-weight: 700;
+        font-size: 28px;
+        font-weight: 800;
         color: #1a1a2e;
+        letter-spacing: -0.5px;
     }
     
     .stats-grid .stat-label {
-        margin: 0;
+        margin: 4px 0 0 0;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        font-size: 11px;
+        font-size: 12px;
         color: #6b7280;
         font-weight: 600;
         text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
-    /* Content Cards */
+    /* Content Cards - Powerful */
     .content-card {
         background: white;
-        border-radius: 16px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0,0,0,0.02);
+        overflow: hidden;
+    }
+    
+    .content-card:hover {
+        box-shadow: 0 6px 24px rgba(0,0,0,0.1);
     }
     
     .content-card .card-header {
-        padding: 0;
-        margin-bottom: 12px;
+        padding: 20px 20px 16px 20px;
+        margin-bottom: 0;
         background: none;
         border: none;
+        border-bottom: 1px solid #f3f4f6;
     }
     
     .content-card .card-header h3 {
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 18px;
+        font-weight: 700;
         color: #1a1a2e;
         margin: 0;
     }
