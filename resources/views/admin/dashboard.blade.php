@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard - Smart Q Store')
 
-@push('styles')
+@section('styles')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <style>
@@ -213,7 +213,7 @@
         }
     }
 </style>
-@endpush
+@endsection
 
 @section('content')
 <!-- Stats Grid - Gold/Yellow Theme -->
@@ -382,7 +382,7 @@
 </div>
 @endsection
 
-@push('scripts')
+@section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
     // Line Chart - Activity Trend
@@ -467,4 +467,4 @@
         });
     }
 </script>
-@endpush
+@endsection
