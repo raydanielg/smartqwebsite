@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -579,7 +579,7 @@
                     <span class="nav-label">MAIN</span>
                     <ul class="nav-list">
                         <li class="nav-item active">
-                            <a href="{{ route(''admin.dashboard'') }}" class="nav-link">
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link">
                                 <div class="nav-icon" style="background: linear-gradient(135deg, #FFC107, #FF9800);">
                                     <i class="fas fa-tachometer-alt"></i>
                                 </div>
@@ -593,7 +593,7 @@
                     <span class="nav-label">SHOP & CONTENT</span>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route(''admin.products'') }}" class="nav-link">
+                            <a href="{{ route('admin.products') }}" class="nav-link">
                                 <div class="nav-icon" style="background: linear-gradient(135deg, #4CAF50, #8BC34A);">
                                     <i class="fas fa-box"></i>
                                 </div>
@@ -601,7 +601,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route(''admin.manufacturers'') }}" class="nav-link">
+                            <a href="{{ route('admin.manufacturers') }}" class="nav-link">
                                 <div class="nav-icon" style="background: linear-gradient(135deg, #9C27B0, #E91E63);">
                                     <i class="fas fa-industry"></i>
                                 </div>
@@ -615,7 +615,7 @@
                     <span class="nav-label">MANAGEMENT</span>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route(''admin.users'') }}" class="nav-link">
+                            <a href="{{ route('admin.users') }}" class="nav-link">
                                 <div class="nav-icon" style="background: linear-gradient(135deg, #00BCD4, #009688);">
                                     <i class="fas fa-users"></i>
                                 </div>
@@ -630,7 +630,7 @@
                     <span class="nav-label">SYSTEM</span>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route(''admin.roles'') }}" class="nav-link">
+                            <a href="{{ route('admin.roles') }}" class="nav-link">
                                 <div class="nav-icon" style="background: linear-gradient(135deg, #607D8B, #9E9E9E);">
                                     <i class="fas fa-user-shield"></i>
                                 </div>
@@ -638,7 +638,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route(''admin.settings'') }}" class="nav-link">
+                            <a href="{{ route('admin.settings') }}" class="nav-link">
                                 <div class="nav-icon" style="background: linear-gradient(135deg, #795548, #8D6E63);">
                                     <i class="fas fa-cog"></i>
                                 </div>
@@ -646,7 +646,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route(''admin.super.dashboard'') }}" class="nav-link">
+                            <a href="{{ route('admin.super.dashboard') }}" class="nav-link">
                                 <div class="nav-icon" style="background: linear-gradient(135deg, #FFD700, #FFA000);">
                                     <i class="fas fa-crown"></i>
                                 </div>
@@ -660,13 +660,13 @@
                 <div class="nav-section">
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route(''logout'') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById(''logout-form'').submit();">
+                            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <div class="nav-icon" style="background: linear-gradient(135deg, #f44336, #e91e63);">
                                     <i class="fas fa-sign-out-alt"></i>
                                 </div>
                                 <span class="nav-text">Sign Out</span>
                             </a>
-                            <form id="logout-form" action="{{ route(''logout'') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </li>
@@ -687,22 +687,22 @@
                     </div>
                     <div class="user-profile dropdown">
                         <a href="#" class="profile-trigger" data-toggle="dropdown">
-                            <div class="avatar">{{ substr(Auth::user()->name ?? ''A'', 0, 1) }}</div>
+                            <div class="avatar">{{ substr(Auth::user()->name ?? 'A', 0, 1) }}</div>
                             <div class="user-info">
-                                <span class="user-name">{{ Auth::user()->name ?? ''Admin'' }}</span>
-                                <span class="user-role">{{ Auth::user()->highestRole()->display_name ?? ''Administrator'' }}</span>
+                                <span class="user-name">{{ Auth::user()->name ?? 'Admin' }}</span>
+                                <span class="user-role">{{ Auth::user()->highestRole()->display_name ?? 'Administrator' }}</span>
                             </div>
                             <i class="fas fa-chevron-down" style="color: #6b7280; font-size: 12px;"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{ route(''landing'') }}">
+                            <a class="dropdown-item" href="{{ route('landing') }}">
                                 <i class="fas fa-store"></i> View Shop
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route(''logout'') }}" onclick="event.preventDefault(); document.getElementById(''logout-form-header'').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-header').submit();">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
-                            <form id="logout-form-header" action="{{ route(''logout'') }}" method="POST" class="d-none">
+                            <form id="logout-form-header" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
@@ -718,9 +718,9 @@
                             <i class="fas fa-tachometer-alt"></i>
                             Dashboard
                         </h1>
-                        <p style="color: #6b7280; margin: 8px 0 0 0;">Welcome back! Here''s what''s happening with your store today.</p>
+                        <p style="color: #6b7280; margin: 8px 0 0 0;">Welcome back! Here's what's happening with your store today.</p>
                     </div>
-                    <a href="{{ route(''shop'') }}" class="btn-view-site">
+                    <a href="{{ route('shop') }}" class="btn-view-site">
                         <i class="fas fa-external-link-alt"></i>
                         View Store
                     </a>
@@ -731,42 +731,42 @@
                     <div class="stat-card stat-users">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
                         <div class="stat-content">
-                            <div class="stat-value">{{ number_format($stats[''users'']) }}</div>
+                            <div class="stat-value">{{ number_format($stats['users']) }}</div>
                             <div class="stat-label">Total Users</div>
                         </div>
                     </div>
                     <div class="stat-card stat-products">
                         <div class="stat-icon"><i class="fas fa-box"></i></div>
                         <div class="stat-content">
-                            <div class="stat-value">{{ number_format($stats[''products'']) }}</div>
+                            <div class="stat-value">{{ number_format($stats['products']) }}</div>
                             <div class="stat-label">Products</div>
                         </div>
                     </div>
                     <div class="stat-card stat-orders">
                         <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
                         <div class="stat-content">
-                            <div class="stat-value">{{ number_format($stats[''orders'']) }}</div>
+                            <div class="stat-value">{{ number_format($stats['orders']) }}</div>
                             <div class="stat-label">Total Orders</div>
                         </div>
                     </div>
                     <div class="stat-card stat-revenue">
                         <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
                         <div class="stat-content">
-                            <div class="stat-value">${{ number_format($stats[''revenue''], 2) }}</div>
+                            <div class="stat-value">${{ number_format($stats['revenue'], 2) }}</div>
                             <div class="stat-label">Total Revenue</div>
                         </div>
                     </div>
                     <div class="stat-card stat-manufacturers">
                         <div class="stat-icon"><i class="fas fa-industry"></i></div>
                         <div class="stat-content">
-                            <div class="stat-value">{{ number_format($stats[''manufacturers'']) }}</div>
+                            <div class="stat-value">{{ number_format($stats['manufacturers']) }}</div>
                             <div class="stat-label">Manufacturers</div>
                         </div>
                     </div>
                     <div class="stat-card stat-pending">
                         <div class="stat-icon"><i class="fas fa-clock"></i></div>
                         <div class="stat-content">
-                            <div class="stat-value">{{ $stats[''pending_orders''] ?? 0 }}</div>
+                            <div class="stat-value">{{ $stats['pending_orders'] ?? 0 }}</div>
                             <div class="stat-label">Pending Orders</div>
                         </div>
                     </div>
@@ -800,17 +800,17 @@
                             <div class="legend-item">
                                 <span class="legend-dot" style="background: #FFC107;"></span>
                                 <span class="legend-label">Pending</span>
-                                <span style="font-weight: 600;">{{ $stats[''pending_orders''] ?? 0 }}</span>
+                                <span style="font-weight: 600;">{{ $stats['pending_orders'] ?? 0 }}</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot" style="background: #4CAF50;"></span>
                                 <span class="legend-label">Completed</span>
-                                <span style="font-weight: 600;">{{ $stats[''completed_orders''] ?? 0 }}</span>
+                                <span style="font-weight: 600;">{{ $stats['completed_orders'] ?? 0 }}</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot" style="background: #2196F3;"></span>
                                 <span class="legend-label">Processing</span>
-                                <span style="font-weight: 600;">{{ $stats[''processing_orders''] ?? 0 }}</span>
+                                <span style="font-weight: 600;">{{ $stats['processing_orders'] ?? 0 }}</span>
                             </div>
                         </div>
                     </div>
@@ -842,14 +842,14 @@
                                     @foreach($recentOrders as $order)
                                     <tr>
                                         <td class="order-id">#{{ $order->order_number }}</td>
-                                        <td>{{ $order->user ? $order->user->name : ''Guest'' }}</td>
+                                        <td>{{ $order->user ? $order->user->name : 'Guest' }}</td>
                                         <td>${{ number_format($order->grand_total, 2) }}</td>
                                         <td>
                                             <span class="status-badge status-{{ $order->status }}">
                                                 {{ ucfirst($order->status) }}
                                             </span>
                                         </td>
-                                        <td style="color: #6b7280; font-size: 13px;">{{ $order->created_at->format(''M d, Y'') }}</td>
+                                        <td style="color: #6b7280; font-size: 13px;">{{ $order->created_at->format('M d, Y') }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -896,22 +896,22 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Sales Chart
-        const salesCtx = document.getElementById(''salesChart'').getContext(''2d'');
+        const salesCtx = document.getElementById('salesChart').getContext('2d');
         new Chart(salesCtx, {
-            type: ''line'',
+            type: 'line',
             data: {
                 labels: {!! json_encode($chartLabels ?? []) !!},
                 datasets: [{
-                    label: ''Sales'',
+                    label: 'Sales',
                     data: {!! json_encode($chartData ?? []) !!},
-                    borderColor: ''#FFC107'',
-                    backgroundColor: ''rgba(255, 193, 7, 0.1)'',
+                    borderColor: '#FFC107',
+                    backgroundColor: 'rgba(255, 193, 7, 0.1)',
                     borderWidth: 3,
                     fill: true,
                     tension: 0.4,
                     pointRadius: 4,
-                    pointBackgroundColor: ''#FFC107'',
-                    pointBorderColor: ''#fff'',
+                    pointBackgroundColor: '#FFC107',
+                    pointBorderColor: '#fff',
                     pointBorderWidth: 2,
                 }]
             },
@@ -920,25 +920,25 @@
                 maintainAspectRatio: false,
                 plugins: { legend: { display: false } },
                 scales: {
-                    y: { beginAtZero: true, grid: { color: ''#F3F4F6'' }, ticks: { color: ''#6B7280'' } },
-                    x: { grid: { display: false }, ticks: { color: ''#6B7280'' } }
+                    y: { beginAtZero: true, grid: { color: '#F3F4F6' }, ticks: { color: '#6B7280' } },
+                    x: { grid: { display: false }, ticks: { color: '#6B7280' } }
                 }
             }
         });
 
         // Distribution Chart
-        const distCtx = document.getElementById(''distributionChart'').getContext(''2d'');
+        const distCtx = document.getElementById('distributionChart').getContext('2d');
         new Chart(distCtx, {
-            type: ''doughnut'',
+            type: 'doughnut',
             data: {
-                labels: [''Pending'', ''Completed'', ''Processing''],
+                labels: ['Pending', 'Completed', 'Processing'],
                 datasets: [{
                     data: [
-                        {{ $stats[''pending_orders''] ?? 0 }},
-                        {{ $stats[''completed_orders''] ?? 0 }},
-                        {{ $stats[''processing_orders''] ?? 0 }}
+                        {{ $stats['pending_orders'] ?? 0 }},
+                        {{ $stats['completed_orders'] ?? 0 }},
+                        {{ $stats['processing_orders'] ?? 0 }}
                     ],
-                    backgroundColor: [''#FFC107'', ''#4CAF50'', ''#2196F3''],
+                    backgroundColor: ['#FFC107', '#4CAF50', '#2196F3'],
                     borderWidth: 0,
                     hoverOffset: 4
                 }]
@@ -946,7 +946,7 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: ''70%'',
+                cutout: '70%',
                 plugins: { legend: { display: false } }
             }
         });
