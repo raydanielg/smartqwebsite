@@ -28,13 +28,25 @@ class AdminController extends Controller
             'products' => Product::count(),
             'orders' => Order::count() ?? 0,
             'manufacturers' => Manufacturer::count(),
-            'revenue' => 0, // Calculate from orders
+            'revenue' => Order::sum('grand_total') ?? 0,
+            'pending_orders' => Order::where('status', 'pending')->count(),
+            'processing_orders' => Order::where('status', 'processing')->count(),
+            'completed_orders' => Order::where('status', 'completed')->count(),
         ];
 
-        $recentUsers = User::latest()->take(5)->get();
-        $recentProducts = Product::latest()->take(5)->get();
+        // Chart data - Last 14 days
+        $chartLabels = [];
+        $chartData = [];
+        for ($i = 13; $i >= 0; $i--) {
+            $date = now()->subDays($i)->format('Y-m-d');
+            $chartLabels[] = now()->subDays($i)->format('M d');
+            $chartData[] = Order::whereDate('created_at', $date)->sum('grand_total') ?? 0;
+        }
 
-        return view('admin.dashboard', compact('stats', 'recentUsers', 'recentProducts'));
+        $recentUsers = User::latest()->take(5)->get();
+        $recentOrders = Order::with('user')->latest()->take(5)->get();
+
+        return view('admin.dashboard', compact('stats', 'recentUsers', 'recentOrders', 'chartLabels', 'chartData'));
     }
 
     // Super Admin Dashboard

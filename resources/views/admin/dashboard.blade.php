@@ -14,8 +14,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background: #e8e8ec;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f0f0f4;
             color: #1a1a2e;
             min-height: 100vh;
         }
@@ -26,11 +26,11 @@
             min-height: 100vh;
         }
         
-        /* Sidebar */
+        /* Sidebar - Malkia Style */
         .admin-sidebar {
-            width: 260px;
-            background: #f5f5f5;
-            border-right: 1px solid #e0e0e0;
+            width: 240px;
+            background: #f8f8fa;
+            border-right: 1px solid #e8e8ec;
             display: flex;
             flex-direction: column;
             position: fixed;
@@ -41,41 +41,45 @@
         }
         
         .sidebar-brand {
-            padding: 20px;
+            padding: 20px 24px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid #e0e0e0;
-            flex-shrink: 0;
+            gap: 10px;
         }
         
         .brand-logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #FFC107, #FF8F00);
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #FF6B9D, #FF8E53);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
+            font-size: 16px;
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
         }
         
         .brand-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: #1a1a2e;
+            line-height: 1.2;
         }
         
         .brand-tagline {
-            font-size: 10px;
-            color: #FFA000;
+            font-size: 9px;
+            color: #FF6B9D;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         
         .sidebar-nav {
-            padding: 16px 12px;
+            padding: 8px 16px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -83,7 +87,7 @@
         }
         
         .nav-section {
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         
         .nav-section:last-child {
@@ -94,11 +98,10 @@
         .nav-label {
             font-size: 10px;
             font-weight: 600;
-            color: #6b7280;
+            color: #9ca3af;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 0 12px;
-            margin-bottom: 8px;
+            padding: 16px 12px 8px;
             display: block;
         }
         
@@ -107,50 +110,46 @@
         }
         
         .nav-item {
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         
         .nav-link {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px;
+            padding: 10px 12px;
             border-radius: 10px;
             text-decoration: none;
-            color: #1a1a2e;
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 500;
             transition: all 0.2s ease;
         }
         
         .nav-link:hover {
-            background: #e8e8e8;
+            background: #fff;
+            color: #1a1a2e;
         }
         
         .nav-item.active .nav-link {
-            background: linear-gradient(135deg, #FFC107, #FFA000);
+            background: linear-gradient(135deg, #FF6B9D, #FF8E53);
             color: white;
-            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.25);
         }
         
         .nav-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-size: 14px;
-        }
-        
-        .nav-text {
-            font-size: 14px;
-            font-weight: 500;
         }
         
         /* Main Content */
         .admin-main {
             flex: 1;
-            margin-left: 260px;
+            margin-left: 240px;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -158,19 +157,18 @@
         
         /* Header */
         .admin-header {
-            background: white;
-            padding: 16px 24px;
+            background: #f0f0f4;
+            padding: 16px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #e0e0e0;
             position: sticky;
             top: 0;
             z-index: 100;
         }
         
         .page-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
             color: #1a1a2e;
             margin: 0;
@@ -186,7 +184,7 @@
             width: 40px;
             height: 40px;
             border-radius: 10px;
-            background: #e8e8ec;
+            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -194,15 +192,16 @@
             font-size: 16px;
             position: relative;
             cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         
         .notification-badge {
             position: absolute;
-            top: -4px;
-            right: -4px;
+            top: -2px;
+            right: -2px;
             width: 18px;
             height: 18px;
-            background: #f44336;
+            background: #ef4444;
             color: white;
             font-size: 10px;
             font-weight: 600;
@@ -219,20 +218,22 @@
             text-decoration: none;
             padding: 6px 12px;
             border-radius: 10px;
+            background: white;
             color: #1a1a2e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         
         .avatar {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #FFC107, #FFA000);
+            background: linear-gradient(135deg, #FF6B9D, #FF8E53);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
         }
         
         .user-info {
@@ -241,77 +242,38 @@
         }
         
         .user-name {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
         }
         
         .user-role {
             font-size: 11px;
-            color: #6b7280;
+            color: #9ca3af;
         }
         
         /* Content */
         .admin-content {
             flex: 1;
-            padding: 24px;
+            padding: 8px 32px 32px;
         }
         
-        /* Dashboard Specific */
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Stats Grid - Malkia Style */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
             margin-bottom: 24px;
         }
         
-        .dashboard-title {
-            font-size: 24px;
-            font-weight: 600;
-            color: #1A1A2E;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .dashboard-title i {
-            color: #FFC107;
-        }
-        
-        .btn-view-site {
-            background: linear-gradient(135deg, #FFC107, #FFA000);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .btn-view-site:hover {
-            color: white;
-            text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 20px;
-            margin-bottom: 28px;
-        }
-        
-        @media (max-width: 1400px) {
-            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 1200px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
         
         @media (max-width: 768px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: 1fr; }
             .admin-sidebar { display: none; }
             .admin-main { margin-left: 0; }
+            .admin-content { padding: 16px; }
         }
         
         .stat-card {
@@ -320,84 +282,85 @@
             padding: 20px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            gap: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: all 0.2s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         }
         
         .stat-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
+            flex-shrink: 0;
         }
         
-        .stat-users .stat-icon { background: #FFF8E1; color: #FFA000; }
-        .stat-products .stat-icon { background: #E8F5E9; color: #4CAF50; }
-        .stat-orders .stat-icon { background: #E3F2FD; color: #2196F3; }
-        .stat-revenue .stat-icon { background: #FFF3E0; color: #FF8F00; }
-        .stat-manufacturers .stat-icon { background: #E0F2F1; color: #009688; }
-        .stat-pending .stat-icon { background: #FFECB3; color: #FF6F00; }
+        .stat-users .stat-icon { background: #fef3c7; color: #f59e0b; }
+        .stat-products .stat-icon { background: #dbeafe; color: #3b82f6; }
+        .stat-orders .stat-icon { background: #fce7f3; color: #ec4899; }
+        .stat-revenue .stat-icon { background: #d1fae5; color: #10b981; }
+        .stat-manufacturers .stat-icon { background: #e0e7ff; color: #6366f1; }
+        .stat-pending .stat-icon { background: #fef3c7; color: #f59e0b; }
         
         .stat-value {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            color: #1A1A2E;
+            color: #1a1a2e;
             line-height: 1;
         }
         
         .stat-label {
-            font-size: 13px;
-            color: #6B7280;
+            font-size: 12px;
+            color: #9ca3af;
             margin-top: 4px;
+            font-weight: 500;
         }
         
         .stat-content {
             flex: 1;
         }
         
+        /* Charts Section */
         .charts-section {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 24px;
-            margin-bottom: 28px;
+            gap: 20px;
+            margin-bottom: 24px;
         }
         
-        @media (max-width: 1200px) {
+        @media (max-width: 992px) {
             .charts-section { grid-template-columns: 1fr; }
         }
         
         .chart-card {
             background: white;
             border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
         
         .chart-header {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
         
         .chart-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            color: #1A1A2E;
+            color: #1a1a2e;
             margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .chart-title i {
-            color: #FFC107;
         }
         
         .chart-container {
             position: relative;
-            height: 250px;
-            width: 100%;
+            height: 280px;
         }
         
         .doughnut-container {
@@ -409,39 +372,44 @@
         .chart-legend {
             display: flex;
             justify-content: center;
-            gap: 24px;
+            gap: 20px;
             margin-top: 16px;
             padding-top: 16px;
-            border-top: 1px solid #E5E7EB;
+            border-top: 1px solid #f3f4f6;
         }
         
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 13px;
+            gap: 6px;
+            font-size: 12px;
         }
         
         .legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 3px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
         }
         
+        .legend-label {
+            color: #9ca3af;
+        }
+        
+        /* Activity Section */
         .activity-section {
             display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 24px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
         
-        @media (max-width: 1200px) {
+        @media (max-width: 992px) {
             .activity-section { grid-template-columns: 1fr; }
         }
         
         .activity-card {
             background: white;
             border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
             overflow: hidden;
         }
         
@@ -450,28 +418,25 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 24px;
-            border-bottom: 1px solid #E5E7EB;
+            border-bottom: 1px solid #f3f4f6;
         }
         
         .activity-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            color: #1A1A2E;
+            color: #1a1a2e;
             margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .activity-title i {
-            color: #FFC107;
         }
         
         .view-all {
-            color: #FFA000;
+            color: #FF6B9D;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
+        }
+        
+        .view-all:hover {
+            text-decoration: underline;
         }
         
         .activity-table {
@@ -481,65 +446,86 @@
         
         .activity-table th {
             text-align: left;
-            padding: 14px 20px;
-            font-size: 12px;
+            padding: 14px 24px;
+            font-size: 11px;
             font-weight: 600;
-            color: #6B7280;
+            color: #9ca3af;
             text-transform: uppercase;
-            background: #F9FAFB;
+            letter-spacing: 0.5px;
+            background: #fafafa;
         }
         
         .activity-table td {
-            padding: 14px 20px;
-            border-bottom: 1px solid #F3F4F6;
-            font-size: 14px;
+            padding: 14px 24px;
+            border-bottom: 1px solid #f9fafb;
+            font-size: 13px;
         }
         
         .order-id {
             font-weight: 600;
-            color: #FFA000;
+            color: #FF6B9D;
         }
         
         .status-badge {
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 500;
         }
         
-        .status-pending { background: #FFF8E1; color: #F59E0B; }
-        .status-processing { background: #E3F2FD; color: #2196F3; }
-        .status-completed { background: #E8F5E9; color: #4CAF50; }
+        .status-pending { background: #fef3c7; color: #d97706; }
+        .status-processing { background: #dbeafe; color: #2563eb; }
+        .status-completed { background: #d1fae5; color: #059669; }
         
         .users-list {
-            padding: 16px;
+            padding: 8px;
         }
         
         .user-item {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 14px;
-            border-bottom: 1px solid #F3F4F6;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            transition: background 0.2s ease;
         }
         
-        .user-avatar {
-            width: 44px;
-            height: 44px;
+        .user-item:hover {
+            background: #f9fafb;
+        }
+        
+        .users-list .user-avatar {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #FFC107, #FFA000);
+            background: linear-gradient(135deg, #FF6B9D, #FF8E53);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 600;
+        }
+        
+        .users-list .user-info {
+            flex: 1;
+        }
+        
+        .users-list .user-name {
+            font-weight: 600;
+            color: #1a1a2e;
+            font-size: 13px;
+        }
+        
+        .users-list .user-email {
+            font-size: 12px;
+            color: #9ca3af;
         }
         
         .empty-state {
             text-align: center;
             padding: 40px;
-            color: #9CA3AF;
+            color: #d1d5db;
         }
         
         .empty-state i {
@@ -564,50 +550,42 @@
 
             <nav class="sidebar-nav">
                 <div class="nav-section">
-                    <span class="nav-label">MAIN</span>
+                    <span class="nav-label">Main</span>
                     <ul class="nav-list">
                         <li class="nav-item active">
                             <a href="{{ route('admin.dashboard') }}" class="nav-link">
-                                <div class="nav-icon" style="background: linear-gradient(135deg, #FFC107, #FF9800);">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                </div>
-                                <span class="nav-text">Dashboard</span>
+                                <span class="nav-icon"><i class="fas fa-tachometer-alt"></i></span>
+                                <span>Dashboard</span>
                             </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <span class="nav-label">SHOP & CONTENT</span>
+                    <span class="nav-label">Shop & Content</span>
                     <ul class="nav-list">
                         <li class="nav-item">
                             <a href="{{ route('admin.products') }}" class="nav-link">
-                                <div class="nav-icon" style="background: linear-gradient(135deg, #4CAF50, #8BC34A);">
-                                    <i class="fas fa-box"></i>
-                                </div>
-                                <span class="nav-text">Products</span>
+                                <span class="nav-icon"><i class="fas fa-box"></i></span>
+                                <span>Products</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.manufacturers') }}" class="nav-link">
-                                <div class="nav-icon" style="background: linear-gradient(135deg, #9C27B0, #E91E63);">
-                                    <i class="fas fa-industry"></i>
-                                </div>
-                                <span class="nav-text">Manufacturers</span>
+                                <span class="nav-icon"><i class="fas fa-industry"></i></span>
+                                <span>Manufacturers</span>
                             </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <span class="nav-label">MANAGEMENT</span>
+                    <span class="nav-label">Management</span>
                     <ul class="nav-list">
                         <li class="nav-item">
                             <a href="{{ route('admin.users') }}" class="nav-link">
-                                <div class="nav-icon" style="background: linear-gradient(135deg, #00BCD4, #009688);">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <span class="nav-text">Users</span>
+                                <span class="nav-icon"><i class="fas fa-users"></i></span>
+                                <span>Users</span>
                             </a>
                         </li>
                     </ul>
@@ -615,30 +593,18 @@
 
                 @if(auth()->user()->isSuperAdmin())
                 <div class="nav-section">
-                    <span class="nav-label">SYSTEM</span>
+                    <span class="nav-label">System</span>
                     <ul class="nav-list">
                         <li class="nav-item">
                             <a href="{{ route('admin.roles') }}" class="nav-link">
-                                <div class="nav-icon" style="background: linear-gradient(135deg, #607D8B, #9E9E9E);">
-                                    <i class="fas fa-user-shield"></i>
-                                </div>
-                                <span class="nav-text">Roles</span>
+                                <span class="nav-icon"><i class="fas fa-user-shield"></i></span>
+                                <span>Roles</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.settings') }}" class="nav-link">
-                                <div class="nav-icon" style="background: linear-gradient(135deg, #795548, #8D6E63);">
-                                    <i class="fas fa-cog"></i>
-                                </div>
-                                <span class="nav-text">Settings</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.super.dashboard') }}" class="nav-link">
-                                <div class="nav-icon" style="background: linear-gradient(135deg, #FFD700, #FFA000);">
-                                    <i class="fas fa-crown"></i>
-                                </div>
-                                <span class="nav-text">Super Admin</span>
+                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                                <span>Settings</span>
                             </a>
                         </li>
                     </ul>
@@ -649,10 +615,8 @@
                     <ul class="nav-list">
                         <li class="nav-item">
                             <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <div class="nav-icon" style="background: linear-gradient(135deg, #f44336, #e91e63);">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                </div>
-                                <span class="nav-text">Sign Out</span>
+                                <span class="nav-icon"><i class="fas fa-sign-out-alt" style="color: #ef4444;"></i></span>
+                                <span style="color: #ef4444;">Sign Out</span>
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -680,15 +644,14 @@
                                 <span class="user-name">{{ Auth::user()->name ?? 'Admin' }}</span>
                                 <span class="user-role">{{ Auth::user()->highestRole()->display_name ?? 'Administrator' }}</span>
                             </div>
-                            <i class="fas fa-chevron-down" style="color: #6b7280; font-size: 12px;"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{ route('landing') }}">
-                                <i class="fas fa-store"></i> View Shop
+                        <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 mt-2" style="border-radius: 12px;">
+                            <a class="dropdown-item py-2" href="{{ route('landing') }}">
+                                <i class="fas fa-store mr-2 text-muted"></i> View Shop
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-header').submit();">
-                                <i class="fas fa-sign-out-alt"></i> Logout
+                            <a class="dropdown-item py-2 text-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-header').submit();">
+                                <i class="fas fa-sign-out-alt mr-2"></i> Logout
                             </a>
                             <form id="logout-form-header" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -700,21 +663,7 @@
 
             <!-- Dashboard Content -->
             <main class="admin-content">
-                <div class="dashboard-header">
-                    <div>
-                        <h1 class="dashboard-title">
-                            <i class="fas fa-tachometer-alt"></i>
-                            Dashboard
-                        </h1>
-                        <p style="color: #6b7280; margin: 8px 0 0 0;">Welcome back! Here's what's happening with your store today.</p>
-                    </div>
-                    <a href="{{ route('shop') }}" class="btn-view-site">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Store
-                    </a>
-                </div>
-
-                <!-- Stats -->
+                <!-- Stats Row 1 -->
                 <div class="stats-grid">
                     <div class="stat-card stat-users">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
@@ -740,10 +689,14 @@
                     <div class="stat-card stat-revenue">
                         <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
                         <div class="stat-content">
-                            <div class="stat-value">${{ number_format($stats['revenue'], 2) }}</div>
+                            <div class="stat-value">${{ number_format($stats['revenue'], 0) }}</div>
                             <div class="stat-label">Total Revenue</div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Stats Row 2 -->
+                <div class="stats-grid">
                     <div class="stat-card stat-manufacturers">
                         <div class="stat-icon"><i class="fas fa-industry"></i></div>
                         <div class="stat-content">
@@ -758,16 +711,27 @@
                             <div class="stat-label">Pending Orders</div>
                         </div>
                     </div>
+                    <div class="stat-card" style="opacity: 0.5;">
+                        <div class="stat-icon" style="background: #f3f4f6; color: #9ca3af;"><i class="fas fa-chart-line"></i></div>
+                        <div class="stat-content">
+                            <div class="stat-value">-</div>
+                            <div class="stat-label">Growth Rate</div>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="opacity: 0.5;">
+                        <div class="stat-icon" style="background: #f3f4f6; color: #9ca3af;"><i class="fas fa-percentage"></i></div>
+                        <div class="stat-content">
+                            <div class="stat-value">-</div>
+                            <div class="stat-label">Conversion</div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Charts -->
                 <div class="charts-section">
                     <div class="chart-card">
                         <div class="chart-header">
-                            <h3 class="chart-title">
-                                <i class="fas fa-chart-line"></i>
-                                Sales Trend
-                            </h3>
+                            <h3 class="chart-title">Activity Trend (Last 14 Days)</h3>
                         </div>
                         <div class="chart-container">
                             <canvas id="salesChart"></canvas>
@@ -775,43 +739,37 @@
                     </div>
                     <div class="chart-card">
                         <div class="chart-header">
-                            <h3 class="chart-title">
-                                <i class="fas fa-chart-pie"></i>
-                                Order Distribution
-                            </h3>
+                            <h3 class="chart-title">Distribution</h3>
                         </div>
-                        <div class="chart-container doughnut-container">
+                        <div class="doughnut-container">
                             <canvas id="distributionChart"></canvas>
                         </div>
                         <div class="chart-legend">
                             <div class="legend-item">
                                 <span class="legend-dot" style="background: #FFC107;"></span>
                                 <span class="legend-label">Pending</span>
-                                <span style="font-weight: 600;">{{ $stats['pending_orders'] ?? 0 }}</span>
+                                <span style="font-weight: 600; color: #1a1a2e; font-size: 13px;">{{ $stats['pending_orders'] ?? 0 }}</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot" style="background: #4CAF50;"></span>
                                 <span class="legend-label">Completed</span>
-                                <span style="font-weight: 600;">{{ $stats['completed_orders'] ?? 0 }}</span>
+                                <span style="font-weight: 600; color: #1a1a2e; font-size: 13px;">{{ $stats['completed_orders'] ?? 0 }}</span>
                             </div>
                             <div class="legend-item">
                                 <span class="legend-dot" style="background: #2196F3;"></span>
                                 <span class="legend-label">Processing</span>
-                                <span style="font-weight: 600;">{{ $stats['processing_orders'] ?? 0 }}</span>
+                                <span style="font-weight: 600; color: #1a1a2e; font-size: 13px;">{{ $stats['processing_orders'] ?? 0 }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Activity -->
+                <!-- Activity Tables -->
                 <div class="activity-section">
                     <div class="activity-card">
                         <div class="activity-header">
-                            <h3 class="activity-title">
-                                <i class="fas fa-shopping-bag"></i>
-                                Recent Orders
-                            </h3>
-                            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                            <h3 class="activity-title">Recent Orders</h3>
+                            <a href="#" class="view-all">View All <i class="fas fa-arrow-right ml-1" style="font-size: 10px;"></i></a>
                         </div>
                         <div class="activity-body">
                             @if(isset($recentOrders) && count($recentOrders) > 0)
@@ -822,7 +780,6 @@
                                         <th>Customer</th>
                                         <th>Amount</th>
                                         <th>Status</th>
-                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -836,7 +793,6 @@
                                                 {{ ucfirst($order->status) }}
                                             </span>
                                         </td>
-                                        <td style="color: #6b7280; font-size: 13px;">{{ $order->created_at->format('M d, Y') }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -852,11 +808,8 @@
 
                     <div class="activity-card">
                         <div class="activity-header">
-                            <h3 class="activity-title">
-                                <i class="fas fa-user-plus"></i>
-                                Recent Users
-                            </h3>
-                            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                            <h3 class="activity-title">Recent Users</h3>
+                            <a href="#" class="view-all">View All <i class="fas fa-arrow-right ml-1" style="font-size: 10px;"></i></a>
                         </div>
                         <div class="activity-body">
                             <div class="users-list">
@@ -865,9 +818,9 @@
                                     <div class="user-avatar">{{ substr($user->name, 0, 1) }}</div>
                                     <div class="user-info">
                                         <div class="user-name">{{ $user->name }}</div>
-                                        <div style="font-size: 13px; color: #6b7280;">{{ $user->email }}</div>
+                                        <div class="user-email">{{ $user->email }}</div>
                                     </div>
-                                    <div style="font-size: 12px; color: #9ca3af;">{{ $user->created_at->diffForHumans() }}</div>
+                                    <div style="font-size: 11px; color: #9ca3af;">{{ $user->created_at->diffForHumans() }}</div>
                                 </div>
                                 @endforeach
                             </div>
@@ -882,7 +835,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Sales Chart
+        // Sales Trend Chart
         const salesCtx = document.getElementById('salesChart').getContext('2d');
         new Chart(salesCtx, {
             type: 'line',
@@ -891,30 +844,36 @@
                 datasets: [{
                     label: 'Sales',
                     data: {!! json_encode($chartData ?? []) !!},
-                    borderColor: '#FFC107',
-                    backgroundColor: 'rgba(255, 193, 7, 0.1)',
-                    borderWidth: 2,
+                    borderColor: '#FF6B9D',
+                    backgroundColor: 'rgba(255, 107, 157, 0.1)',
+                    borderWidth: 3,
                     fill: true,
                     tension: 0.4,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#FFC107',
+                    pointRadius: 4,
+                    pointBackgroundColor: '#FF6B9D',
                     pointBorderColor: '#fff',
-                    pointBorderWidth: 1,
+                    pointBorderWidth: 2,
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 2.5,
+                maintainAspectRatio: false,
                 plugins: { legend: { display: false } },
                 scales: {
-                    y: { beginAtZero: true, grid: { color: '#F3F4F6' }, ticks: { color: '#6B7280', font: { size: 11 } } },
-                    x: { grid: { display: false }, ticks: { color: '#6B7280', font: { size: 11 } } }
+                    y: { 
+                        beginAtZero: true, 
+                        grid: { color: '#f3f4f6', drawBorder: false }, 
+                        ticks: { color: '#9ca3af', font: { size: 11 }, padding: 10 }
+                    },
+                    x: { 
+                        grid: { display: false, drawBorder: false }, 
+                        ticks: { color: '#9ca3af', font: { size: 11 } }
+                    }
                 }
             }
         });
 
-        // Distribution Chart
+        // Order Distribution Doughnut Chart
         const distCtx = document.getElementById('distributionChart').getContext('2d');
         new Chart(distCtx, {
             type: 'doughnut',
@@ -933,9 +892,8 @@
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 1,
-                cutout: '65%',
+                maintainAspectRatio: false,
+                cutout: '70%',
                 plugins: { legend: { display: false } }
             }
         });
