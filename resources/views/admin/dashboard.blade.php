@@ -213,74 +213,14 @@
         </div>
     </div>
 
-    <!-- Quick Actions & Inventory -->
-    <div class="bottom-section">
-        <!-- Quick Actions -->
-        <div class="quick-actions">
-            <h3 class="section-title">
-                <i class="fas fa-bolt"></i>
-                Quick Actions
-            </h3>
-            <div class="actions-grid">
-                <a href="#" class="action-card">
-                    <div class="action-icon" style="background: #FFF3E0;">
-                        <i class="fas fa-plus" style="color: #FF6A00;"></i>
-                    </div>
-                    <span class="action-label">Add Product</span>
-                </a>
-                <a href="#" class="action-card">
-                    <div class="action-icon" style="background: #E8F5E9;">
-                        <i class="fas fa-tags" style="color: #4CAF50;"></i>
-                    </div>
-                    <span class="action-label">Add Category</span>
-                </a>
-                <a href="#" class="action-card">
-                    <div class="action-icon" style="background: #E3F2FD;">
-                        <i class="fas fa-percent" style="color: #2196F3;"></i>
-                    </div>
-                    <span class="action-label">Create Deal</span>
-                </a>
-                <a href="#" class="action-card">
-                    <div class="action-icon" style="background: #F3E5F5;">
-                        <i class="fas fa-user-plus" style="color: #9C27B0;"></i>
-                    </div>
-                    <span class="action-label">Add User</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Inventory Alert -->
-        <div class="inventory-card">
-            <h3 class="section-title">
-                <i class="fas fa-bell"></i>
-                Inventory Alerts
-            </h3>
-            @if(isset($lowStockProducts) && count($lowStockProducts) > 0)
-            <div class="alerts-list">
-                @foreach($lowStockProducts as $product)
-                <div class="alert-item alert-low">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <span>{{ $product->name }} - Only {{ $product->stock }} left</span>
-                </div>
-                @endforeach
-            </div>
-            @else
-            <div class="empty-state">
-                <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
-                <p>All products are well stocked</p>
-            </div>
-            @endif
-        </div>
-    </div>
 </div>
 
-@push('styles')
+@section('styles')
 <style>
     /* Admin Dashboard Styles */
     .admin-dashboard {
-        padding: 24px;
-        background: #F5F7FA;
-        min-height: 100vh;
+        max-width: 1400px;
+        margin: 0 auto;
     }
 
     /* Page Header */
@@ -288,43 +228,50 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
     }
 
-    .header-left h1 {
-        font-size: 28px;
-        font-weight: 700;
+    .page-title {
+        font-size: 24px;
+        font-weight: 600;
         color: #1A1A2E;
-        margin: 0 0 4px 0;
+        margin: 0;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
+    }
+
+    .page-title i {
+        color: #FFC107;
     }
 
     .page-subtitle {
         color: #6B7280;
         font-size: 14px;
-        margin: 0;
+        margin: 8px 0 0 0;
     }
 
     .btn-view-site {
         background: linear-gradient(135deg, #FFC107, #FFA000);
         color: white;
         padding: 10px 20px;
-        border-radius: 8px;
+        border-radius: 10px;
         text-decoration: none;
         font-weight: 500;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+        transition: all 0.2s ease;
     }
 
     .btn-view-site:hover {
         background: linear-gradient(135deg, #FFD54F, #FFB300);
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4);
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    }
+
+    .header-left {
+        flex: 1;
     }
 
     /* Stats Grid */
@@ -391,6 +338,10 @@
         font-size: 13px;
         color: #6B7280;
         margin-top: 4px;
+    }
+
+    .stat-content {
+        flex: 1;
     }
 
     /* Charts Section */
@@ -783,9 +734,9 @@
         font-size: 14px;
     }
 </style>
-@endpush
+@endsection
 
-@push('scripts')
+@section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     // Sales Trend Chart
@@ -869,5 +820,4 @@
         }
     });
 </script>
-@endpush
 @endsection
