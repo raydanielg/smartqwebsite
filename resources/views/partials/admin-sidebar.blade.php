@@ -38,14 +38,6 @@
                         <span class="nav-text">Products</span>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('admin.categories*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.categories') }}" class="nav-link">
-                        <div class="nav-icon" style="background: linear-gradient(135deg, #2196F3, #03A9F4);">
-                            <i class="fas fa-tags"></i>
-                        </div>
-                        <span class="nav-text">Categories</span>
-                    </a>
-                </li>
                 <li class="nav-item {{ request()->routeIs('admin.manufacturers*') ? 'active' : '' }}">
                     <a href="{{ route('admin.manufacturers') }}" class="nav-link">
                         <div class="nav-icon" style="background: linear-gradient(135deg, #9C27B0, #E91E63);">
