@@ -52,40 +52,51 @@
                 </div>
             </div>
 
-            <!-- Center - Featured Products Grid -->
-            <div class="col-span-12 lg:col-span-6">
-                <div class="grid grid-cols-3 gap-4">
-                    <!-- Product Cards -->
+            <!-- Center - Main Hero Image & Products -->
+            <div class="col-span-12 lg:col-span-6 space-y-4">
+                <!-- Main Hero Image -->
+                <div class="relative rounded-xl overflow-hidden shadow-lg group" style="height: 200px;">
+                    <img src="{{ asset('34337.jpg') }}" alt="SmartQ Hero" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
+                        <div class="p-6 text-white">
+                            <span class="bg-[#FF6A00] text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">NEW ARRIVAL</span>
+                            <h2 class="text-2xl font-bold mb-1">Premium Collection 2025</h2>
+                            <p class="text-sm text-gray-200 mb-3">Discover quality products at unbeatable prices</p>
+                            <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors">
+                                Shop Now <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Product Cards -->
+                <div class="grid grid-cols-3 gap-3">
                     @foreach($featuredProducts->take(3) as $product)
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow border border-gray-100">
                         <a href="{{ route('shop.product', $product->slug) }}" class="block">
-                            <div class="aspect-[4/3] bg-gray-100 relative overflow-hidden">
+                            <div class="aspect-square bg-gray-100 relative overflow-hidden">
                                 @if($product->image)
-                                    <img src="{{ $product->image }}" alt="{{ $product->name }}" class="w-full h-full object-cover hover:scale-105 transition-transform">
+                                    <img src="{{ $product->image }}" alt="{{ $product->name }}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                                 @else
                                     <div class="w-full h-full flex items-center justify-center">
                                         <i class="fas fa-box text-3xl text-gray-300"></i>
                                     </div>
                                 @endif
+                                <div class="absolute top-2 right-2 bg-[#FF6A00] text-white text-xs font-bold px-2 py-1 rounded">
+                                    -{{ rand(15, 45) }}%
+                                </div>
                             </div>
-                            <div class="p-3">
-                                <h4 class="text-xs text-gray-500 mb-1">Frequently searched</h4>
-                                <p class="font-medium text-sm text-gray-800 line-clamp-2">{{ $product->name }}</p>
+                            <div class="p-2">
+                                <p class="text-xs text-gray-500 mb-1">Hot Selling</p>
+                                <p class="font-medium text-xs text-gray-800 line-clamp-2">{{ $product->name }}</p>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <span class="font-bold text-[#FF6A00] text-sm">${{ number_format($product->final_price * 0.75, 2) }}</span>
+                                    <span class="text-xs text-gray-400 line-through">${{ number_format($product->final_price, 2) }}</span>
+                                </div>
                             </div>
                         </a>
                     </div>
                     @endforeach
-                </div>
-
-                <!-- Banner/Ad Space -->
-                <div class="mt-4 bg-gradient-to-r from-orange-100 to-orange-50 rounded-lg p-4 flex items-center justify-between">
-                    <div>
-                        <h3 class="font-bold text-lg text-orange-800">Super April Exclusives</h3>
-                        <p class="text-sm text-orange-600">Up to 50% off on selected items</p>
-                    </div>
-                    <a href="#" class="px-4 py-2 bg-[#FF6A00] text-white rounded-full text-sm font-medium hover:bg-[#e65c00]">
-                        View more
-                    </a>
                 </div>
             </div>
 
