@@ -217,7 +217,7 @@
 
 @section('content')
 <div class="page-header">
-    <h1>Staff Management</h1>
+    <h1>Staff Management ({{ $totalStaff ?? 0 }})</h1>
     <button class="btn-add" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
         <i class="fa-solid fa-user-plus"></i>
         Add Staff
@@ -234,52 +234,43 @@
         <thead>
             <tr>
                 <th>Staff Member</th>
-                <th>Department</th>
                 <th>Role</th>
+                <th>Joined</th>
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+            @forelse($staff as $member)
             @php
-                $staff = [
-                    ['name' => 'Daniel Ray', 'email' => 'daniel@smartq.co.tz', 'dept' => 'Admin', 'role' => 'superadmin', 'status' => 'active', 'last' => 'Now'],
-                    ['name' => 'Sarah Manager', 'email' => 'sarah.m@smartq.co.tz', 'dept' => 'Sales', 'role' => 'manager', 'status' => 'active', 'last' => '2m ago'],
-                    ['name' => 'John Support', 'email' => 'john.s@smartq.co.tz', 'dept' => 'Support', 'role' => 'admin', 'status' => 'away', 'last' => '1h ago'],
-                    ['name' => 'Mike Tech', 'email' => 'mike.t@smartq.co.tz', 'dept' => 'Tech', 'role' => 'manager', 'status' => 'active', 'last' => 'Now'],
-                    ['name' => 'Lisa Sales', 'email' => 'lisa@smartq.co.tz', 'dept' => 'Sales', 'role' => 'admin', 'status' => 'active', 'last' => '15m ago'],
-                ];
+                $staffRole = $member->roles->first();
+                $roleName = $staffRole ? $staffRole->name : 'staff';
             @endphp
-            
-            @foreach($staff as $member)
             <tr>
                 <td>
                     <div class="staff-info">
-                        <div class="staff-avatar">{{ strtoupper(substr($member['name'], 0, 1)) }}</div>
+                        <div class="staff-avatar">{{ strtoupper(substr($member->name, 0, 1)) }}</div>
                         <div class="staff-details">
-                            <h4>{{ $member['name'] }}</h4>
-                            <p>{{ $member['email'] }}</p>
+                            <h4>{{ $member->name }}</h4>
+                            <p>{{ $member->email }}</p>
                         </div>
                     </div>
                 </td>
                 <td>
-                    <span class="department-badge dept-{{ strtolower($member['dept']) }}">
-                        <i class="fa-solid fa-{{ $member['dept'] == 'Admin' ? 'shield' : ($member['dept'] == 'Sales' ? 'chart-line' : ($member['dept'] == 'Support' ? 'headset' : 'code')) }}"></i>
-                        {{ $member['dept'] }}
+                    <span class="role-badge role-{{ $roleName }}">
+                        <i class="fa-solid fa-{{ $roleName == 'superadmin' ? 'crown' : ($roleName == 'manager' ? 'user-tie' : 'user-shield') }}"></i>
+                        {{ ucfirst($roleName) }}
                     </span>
                 </td>
                 <td>
-                    <span class="role-badge role-{{ $member['role'] }}">
-                        <i class="fa-solid fa-{{ $member['role'] == 'superadmin' ? 'crown' : ($member['role'] == 'manager' ? 'user-tie' : 'user-shield') }}"></i>
-                        {{ ucfirst($member['role']) }}
-                    </span>
+                    <span style="color: #64748b; font-size: 14px;">{{ $member->created_at?->format('M d, Y') ?? 'N/A' }}</span>
                 </td>
                 <td>
                     <div class="staff-status">
-                        <span class="status-indicator {{ $member['status'] == 'away' ? 'away' : '' }}"></span>
+                        <span class="status-indicator {{ $member->email_verified_at ? '' : 'away' }}"></span>
                         <div>
-                            <div class="status-text">{{ ucfirst($member['status']) }}</div>
-                            <div class="last-seen">{{ $member['last'] }}</div>
+                            <div class="status-text">{{ $member->email_verified_at ? 'Active' : 'Pending' }}</div>
+                            <div class="last-seen">{{ $member->created_at?->diffForHumans() ?? 'N/A' }}</div>
                         </div>
                     </div>
                 </td>
@@ -294,7 +285,14 @@
                     </div>
                 </td>
             </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 40px; color: #64748b;">
+                        <i class="fa-solid fa-users-gear" style="font-size: 36px; margin-bottom: 12px; opacity: 0.5;"></i>
+                        <p>No staff members found</p>
+                    </td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </div>

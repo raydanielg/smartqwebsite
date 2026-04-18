@@ -92,12 +92,33 @@ class AdminController extends Controller
         return view('admin.super-dashboard', compact('stats', 'roles'));
     }
 
-    // Users Management
+    // Users Management - Real Data
     public function users()
     {
-        $users = User::with('roles')->paginate(20);
+        $users = User::with('roles')->latest()->paginate(10);
         $roles = Role::all();
-        return view('admin.users', compact('users', 'roles'));
+        $totalUsers = User::count();
+        $newUsersToday = User::whereDate('created_at', today())->count();
+        $newUsersThisWeek = User::whereDate('created_at', '>=', now()->subDays(7))->count();
+        
+        // Count by roles
+        $adminUsers = User::whereHas('roles', function($q) {
+            $q->whereIn('name', ['admin', 'superadmin']);
+        })->count();
+        
+        $customerUsers = User::whereDoesntHave('roles', function($q) {
+            $q->whereIn('name', ['admin', 'superadmin', 'staff']);
+        })->count();
+        
+        return view('admin.users.index', compact(
+            'users', 
+            'roles', 
+            'totalUsers',
+            'newUsersToday',
+            'newUsersThisWeek',
+            'adminUsers',
+            'customerUsers'
+        ));
     }
 
     // Create User
@@ -288,7 +309,7 @@ class AdminController extends Controller
             'totalDiscountValue'
         ));
     }
-    
+
     // Staff - Real Data (users with admin/staff roles)
     public function staff()
     {

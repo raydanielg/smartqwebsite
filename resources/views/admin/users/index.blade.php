@@ -207,7 +207,7 @@
 
 @section('content')
 <div class="page-header">
-    <h1>Users</h1>
+    <h1>Users ({{ $totalUsers ?? 0 }})</h1>
     <button class="btn-add">
         <i class="fa-solid fa-plus"></i>
         Add User
@@ -215,53 +215,46 @@
 </div>
 
 <div class="users-grid">
+    @forelse($users as $user)
     @php
-        $users = [
-            ['name' => 'John Smith', 'email' => 'john.smith@email.com', 'role' => 'customer', 'orders' => 12, 'spent' => '1.2M', 'joined' => 'Jan 2024', 'active' => true],
-            ['name' => 'Sarah Johnson', 'email' => 'sarah.j@email.com', 'role' => 'customer', 'orders' => 8, 'spent' => '890K', 'joined' => 'Dec 2023', 'active' => true],
-            ['name' => 'Admin User', 'email' => 'admin@smartq.co.tz', 'role' => 'admin', 'orders' => 0, 'spent' => '0', 'joined' => 'Nov 2023', 'active' => true],
-            ['name' => 'Mike Wilson', 'email' => 'mike.w@email.com', 'role' => 'seller', 'orders' => 45, 'spent' => '3.4M', 'joined' => 'Oct 2023', 'active' => true],
-            ['name' => 'Emma Davis', 'email' => 'emma.d@email.com', 'role' => 'customer', 'orders' => 3, 'spent' => '245K', 'joined' => 'Mar 2024', 'active' => false],
-            ['name' => 'Chris Brown', 'email' => 'chris.b@email.com', 'role' => 'customer', 'orders' => 15, 'spent' => '1.8M', 'joined' => 'Sep 2023', 'active' => true],
-        ];
+        $userRole = $user->roles->first();
+        $roleName = $userRole ? $userRole->name : 'customer';
     @endphp
-    
-    @foreach($users as $user)
     <div class="user-card animate__animated animate__fadeInUp" style="animation-delay: {{ $loop->index * 50 }}ms;">
         <div class="user-header">
-            <div class="user-avatar">{{ strtoupper(substr($user['name'], 0, 1)) }}</div>
+            <div class="user-avatar">{{ strtoupper(substr($user->name, 0, 1)) }}</div>
             <div style="flex: 1;">
                 <div class="user-info">
-                    <h3>{{ $user['name'] }}</h3>
-                    <p>{{ $user['email'] }}</p>
+                    <h3>{{ $user->name }}</h3>
+                    <p>{{ $user->email }}</p>
                 </div>
-                <span class="user-role role-{{ $user['role'] }}">
-                    <i class="fa-solid fa-{{ $user['role'] == 'admin' ? 'shield' : ($user['role'] == 'seller' ? 'store' : 'user') }}"></i>
-                    {{ ucfirst($user['role']) }}
+                <span class="user-role role-{{ $roleName }}">
+                    <i class="fa-solid fa-{{ $roleName == 'admin' || $roleName == 'superadmin' ? 'shield' : ($roleName == 'seller' ? 'store' : 'user') }}"></i>
+                    {{ ucfirst($roleName) }}
                 </span>
             </div>
         </div>
         
         <div class="user-stats">
             <div class="user-stat">
-                <span class="stat-number">{{ $user['orders'] }}</span>
+                <span class="stat-number">{{ $user->orders_count ?? 0 }}</span>
                 <span class="stat-label">Orders</span>
             </div>
             <div class="user-stat">
-                <span class="stat-number">{{ $user['spent'] }}</span>
-                <span class="stat-label">Spent</span>
+                <span class="stat-number">{{ $user->created_at->format('M Y') }}</span>
+                <span class="stat-label">Joined</span>
             </div>
             <div class="user-stat">
-                <span class="stat-number">{{ $user['joined'] }}</span>
-                <span class="stat-label">Joined</span>
+                <span class="stat-number" style="font-size: 14px;">{{ $user->email_verified_at ? 'Verified' : 'Unverified' }}</span>
+                <span class="stat-label">Status</span>
             </div>
         </div>
         
         <div class="user-footer">
             <div class="user-status">
-                <span class="status-dot {{ $user['active'] ? 'active' : '' }}"></span>
-                <span style="color: {{ $user['active'] ? '#10b981' : '#64748b' }};">
-                    {{ $user['active'] ? 'Active' : 'Inactive' }}
+                <span class="status-dot {{ $user->email_verified_at ? 'active' : '' }}"></span>
+                <span style="color: {{ $user->email_verified_at ? '#10b981' : '#64748b' }};">
+                    {{ $user->email_verified_at ? 'Active' : 'Inactive' }}
                 </span>
             </div>
             <div class="user-actions">
@@ -274,6 +267,16 @@
             </div>
         </div>
     </div>
-    @endforeach
+    @empty
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px; color: #64748b;">
+            <i class="fa-solid fa-users" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+            <h3>No users found</h3>
+            <p>Add your first user to get started</p>
+        </div>
+    @endforelse
+</div>
+
+<div style="margin-top: 24px;">
+    {{ $users->links() }}
 </div>
 @endsection

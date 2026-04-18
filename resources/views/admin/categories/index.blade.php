@@ -179,23 +179,11 @@
 
 @section('content')
 <div class="page-header">
-    <h1>Categories</h1>
+    <h1>Categories ({{ $totalCategories ?? 0 }})</h1>
 </div>
 
 <div class="categories-grid">
-    @php
-        $categories = [
-            ['name' => 'Electronics', 'icon' => 'fa-plug', 'desc' => 'Phones, laptops, accessories', 'products' => 124, 'subcategories' => 8],
-            ['name' => 'Fashion', 'icon' => 'fa-tshirt', 'desc' => 'Clothing, shoes, accessories', 'products' => 89, 'subcategories' => 12],
-            ['name' => 'Home & Living', 'icon' => 'fa-home', 'desc' => 'Furniture, decor, kitchen', 'products' => 67, 'subcategories' => 6],
-            ['name' => 'Beauty', 'icon' => 'fa-spa', 'desc' => 'Skincare, makeup, fragrances', 'products' => 45, 'subcategories' => 5],
-            ['name' => 'Sports', 'icon' => 'fa-running', 'desc' => 'Equipment, apparel, fitness', 'products' => 38, 'subcategories' => 7],
-            ['name' => 'Toys', 'icon' => 'fa-gamepad', 'desc' => 'Games, puzzles, outdoor', 'products' => 52, 'subcategories' => 4],
-            ['name' => 'Books', 'icon' => 'fa-book', 'desc' => 'Fiction, education, comics', 'products' => 31, 'subcategories' => 6],
-        ];
-    @endphp
-    
-    @foreach($categories as $cat)
+    @forelse($categories as $cat)
     <div class="category-card animate__animated animate__fadeInUp" style="animation-delay: {{ $loop->index * 50 }}ms;">
         <div class="category-actions">
             <button class="btn-action-sm btn-edit-cat">
@@ -206,24 +194,30 @@
             </button>
         </div>
         <div class="category-icon">
-            <i class="fa-solid {{ $cat['icon'] }}"></i>
+            <i class="fa-solid {{ $cat->icon ?? 'fa-tag' }}"></i>
         </div>
-        <h3 class="category-name">{{ $cat['name'] }}</h3>
-        <p class="category-desc">{{ $cat['desc'] }}</p>
+        <h3 class="category-name">{{ $cat->name }}</h3>
+        <p class="category-desc">{{ $cat->description ?? 'No description' }}</p>
         <div class="category-stats">
             <div class="stat">
-                <span class="stat-value">{{ $cat['products'] }}</span>
+                <span class="stat-value">{{ $cat->products_count ?? 0 }}</span>
                 <span class="stat-label">Products</span>
             </div>
             <div class="stat">
-                <span class="stat-value">{{ $cat['subcategories'] }}</span>
+                <span class="stat-value">{{ $cat->children_count ?? 0 }}</span>
                 <span class="stat-label">Subcategories</span>
             </div>
         </div>
     </div>
-    @endforeach
+    @empty
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px; color: #64748b;">
+            <i class="fa-solid fa-tags" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+            <h3>No categories found</h3>
+            <p>Add your first category to get started</p>
+        </div>
+    @endforelse
     
-    <div class="add-category-card animate__animated animate__fadeInUp" style="animation-delay: 350ms;">
+    <div class="add-category-card animate__animated animate__fadeInUp" style="animation-delay: {{ ($categories->count() ?? 0) * 50 }}ms;">
         <div class="add-icon">
             <i class="fa-solid fa-plus"></i>
         </div>

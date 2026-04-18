@@ -220,19 +220,19 @@
 <div class="orders-stats">
     <div class="stat-box pending animate__animated animate__fadeInUp">
         <div class="stat-label">Pending</div>
-        <div class="stat-value">{{ $stats['pending_orders'] ?? 12 }}</div>
+        <div class="stat-value">{{ $pendingOrders ?? 0 }}</div>
     </div>
     <div class="stat-box processing animate__animated animate__fadeInUp" style="animation-delay: 50ms;">
         <div class="stat-label">Processing</div>
-        <div class="stat-value">{{ $stats['processing_orders'] ?? 8 }}</div>
+        <div class="stat-value">{{ $processingOrders ?? 0 }}</div>
     </div>
     <div class="stat-box completed animate__animated animate__fadeInUp" style="animation-delay: 100ms;">
         <div class="stat-label">Completed</div>
-        <div class="stat-value">{{ $stats['completed_orders'] ?? 156 }}</div>
+        <div class="stat-value">{{ $completedOrders ?? 0 }}</div>
     </div>
     <div class="stat-box cancelled animate__animated animate__fadeInUp" style="animation-delay: 150ms;">
         <div class="stat-label">Cancelled</div>
-        <div class="stat-value">3</div>
+        <div class="stat-value">{{ $cancelledOrders ?? 0 }}</div>
     </div>
 </div>
 
@@ -264,41 +264,41 @@
             </tr>
         </thead>
         <tbody>
-            @php
-                $orders = [
-                    ['id' => 'ORD-7845', 'name' => 'John Smith', 'email' => 'john@email.com', 'amount' => 245000, 'status' => 'pending', 'date' => '2 mins ago'],
-                    ['id' => 'ORD-7844', 'name' => 'Sarah Johnson', 'email' => 'sarah@email.com', 'amount' => 189000, 'status' => 'processing', 'date' => '15 mins ago'],
-                    ['id' => 'ORD-7843', 'name' => 'Mike Wilson', 'email' => 'mike@email.com', 'amount' => 567000, 'status' => 'completed', 'date' => '2 hours ago'],
-                    ['id' => 'ORD-7842', 'name' => 'Emma Davis', 'email' => 'emma@email.com', 'amount' => 123000, 'status' => 'processing', 'date' => '3 hours ago'],
-                    ['id' => 'ORD-7841', 'name' => 'Chris Brown', 'email' => 'chris@email.com', 'amount' => 890000, 'status' => 'completed', 'date' => '5 hours ago'],
-                    ['id' => 'ORD-7840', 'name' => 'Lisa Anderson', 'email' => 'lisa@email.com', 'amount' => 345000, 'status' => 'pending', 'date' => '6 hours ago'],
-                ];
-            @endphp
-            
-            @foreach($orders as $order)
+            @forelse($orders as $order)
             <tr>
-                <td><span class="order-id">#{{ $order['id'] }}</span></td>
+                <td><span class="order-id">#ORD-{{ $order->id }}</span></td>
                 <td>
                     <div class="customer-info">
-                        <div class="customer-avatar">{{ substr($order['name'], 0, 1) }}</div>
+                        <div class="customer-avatar">{{ strtoupper(substr($order->user->name ?? 'G', 0, 1)) }}</div>
                         <div class="customer-details">
-                            <span class="customer-name">{{ $order['name'] }}</span>
-                            <span class="customer-email">{{ $order['email'] }}</span>
+                            <span class="customer-name">{{ $order->user->name ?? 'Guest' }}</span>
+                            <span class="customer-email">{{ $order->user->email ?? 'N/A' }}</span>
                         </div>
                     </div>
                 </td>
-                <td><span class="order-amount">TZS {{ number_format($order['amount'], 0) }}</span></td>
+                <td><span class="order-amount">TZS {{ number_format($order->grand_total, 0) }}</span></td>
                 <td>
-                    <span class="status-badge status-{{ $order['status'] }}">
+                    <span class="status-badge status-{{ $order->status }}">
                         <i class="fa-solid fa-circle" style="font-size: 5px;"></i>
-                        {{ ucfirst($order['status']) }}
+                        {{ ucfirst($order->status) }}
                     </span>
                 </td>
-                <td style="color: #64748b;">{{ $order['date'] }}</td>
+                <td style="color: #64748b;">{{ $order->created_at->diffForHumans() }}</td>
                 <td><button class="btn-view">View</button></td>
             </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 40px; color: #64748b;">
+                        <i class="fa-solid fa-shopping-bag" style="font-size: 36px; margin-bottom: 12px; opacity: 0.5;"></i>
+                        <p>No orders found</p>
+                    </td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
+    
+    <div style="padding: 20px; border-top: 1px solid #f1f5f9;">
+        {{ $orders->links() }}
+    </div>
 </div>
 @endsection

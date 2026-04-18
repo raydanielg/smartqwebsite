@@ -185,37 +185,28 @@
             </tr>
         </thead>
         <tbody>
-            @php
-                $manufacturers = [
-                    ['name' => 'ABC Industries', 'email' => 'contact@abc.co.tz', 'products' => 24, 'verified' => true],
-                    ['name' => 'Tanzania Electronics', 'email' => 'info@tzelec.co.tz', 'products' => 18, 'verified' => true],
-                    ['name' => 'Dar es Salaam Traders', 'email' => 'sales@dstraders.com', 'products' => 12, 'verified' => false],
-                    ['name' => 'Mwanza Manufacturing', 'email' => 'hello@mwanzamfg.co.tz', 'products' => 8, 'verified' => true],
-                    ['name' => 'Arusha Goods Ltd', 'email' => 'info@arushagoods.co.tz', 'products' => 15, 'verified' => false],
-                ];
-            @endphp
-            @foreach($manufacturers as $mfg)
+            @forelse($manufacturers as $mfg)
             <tr>
                 <td>
                     <div class="manufacturer-info">
-                        <div class="manufacturer-avatar">{{ substr($mfg['name'], 0, 1) }}</div>
+                        <div class="manufacturer-avatar">{{ strtoupper(substr($mfg->name, 0, 1)) }}</div>
                         <div class="manufacturer-details">
-                            <h4>{{ $mfg['name'] }}</h4>
-                            <p>{{ $mfg['email'] }}</p>
+                            <h4>{{ $mfg->name }}</h4>
+                            <p>{{ $mfg->email }}</p>
                         </div>
                     </div>
                 </td>
                 <td>
-                    <span style="color: #475569; font-size: 14px;">{{ $mfg['email'] }}</span>
+                    <span style="color: #475569; font-size: 14px;">{{ $mfg->email }}</span>
                 </td>
                 <td>
                     <span class="product-count">
                         <i class="fa-solid fa-box"></i>
-                        {{ $mfg['products'] }} products
+                        {{ $mfg->products_count ?? 0 }} products
                     </span>
                 </td>
                 <td>
-                    @if($mfg['verified'])
+                    @if($mfg->is_verified)
                         <span class="status-badge status-verified">
                             <i class="fa-solid fa-check-circle"></i>
                             Verified
@@ -228,12 +219,15 @@
                     @endif
                 </td>
                 <td>
-                    <span style="color: #64748b; font-size: 14px;">{{ now()->subDays(rand(1, 365))->format('M d, Y') }}</span>
+                    <span style="color: #64748b; font-size: 14px;">{{ $mfg->created_at?->format('M d, Y') ?? 'N/A' }}</span>
                 </td>
                 <td>
                     <div class="action-btns">
-                        @if(!$mfg['verified'])
-                            <button class="btn-verify">Verify</button>
+                        @if(!$mfg->is_verified)
+                            <form action="{{ route('admin.manufacturers.verify', $mfg->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                <button type="submit" class="btn-verify">Verify</button>
+                            </form>
                         @else
                             <button class="btn-verify verified">
                                 <i class="fa-solid fa-check"></i>
@@ -248,7 +242,14 @@
                     </div>
                 </td>
             </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 40px; color: #64748b;">
+                        <i class="fa-solid fa-industry" style="font-size: 36px; margin-bottom: 12px; opacity: 0.5;"></i>
+                        <p>No manufacturers found</p>
+                    </td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </div>

@@ -270,9 +270,9 @@
     </div>
     <select class="filter-select">
         <option>All Categories</option>
-        <option>Electronics</option>
-        <option>Fashion</option>
-        <option>Home</option>
+        @foreach($categories as $category)
+            <option>{{ $category->name }}</option>
+        @endforeach
     </select>
     <select class="filter-select">
         <option>All Status</option>
@@ -282,22 +282,39 @@
 </div>
 
 <div class="products-grid">
-    @for($i = 1; $i <= 8; $i++)
-    <div class="product-card animate__animated animate__fadeInUp" style="animation-delay: {{ $i * 50 }}ms;">
+    @forelse($products as $index => $product)
+    <div class="product-card animate__animated animate__fadeInUp" style="animation-delay: {{ $index * 50 }}ms;">
         <div class="product-image">
-            <i class="fa-solid fa-box"></i>
+            @if($product->image)
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+            @else
+                <i class="fa-solid fa-box"></i>
+            @endif
         </div>
         <div class="product-content">
-            <h3 class="product-title">Premium Product {{ $i }}</h3>
-            <p class="product-category">Electronics • SKU: PRD-00{{ $i }}</p>
+            <h3 class="product-title">{{ $product->name }}</h3>
+            <p class="product-category">{{ $product->category->name ?? 'Uncategorized' }} • SKU: {{ $product->sku ?? 'N/A' }}</p>
             <div style="display: flex; gap: 8px; margin-bottom: 16px;">
-                <span class="status-badge status-active">
-                    <i class="fa-solid fa-circle" style="font-size: 6px;"></i>
-                    Active
-                </span>
+                @if($product->is_active)
+                    <span class="status-badge status-active">
+                        <i class="fa-solid fa-circle" style="font-size: 6px;"></i>
+                        Active
+                    </span>
+                @else
+                    <span class="status-badge" style="background: #fee2e2; color: #991b1b;">
+                        <i class="fa-solid fa-circle" style="font-size: 6px;"></i>
+                        Inactive
+                    </span>
+                @endif
+                @if($product->is_featured)
+                    <span class="status-badge" style="background: #fef3c7; color: #92400e;">
+                        <i class="fa-solid fa-star" style="font-size: 10px;"></i>
+                        Featured
+                    </span>
+                @endif
             </div>
             <div class="product-footer">
-                <span class="product-price">TZS {{ number_format(rand(50000, 500000), 0) }}</span>
+                <span class="product-price">TZS {{ number_format($product->final_price, 0) }}</span>
                 <div class="product-actions">
                     <button class="btn-action btn-edit">
                         <i class="fa-solid fa-pen"></i>
@@ -309,17 +326,21 @@
             </div>
         </div>
     </div>
-    @endfor
+    @empty
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px; color: #64748b;">
+            <i class="fa-solid fa-box-open" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+            <h3>No products found</h3>
+            <p>Add your first product to get started</p>
+        </div>
+    @endforelse
 </div>
 
 <div class="pagination-bar">
-    <span style="color: #64748b; font-size: 14px;">Showing 1-8 of 48 products</span>
+    <span style="color: #64748b; font-size: 14px;">
+        Showing {{ $products->firstItem() ?? 0 }}-{{ $products->lastItem() ?? 0 }} of {{ $totalProducts ?? 0 }} products
+    </span>
     <div class="pagination">
-        <button class="page-link"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="page-link active">1</button>
-        <button class="page-link">2</button>
-        <button class="page-link">3</button>
-        <button class="page-link"><i class="fa-solid fa-chevron-right"></i></button>
+        {{ $products->links() }}
     </div>
 </div>
 @endsection
