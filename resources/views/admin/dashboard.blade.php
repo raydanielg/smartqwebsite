@@ -14,10 +14,12 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: #f0f0f4;
             color: #1a1a2e;
             min-height: 100vh;
+            font-size: 14px;
+            line-height: 1.5;
         }
         
         /* Layout */
@@ -65,17 +67,19 @@
         }
         
         .brand-name {
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 800;
             color: #1a1a2e;
             line-height: 1.2;
+            letter-spacing: -0.5px;
         }
         
         .brand-tagline {
-            font-size: 9px;
+            font-size: 10px;
             color: #3b82f6;
-            font-weight: 600;
-            letter-spacing: 1.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
         .sidebar-nav {
@@ -114,25 +118,37 @@
         }
         
         .nav-link {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 14px;
             padding: 12px 16px;
-            border-radius: 10px;
+            border-radius: 12px;
             text-decoration: none;
             color: #6b7280;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.2s ease;
         }
         
         .nav-link:hover {
             background: #fff;
             color: #1a1a2e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         
         .nav-item.active .nav-link {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+        }
+        
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
         }
         
         /* Main Content */
@@ -157,8 +173,8 @@
         }
         
         .page-title {
-            font-size: 22px;
-            font-weight: 600;
+            font-size: 24px;
+            font-weight: 700;
             color: #1a1a2e;
             margin: 0;
         }
@@ -300,17 +316,20 @@
         .stat-pending .stat-icon { background: #ffedd5; color: #f97316; }
         
         .stat-value {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 800;
             color: #1a1a2e;
             line-height: 1;
+            letter-spacing: -0.5px;
         }
         
         .stat-label {
             font-size: 11px;
             color: #9ca3af;
-            margin-top: 2px;
-            font-weight: 500;
+            margin-top: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .stat-content {
