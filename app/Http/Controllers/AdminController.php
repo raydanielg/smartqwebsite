@@ -206,15 +206,24 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Role permissions updated!');
     }
 
-    // Products Management - Real Data
-    public function products()
+    // Products Management - Real Data with powerful features for single admin
+    public function products(Request $request)
     {
-        $products = Product::with('category')->latest()->paginate(12);
+        $perPage = $request->get('per_page', 12);
+        
+        // Support 'all' option
+        if ($perPage === 'all') {
+            $products = Product::with('category')->latest()->get();
+        } else {
+            $products = Product::with('category')->latest()->paginate((int)$perPage);
+        }
+        
         $categories = Category::all();
         $totalProducts = Product::count();
         $activeProducts = Product::where('is_active', true)->count();
         $featuredProducts = Product::where('is_featured', true)->count();
         $lowStockProducts = Product::where('stock_quantity', '<', 10)->count();
+        $outOfStock = Product::where('stock_quantity', 0)->count();
         
         return view('admin.products.index', compact(
             'products', 
@@ -222,7 +231,9 @@ class AdminController extends Controller
             'totalProducts', 
             'activeProducts', 
             'featuredProducts',
-            'lowStockProducts'
+            'lowStockProducts',
+            'outOfStock',
+            'perPage'
         ));
     }
 

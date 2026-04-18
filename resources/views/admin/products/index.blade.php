@@ -251,12 +251,92 @@
         background: #667eea;
         color: white;
     }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 24px;
+    }
+    
+    .stat-card {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .stat-card .fa-solid {
+        font-size: 20px;
+    }
+    
+    .stat-card div div {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1e293b;
+    }
+    
+    .stat-card div div + div {
+        font-size: 13px;
+        color: #64748b;
+    }
 </style>
 @endsection
 
 @section('content')
+<!-- Stats Cards -->
+<div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 24px;">
+    <div class="stat-card" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">
+                <i class="fa-solid fa-box"></i>
+            </div>
+            <div>
+                <div style="font-size: 24px; font-weight: 700; color: #1e293b;">{{ $totalProducts ?? 0 }}</div>
+                <div style="font-size: 13px; color: #64748b;">Total Products</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="stat-card" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">
+                <i class="fa-solid fa-check-circle"></i>
+            </div>
+            <div>
+                <div style="font-size: 24px; font-weight: 700; color: #1e293b;">{{ $activeProducts ?? 0 }}</div>
+                <div style="font-size: 13px; color: #64748b;">Active</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="stat-card" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <div>
+                <div style="font-size: 24px; font-weight: 700; color: #1e293b;">{{ $featuredProducts ?? 0 }}</div>
+                <div style="font-size: 13px; color: #64748b;">Featured</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="stat-card" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div>
+                <div style="font-size: 24px; font-weight: 700; color: #1e293b;">{{ $lowStockProducts ?? 0 }}</div>
+                <div style="font-size: 13px; color: #64748b;">Low Stock</div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="page-header">
-    <h1>Products</h1>
+    <h1>All Products ({{ $totalProducts ?? 0 }})</h1>
     <button class="btn-add">
         <i class="fa-solid fa-plus"></i>
         Add Product
@@ -268,12 +348,22 @@
         <i class="fa-solid fa-search"></i>
         <input type="text" placeholder="Search products...">
     </div>
-    <select class="filter-select">
-        <option>All Categories</option>
-        @foreach($categories as $category)
-            <option>{{ $category->name }}</option>
-        @endforeach
-    </select>
+    <form method="GET" style="display: flex; gap: 12px;">
+        <select class="filter-select" name="per_page" onchange="this.form.submit()">
+            <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10 per page</option>
+            <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25 per page</option>
+            <option value="50" {{ $perPage == 50 ? 'selected' : '' }}>50 per page</option>
+            <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100 per page</option>
+            <option value="all" {{ $perPage == 'all' ? 'selected' : '' }}>Show All</option>
+        </select>
+        
+        <select class="filter-select" name="category">
+            <option value="">All Categories</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+    </form>
     <select class="filter-select">
         <option>All Status</option>
         <option>Active</option>
@@ -285,10 +375,15 @@
     @forelse($products as $index => $product)
     <div class="product-card animate__animated animate__fadeInUp" style="animation-delay: {{ $index * 50 }}ms;">
         <div class="product-image">
-            @if($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+            @if($product->image && file_exists(public_path('storage/' . $product->image)))
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" loading="lazy">
+            @elseif($product->image && file_exists(public_path($product->image)))
+                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" loading="lazy">
             @else
-                <i class="fa-solid fa-box"></i>
+                <div style="text-align: center;">
+                    <i class="fa-solid fa-box" style="font-size: 48px; margin-bottom: 8px;"></i>
+                    <span style="font-size: 12px; display: block;">{{ $product->sku ?? 'No Image' }}</span>
+                </div>
             @endif
         </div>
         <div class="product-content">
@@ -335,9 +430,14 @@
     @endforelse
 </div>
 
+@if($perPage !== 'all' && $products->hasPages())
 <div class="pagination-bar">
+    <div class="pagination-info" style="color: #64748b; font-size: 14px; margin-right: 20px;">
+        Showing {{ $products->firstItem() ?? 0 }}-{{ $products->lastItem() ?? 0 }} of {{ $totalProducts ?? 0 }} products
+    </div>
     <div class="pagination">
         {{ $products->links() }}
     </div>
 </div>
+@endif
 @endsection
