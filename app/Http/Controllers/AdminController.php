@@ -185,16 +185,40 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Role permissions updated!');
     }
 
-    // Products Management
+    // Products Management - Real Data
     public function products()
     {
-        return view('admin.products.index');
+        $products = Product::with('category')->latest()->paginate(12);
+        $categories = Category::all();
+        $totalProducts = Product::count();
+        $activeProducts = Product::where('is_active', true)->count();
+        $featuredProducts = Product::where('is_featured', true)->count();
+        $lowStockProducts = Product::where('stock_quantity', '<', 10)->count();
+        
+        return view('admin.products.index', compact(
+            'products', 
+            'categories', 
+            'totalProducts', 
+            'activeProducts', 
+            'featuredProducts',
+            'lowStockProducts'
+        ));
     }
 
-    // Manufacturers Management
+    // Manufacturers Management - Real Data
     public function manufacturers()
     {
-        return view('admin.manufacturers.index');
+        $manufacturers = Manufacturer::latest()->paginate(10);
+        $totalManufacturers = Manufacturer::count();
+        $verifiedManufacturers = Manufacturer::where('is_verified', true)->count();
+        $pendingManufacturers = Manufacturer::where('is_verified', false)->count();
+        
+        return view('admin.manufacturers.index', compact(
+            'manufacturers',
+            'totalManufacturers',
+            'verifiedManufacturers',
+            'pendingManufacturers'
+        ));
     }
     
     // Verify Manufacturer
@@ -203,28 +227,91 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Manufacturer verified successfully!');
     }
     
-    // Categories
+    // Categories - Real Data
     public function categories()
     {
-        return view('admin.categories.index');
+        $categories = Category::withCount('products')->latest()->get();
+        $parentCategories = Category::whereNull('parent_id')->withCount('children')->get();
+        $totalCategories = Category::count();
+        $activeCategories = Category::where('is_active', true)->count();
+        
+        return view('admin.categories.index', compact(
+            'categories',
+            'parentCategories',
+            'totalCategories',
+            'activeCategories'
+        ));
     }
     
-    // Orders
+    // Orders - Real Data
     public function orders()
     {
-        return view('admin.orders.index');
+        $orders = Order::with('user')->latest()->paginate(10);
+        $totalOrders = Order::count();
+        $pendingOrders = Order::where('status', 'pending')->count();
+        $processingOrders = Order::where('status', 'processing')->count();
+        $completedOrders = Order::where('status', 'completed')->count();
+        $cancelledOrders = Order::where('status', 'cancelled')->count();
+        $totalRevenue = Order::where('status', 'completed')->sum('grand_total');
+        
+        return view('admin.orders.index', compact(
+            'orders',
+            'totalOrders',
+            'pendingOrders',
+            'processingOrders',
+            'completedOrders',
+            'cancelledOrders',
+            'totalRevenue'
+        ));
     }
     
-    // Deals & Offers
+    // Deals & Offers - Real Data (using products with sale_price as deals)
     public function deals()
     {
-        return view('admin.deals.index');
+        $deals = Product::whereNotNull('sale_price')
+            ->where('sale_price', '<', Product::raw('price'))
+            ->with('category')
+            ->latest()
+            ->paginate(8);
+        
+        $activeDeals = Product::whereNotNull('sale_price')
+            ->where('sale_price', '<', Product::raw('price'))
+            ->where('is_active', true)
+            ->count();
+        
+        $totalDiscountValue = Product::whereNotNull('sale_price')
+            ->sum(Product::raw('price - sale_price'));
+        
+        return view('admin.deals.index', compact(
+            'deals',
+            'activeDeals',
+            'totalDiscountValue'
+        ));
     }
     
-    // Staff
+    // Staff - Real Data (users with admin/staff roles)
     public function staff()
     {
-        return view('admin.staff.index');
+        $staff = User::whereHas('roles', function($q) {
+            $q->whereIn('name', ['admin', 'superadmin', 'staff', 'manager']);
+        })->with('roles')->latest()->get();
+        
+        $totalStaff = $staff->count();
+        
+        $admins = User::whereHas('roles', function($q) {
+            $q->where('name', 'superadmin');
+        })->count();
+        
+        $managers = User::whereHas('roles', function($q) {
+            $q->where('name', 'manager');
+        })->count();
+        
+        return view('admin.staff.index', compact(
+            'staff',
+            'totalStaff',
+            'admins',
+            'managers'
+        ));
     }
 
     // Settings
