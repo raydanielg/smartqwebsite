@@ -266,7 +266,8 @@
             text-align: center;
         }
         
-        /* Pagination Styles - Override Laravel Defaults */
+        /* Pagination Styles - Override ALL Laravel/Bootstrap Defaults */
+        .pagination-bar .pagination,
         .pagination {
             display: flex !important;
             list-style: none !important;
@@ -274,16 +275,24 @@
             margin: 0 !important;
             padding: 0 !important;
             justify-content: center !important;
+            flex-wrap: wrap !important;
         }
         
+        .pagination-bar .pagination li,
         .pagination li {
             margin: 0 !important;
+            display: inline-block !important;
         }
         
+        .pagination-bar .pagination li a,
+        .pagination-bar .pagination li span,
+        .pagination-bar .pagination .page-link,
         .pagination li a,
         .pagination li span,
-        .pagination .page-link {
-            display: flex !important;
+        .pagination .page-link,
+        .pagination a,
+        .pagination span {
+            display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
             min-width: 40px !important;
@@ -294,33 +303,59 @@
             font-weight: 600 !important;
             color: #64748b !important;
             background: #f8fafc !important;
-            border: none !important;
+            border: 2px solid #e2e8f0 !important;
             text-decoration: none !important;
             transition: all 0.2s ease !important;
             box-shadow: none !important;
+            cursor: pointer !important;
         }
         
+        .pagination-bar .pagination li:hover a,
+        .pagination-bar .pagination .page-link:hover,
         .pagination li:hover a,
-        .pagination .page-link:hover {
+        .pagination .page-link:hover,
+        .pagination a:hover {
             background: #e2e8f0 !important;
             color: #475569 !important;
-            border: none !important;
+            border-color: #cbd5e1 !important;
+            text-decoration: none !important;
         }
         
+        .pagination-bar .pagination li.active span,
+        .pagination-bar .pagination li.active a,
+        .pagination-bar .pagination .active .page-link,
         .pagination li.active span,
         .pagination li.active a,
-        .pagination .active .page-link {
+        .pagination .active .page-link,
+        .pagination .active a,
+        .pagination .active span {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
             color: white !important;
-            border: none !important;
+            border-color: #667eea !important;
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
         }
         
+        .pagination-bar .pagination li.disabled span,
+        .pagination-bar .pagination .disabled .page-link,
         .pagination li.disabled span,
-        .pagination .disabled .page-link {
+        .pagination .disabled .page-link,
+        .pagination .disabled a,
+        .pagination .disabled span {
             opacity: 0.5 !important;
             cursor: not-allowed !important;
             background: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+            color: #94a3b8 !important;
+        }
+        
+        /* SVG/Icon inside pagination links */
+        .pagination svg,
+        .pagination-bar svg,
+        .pagination [aria-hidden="true"],
+        .pagination-bar [aria-hidden="true"] {
+            width: 16px !important;
+            height: 16px !important;
+            fill: currentColor !important;
         }
         
         /* Pagination text */
