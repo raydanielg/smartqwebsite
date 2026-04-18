@@ -308,7 +308,7 @@
     }
 
     .btn-view-site {
-        background: #FF6A00;
+        background: linear-gradient(135deg, #FFC107, #FFA000);
         color: white;
         padding: 10px 20px;
         border-radius: 8px;
@@ -318,11 +318,13 @@
         align-items: center;
         gap: 8px;
         transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
     }
 
     .btn-view-site:hover {
-        background: #E65C00;
+        background: linear-gradient(135deg, #FFD54F, #FFB300);
         transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4);
     }
 
     /* Stats Grid */
@@ -371,12 +373,12 @@
         font-size: 24px;
     }
 
-    .stat-users .stat-icon { background: #FFF3E0; color: #FF6A00; }
+    .stat-users .stat-icon { background: #FFF8E1; color: #FFA000; }
     .stat-products .stat-icon { background: #E8F5E9; color: #4CAF50; }
     .stat-orders .stat-icon { background: #E3F2FD; color: #2196F3; }
-    .stat-revenue .stat-icon { background: #F3E5F5; color: #9C27B0; }
+    .stat-revenue .stat-icon { background: #FFF3E0; color: #FF8F00; }
     .stat-manufacturers .stat-icon { background: #E0F2F1; color: #009688; }
-    .stat-pending .stat-icon { background: #FFF8E1; color: #FFC107; }
+    .stat-pending .stat-icon { background: #FFECB3; color: #FF6F00; }
 
     .stat-value {
         font-size: 28px;
@@ -430,7 +432,7 @@
     }
 
     .chart-title i {
-        color: #FF6A00;
+        color: #FFC107;
     }
 
     .chart-filters {
@@ -450,9 +452,9 @@
 
     .filter-btn.active,
     .filter-btn:hover {
-        background: #FF6A00;
+        background: linear-gradient(135deg, #FFC107, #FFA000);
         color: white;
-        border-color: #FF6A00;
+        border-color: #FFC107;
     }
 
     .chart-legend {
@@ -526,11 +528,11 @@
     }
 
     .activity-title i {
-        color: #FF6A00;
+        color: #FFC107;
     }
 
     .view-all {
-        color: #FF6A00;
+        color: #FFA000;
         text-decoration: none;
         font-size: 14px;
         font-weight: 500;
@@ -576,7 +578,7 @@
 
     .order-id {
         font-weight: 600;
-        color: #FF6A00;
+        color: #FFA000;
     }
 
     .customer {
@@ -628,7 +630,7 @@
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #FF6A00, #FF8C00);
+        background: linear-gradient(135deg, #FFC107, #FFA000);
         color: white;
         display: flex;
         align-items: center;
@@ -681,7 +683,7 @@
     }
 
     .section-title i {
-        color: #FF6A00;
+        color: #FFC107;
     }
 
     /* Quick Actions */
@@ -795,13 +797,13 @@
             datasets: [{
                 label: 'Sales',
                 data: {!! json_encode($chartData ?? []) !!},
-                borderColor: '#FF6A00',
-                backgroundColor: 'rgba(255, 106, 0, 0.1)',
+                borderColor: '#FFC107',
+                backgroundColor: 'rgba(255, 193, 7, 0.1)',
                 borderWidth: 3,
                 fill: true,
                 tension: 0.4,
                 pointRadius: 4,
-                pointBackgroundColor: '#FF6A00',
+                pointBackgroundColor: '#FFC107',
                 pointBorderColor: '#fff',
                 pointBorderWidth: 2,
             }]
@@ -850,7 +852,7 @@
                     {{ $stats['completed_orders'] ?? 0 }},
                     {{ $stats['processing_orders'] ?? 0 }}
                 ],
-                backgroundColor: ['#FF6A00', '#4CAF50', '#2196F3'],
+                backgroundColor: ['#FFC107', '#4CAF50', '#2196F3'],
                 borderWidth: 0,
                 hoverOffset: 4
             }]
