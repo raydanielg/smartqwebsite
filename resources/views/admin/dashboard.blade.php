@@ -191,11 +191,11 @@
 
 @section('content')
 <!-- Stats Grid - Gold/Yellow Theme -->
-<div class="stats-grid" style="margin-bottom:14px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; align-items:stretch;">
+<div class="stats-grid">
     <!-- Users -->
-    <div class="stat-card content-card animate__animated animate__fadeInUp" style="animation-delay:40ms; padding:16px;">
+    <div class="stat-card animate__animated animate__fadeInUp" style="animation-delay:40ms;">
         <div class="kpi-card">
-            <div class="kpi-ico" style="background:rgba(255,193,7,0.15); color:#f59e0b;">
+            <div class="kpi-ico users">
                 <i class="fa-solid fa-users"></i>
             </div>
             <div class="stat-details">
@@ -206,9 +206,9 @@
     </div>
     
     <!-- Products -->
-    <div class="stat-card content-card animate__animated animate__fadeInUp" style="animation-delay:80ms; padding:16px;">
+    <div class="stat-card animate__animated animate__fadeInUp" style="animation-delay:80ms;">
         <div class="kpi-card">
-            <div class="kpi-ico" style="background:rgba(255,152,0,0.15); color:#ff9800;">
+            <div class="kpi-ico products">
                 <i class="fa-solid fa-box"></i>
             </div>
             <div class="stat-details">
@@ -219,9 +219,9 @@
     </div>
     
     <!-- Orders -->
-    <div class="stat-card content-card animate__animated animate__fadeInUp" style="animation-delay:120ms; padding:16px;">
+    <div class="stat-card animate__animated animate__fadeInUp" style="animation-delay:120ms;">
         <div class="kpi-card">
-            <div class="kpi-ico" style="background:rgba(255,87,34,0.15); color:#ff5722;">
+            <div class="kpi-ico orders">
                 <i class="fa-solid fa-shopping-cart"></i>
             </div>
             <div class="stat-details">
@@ -232,9 +232,9 @@
     </div>
     
     <!-- Revenue -->
-    <div class="stat-card content-card animate__animated animate__fadeInUp" style="animation-delay:160ms; padding:16px;">
+    <div class="stat-card animate__animated animate__fadeInUp" style="animation-delay:160ms;">
         <div class="kpi-card">
-            <div class="kpi-ico" style="background:rgba(76,175,80,0.15); color:#4caf50;">
+            <div class="kpi-ico revenue">
                 <i class="fa-solid fa-dollar-sign"></i>
             </div>
             <div class="stat-details">
@@ -245,9 +245,9 @@
     </div>
     
     <!-- Manufacturers -->
-    <div class="stat-card content-card animate__animated animate__fadeInUp" style="animation-delay:200ms; padding:16px;">
+    <div class="stat-card animate__animated animate__fadeInUp" style="animation-delay:200ms;">
         <div class="kpi-card">
-            <div class="kpi-ico" style="background:rgba(33,150,243,0.15); color:#2196f3;">
+            <div class="kpi-ico manufacturers">
                 <i class="fa-solid fa-industry"></i>
             </div>
             <div class="stat-details">
