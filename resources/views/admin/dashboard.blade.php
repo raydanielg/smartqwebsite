@@ -50,7 +50,7 @@
         .brand-logo {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, #FF6B9D, #FF8E53);
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -73,7 +73,7 @@
         
         .brand-tagline {
             font-size: 9px;
-            color: #FF6B9D;
+            color: #3b82f6;
             font-weight: 600;
             letter-spacing: 1.5px;
         }
@@ -114,10 +114,8 @@
         }
         
         .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
+            display: block;
+            padding: 12px 16px;
             border-radius: 10px;
             text-decoration: none;
             color: #6b7280;
@@ -132,18 +130,9 @@
         }
         
         .nav-item.active .nav-link {
-            background: linear-gradient(135deg, #FF6B9D, #FF8E53);
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
-            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.25);
-        }
-        
-        .nav-icon {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
         }
         
         /* Main Content */
@@ -227,7 +216,7 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #FF6B9D, #FF8E53);
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
             display: flex;
             align-items: center;
@@ -257,20 +246,20 @@
             padding: 8px 32px 32px;
         }
         
-        /* Stats Grid - Malkia Style */
+        /* Stats Grid - Compact Blue Style */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
         }
         
-        @media (max-width: 1200px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 1400px) {
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
         }
         
         @media (max-width: 768px) {
-            .stats-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .admin-sidebar { display: none; }
             .admin-main { margin-left: 0; }
             .admin-content { padding: 16px; }
@@ -278,49 +267,49 @@
         
         .stat-card {
             background: white;
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 12px;
+            padding: 16px;
             display: flex;
             align-items: center;
-            gap: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            gap: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             transition: all 0.2s ease;
         }
         
         .stat-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
         
         .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             flex-shrink: 0;
         }
         
-        .stat-users .stat-icon { background: #fef3c7; color: #f59e0b; }
-        .stat-products .stat-icon { background: #dbeafe; color: #3b82f6; }
+        .stat-users .stat-icon { background: #dbeafe; color: #3b82f6; }
+        .stat-products .stat-icon { background: #dcfce7; color: #22c55e; }
         .stat-orders .stat-icon { background: #fce7f3; color: #ec4899; }
-        .stat-revenue .stat-icon { background: #d1fae5; color: #10b981; }
-        .stat-manufacturers .stat-icon { background: #e0e7ff; color: #6366f1; }
-        .stat-pending .stat-icon { background: #fef3c7; color: #f59e0b; }
+        .stat-revenue .stat-icon { background: #fef3c7; color: #f59e0b; }
+        .stat-manufacturers .stat-icon { background: #f3e8ff; color: #a855f7; }
+        .stat-pending .stat-icon { background: #ffedd5; color: #f97316; }
         
         .stat-value {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             color: #1a1a2e;
             line-height: 1;
         }
         
         .stat-label {
-            font-size: 12px;
+            font-size: 11px;
             color: #9ca3af;
-            margin-top: 4px;
+            margin-top: 2px;
             font-weight: 500;
         }
         
