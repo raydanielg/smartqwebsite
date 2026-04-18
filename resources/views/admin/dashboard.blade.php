@@ -418,7 +418,7 @@
         }
         
         .view-all {
-            color: #FF6B9D;
+            color: #3b82f6;
             text-decoration: none;
             font-size: 12px;
             font-weight: 500;
@@ -452,7 +452,7 @@
         
         .order-id {
             font-weight: 600;
-            color: #FF6B9D;
+            color: #3b82f6;
         }
         
         .status-badge {
@@ -487,7 +487,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #FF6B9D, #FF8E53);
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
             display: flex;
             align-items: center;
@@ -542,10 +542,7 @@
                     <span class="nav-label">Main</span>
                     <ul class="nav-list">
                         <li class="nav-item active">
-                            <a href="{{ route('admin.dashboard') }}" class="nav-link">
-                                <span class="nav-icon"><i class="fas fa-tachometer-alt"></i></span>
-                                <span>Dashboard</span>
-                            </a>
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link">Dashboard</a>
                         </li>
                     </ul>
                 </div>
@@ -554,16 +551,10 @@
                     <span class="nav-label">Shop & Content</span>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route('admin.products') }}" class="nav-link">
-                                <span class="nav-icon"><i class="fas fa-box"></i></span>
-                                <span>Products</span>
-                            </a>
+                            <a href="{{ route('admin.products') }}" class="nav-link">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.manufacturers') }}" class="nav-link">
-                                <span class="nav-icon"><i class="fas fa-industry"></i></span>
-                                <span>Manufacturers</span>
-                            </a>
+                            <a href="{{ route('admin.manufacturers') }}" class="nav-link">Manufacturers</a>
                         </li>
                     </ul>
                 </div>
@@ -572,10 +563,7 @@
                     <span class="nav-label">Management</span>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route('admin.users') }}" class="nav-link">
-                                <span class="nav-icon"><i class="fas fa-users"></i></span>
-                                <span>Users</span>
-                            </a>
+                            <a href="{{ route('admin.users') }}" class="nav-link">Users</a>
                         </li>
                     </ul>
                 </div>
@@ -585,16 +573,10 @@
                     <span class="nav-label">System</span>
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route('admin.roles') }}" class="nav-link">
-                                <span class="nav-icon"><i class="fas fa-user-shield"></i></span>
-                                <span>Roles</span>
-                            </a>
+                            <a href="{{ route('admin.roles') }}" class="nav-link">Roles</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.settings') }}" class="nav-link">
-                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
-                                <span>Settings</span>
-                            </a>
+                            <a href="{{ route('admin.settings') }}" class="nav-link">Settings</a>
                         </li>
                     </ul>
                 </div>
@@ -603,9 +585,8 @@
                 <div class="nav-section">
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <span class="nav-icon"><i class="fas fa-sign-out-alt" style="color: #ef4444;"></i></span>
-                                <span style="color: #ef4444;">Sign Out</span>
+                            <a href="{{ route('logout') }}" class="nav-link" style="color: #ef4444;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Sign Out
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -652,7 +633,7 @@
 
             <!-- Dashboard Content -->
             <main class="admin-content">
-                <!-- Stats Row 1 -->
+                <!-- Stats Grid -->
                 <div class="stats-grid">
                     <div class="stat-card stat-users">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
@@ -682,10 +663,6 @@
                             <div class="stat-label">Total Revenue</div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Stats Row 2 -->
-                <div class="stats-grid">
                     <div class="stat-card stat-manufacturers">
                         <div class="stat-icon"><i class="fas fa-industry"></i></div>
                         <div class="stat-content">
@@ -697,21 +674,7 @@
                         <div class="stat-icon"><i class="fas fa-clock"></i></div>
                         <div class="stat-content">
                             <div class="stat-value">{{ $stats['pending_orders'] ?? 0 }}</div>
-                            <div class="stat-label">Pending Orders</div>
-                        </div>
-                    </div>
-                    <div class="stat-card" style="opacity: 0.5;">
-                        <div class="stat-icon" style="background: #f3f4f6; color: #9ca3af;"><i class="fas fa-chart-line"></i></div>
-                        <div class="stat-content">
-                            <div class="stat-value">-</div>
-                            <div class="stat-label">Growth Rate</div>
-                        </div>
-                    </div>
-                    <div class="stat-card" style="opacity: 0.5;">
-                        <div class="stat-icon" style="background: #f3f4f6; color: #9ca3af;"><i class="fas fa-percentage"></i></div>
-                        <div class="stat-content">
-                            <div class="stat-value">-</div>
-                            <div class="stat-label">Conversion</div>
+                            <div class="stat-label">Pending</div>
                         </div>
                     </div>
                 </div>
@@ -735,17 +698,17 @@
                         </div>
                         <div class="chart-legend">
                             <div class="legend-item">
-                                <span class="legend-dot" style="background: #FFC107;"></span>
+                                <span class="legend-dot" style="background: #f59e0b;"></span>
                                 <span class="legend-label">Pending</span>
                                 <span style="font-weight: 600; color: #1a1a2e; font-size: 13px;">{{ $stats['pending_orders'] ?? 0 }}</span>
                             </div>
                             <div class="legend-item">
-                                <span class="legend-dot" style="background: #4CAF50;"></span>
+                                <span class="legend-dot" style="background: #22c55e;"></span>
                                 <span class="legend-label">Completed</span>
                                 <span style="font-weight: 600; color: #1a1a2e; font-size: 13px;">{{ $stats['completed_orders'] ?? 0 }}</span>
                             </div>
                             <div class="legend-item">
-                                <span class="legend-dot" style="background: #2196F3;"></span>
+                                <span class="legend-dot" style="background: #3b82f6;"></span>
                                 <span class="legend-label">Processing</span>
                                 <span style="font-weight: 600; color: #1a1a2e; font-size: 13px;">{{ $stats['processing_orders'] ?? 0 }}</span>
                             </div>
@@ -833,15 +796,15 @@
                 datasets: [{
                     label: 'Sales',
                     data: {!! json_encode($chartData ?? []) !!},
-                    borderColor: '#FF6B9D',
-                    backgroundColor: 'rgba(255, 107, 157, 0.1)',
-                    borderWidth: 3,
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderWidth: 2,
                     fill: true,
                     tension: 0.4,
-                    pointRadius: 4,
-                    pointBackgroundColor: '#FF6B9D',
+                    pointRadius: 3,
+                    pointBackgroundColor: '#3b82f6',
                     pointBorderColor: '#fff',
-                    pointBorderWidth: 2,
+                    pointBorderWidth: 1,
                 }]
             },
             options: {
@@ -874,7 +837,7 @@
                         {{ $stats['completed_orders'] ?? 0 }},
                         {{ $stats['processing_orders'] ?? 0 }}
                     ],
-                    backgroundColor: ['#FFC107', '#4CAF50', '#2196F3'],
+                    backgroundColor: ['#f59e0b', '#22c55e', '#3b82f6'],
                     borderWidth: 0,
                     hoverOffset: 4
                 }]
