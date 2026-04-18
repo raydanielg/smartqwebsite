@@ -1,10 +1,7 @@
 <!-- Admin Sidebar - Malkia Style -->
 <aside class="admin-sidebar">
-    <!-- Brand -->
+    <!-- Brand - Text Only -->
     <div class="sidebar-brand">
-        <div class="brand-logo">
-            <i class="fas fa-crown"></i>
-        </div>
         <div class="brand-text">
             <span class="brand-name">SmartQ</span>
             <span class="brand-tagline">ADMIN PANEL</span>

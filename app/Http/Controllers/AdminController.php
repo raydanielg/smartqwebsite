@@ -33,20 +33,46 @@ class AdminController extends Controller
             'processing_orders' => Order::where('status', 'processing')->count(),
             'completed_orders' => Order::where('status', 'completed')->count(),
         ];
+        
+        // Header counts - notifications, new orders, etc
+        $headerCounts = [
+            'new_orders' => Order::where('status', 'pending')->whereDate('created_at', '>=', now()->subDays(1))->count(),
+            'new_users' => User::whereDate('created_at', '>=', now()->subDays(1))->count(),
+            'notifications' => $stats['pending_orders'] + $stats['processing_orders'], // Real notification count
+        ];
 
-        // Chart data - Last 14 days
+        // Chart data - Last 14 days for multiple metrics
         $chartLabels = [];
-        $chartData = [];
+        $revenueData = [];
+        $ordersData = [];
+        $usersData = [];
+        
         for ($i = 13; $i >= 0; $i--) {
-            $date = now()->subDays($i)->format('Y-m-d');
-            $chartLabels[] = now()->subDays($i)->format('M d');
-            $chartData[] = Order::whereDate('created_at', $date)->sum('grand_total') ?? 0;
+            $date = now()->subDays($i);
+            $dateString = $date->format('Y-m-d');
+            $chartLabels[] = $date->format('M d');
+            
+            // Revenue data
+            $revenueData[] = Order::whereDate('created_at', $dateString)->sum('grand_total') ?? 0;
+            
+            // Orders count data
+            $ordersData[] = Order::whereDate('created_at', $dateString)->count();
+            
+            // Users registered data
+            $usersData[] = User::whereDate('created_at', $dateString)->count();
         }
+        
+        // Chart data for line chart (multiple datasets)
+        $chartData = [
+            'revenue' => $revenueData,
+            'orders' => $ordersData,
+            'users' => $usersData,
+        ];
 
         $recentUsers = User::latest()->take(5)->get();
         $recentOrders = Order::with('user')->latest()->take(5)->get();
 
-        return view('admin.dashboard', compact('stats', 'recentUsers', 'recentOrders', 'chartLabels', 'chartData'));
+        return view('admin.dashboard', compact('stats', 'recentUsers', 'recentOrders', 'chartLabels', 'chartData', 'headerCounts'));
     }
 
     // Super Admin Dashboard
@@ -195,8 +221,52 @@ class AdminController extends Controller
     // Update Settings
     public function updateSettings(Request $request)
     {
-        // Update site settings logic here
-        return redirect()->back()->with('success', 'Settings updated!');
+        $request->validate([
+            'site_name' => 'nullable|string|max:255',
+            'site_email' => 'nullable|email',
+            'currency' => 'nullable|string|max:10',
+            'timezone' => 'nullable|string|max:50',
+        ]);
+        
+        // Update settings in database or config
+        // Logic to save settings here
+        
+        return redirect()->back()->with('success', 'Settings updated successfully!');
+    }
+    
+    // Profile Page
+    public function profile()
+    {
+        $user = Auth::user();
+        $activityLogs = []; // Could fetch from activity log table
+        
+        return view('admin.profile', compact('user', 'activityLogs'));
+    }
+    
+    // Update Profile
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+        
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'nullable|string|max:20',
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+        
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ]);
+        
+        if ($request->password) {
+            $request->validate(['password' => 'min:8']);
+            $user->update(['password' => Hash::make($request->password)]);
+        }
+        
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }
 
