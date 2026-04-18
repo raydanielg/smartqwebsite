@@ -336,9 +336,6 @@
 </div>
 
 <div class="pagination-bar">
-    <span style="color: #64748b; font-size: 14px;">
-        Showing {{ $products->firstItem() ?? 0 }}-{{ $products->lastItem() ?? 0 }} of {{ $totalProducts ?? 0 }} products
-    </span>
     <div class="pagination">
         {{ $products->links() }}
     </div>
