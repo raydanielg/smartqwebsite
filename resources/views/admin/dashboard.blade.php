@@ -6,32 +6,68 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <style>
-    /* Font from auth pages */
+    /* Font style matching frontend */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+    
     .admin-content {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     /* Stats Grid - Powerful Styling */
     .stats-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(6, 1fr);
         gap: 16px;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
+    }
+    
+    @media (max-width: 1400px) {
+        .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    
+    @media (max-width: 768px) {
+        .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+    
+    @media (max-width: 480px) {
+        .stats-grid { grid-template-columns: 1fr; }
     }
 
-    /* KPI Cards - Powerful */
+    /* KPI Cards - Powerful Modern Style */
     .stat-card {
-        background: white;
-        border-radius: 16px;
-        padding: 20px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        transition: all 0.3s ease;
-        border: 1px solid rgba(0,0,0,0.02);
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        border-radius: 20px;
+        padding: 24px 20px;
+        box-shadow: 
+            0 10px 40px rgba(0,0,0,0.08),
+            0 2px 8px rgba(0,0,0,0.04);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: none;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--card-color, #FFC107), var(--card-color-dark, #FF9800));
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
     
     .stat-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 
+            0 20px 60px rgba(0,0,0,0.12),
+            0 8px 20px rgba(0,0,0,0.08);
+    }
+    
+    .stat-card:hover::before {
+        opacity: 1;
     }
 
     .kpi-card {
@@ -41,27 +77,78 @@
     }
     
     .kpi-ico {
-        width: 56px;
-        height: 56px;
-        border-radius: 14px;
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        box-shadow: 
+            0 8px 24px rgba(0,0,0,0.15),
+            inset 0 2px 4px rgba(255,255,255,0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .kpi-ico::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .stat-card:hover .kpi-ico::after {
+        opacity: 1;
     }
     
     .kpi-ico i {
-        font-size: 24px;
+        font-size: 26px;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
     
-    /* Color Variants for Icons */
-    .kpi-ico.users { background: linear-gradient(135deg, #FFC107, #FF9800); color: white; }
-    .kpi-ico.products { background: linear-gradient(135deg, #FF9800, #FF5722); color: white; }
-    .kpi-ico.orders { background: linear-gradient(135deg, #FF5722, #E91E63); color: white; }
-    .kpi-ico.revenue { background: linear-gradient(135deg, #4CAF50, #8BC34A); color: white; }
-    .kpi-ico.manufacturers { background: linear-gradient(135deg, #2196F3, #03A9F4); color: white; }
-    .kpi-ico.pending { background: linear-gradient(135deg, #9C27B0, #E91E63); color: white; }
+    /* Powerful Color Variants for Icons */
+    .kpi-ico.users { 
+        background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%); 
+        color: white; 
+        --card-color: #FFC107;
+        --card-color-dark: #FF9800;
+    }
+    .kpi-ico.products { 
+        background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%); 
+        color: white; 
+        --card-color: #FF9800;
+        --card-color-dark: #FF5722;
+    }
+    .kpi-ico.orders { 
+        background: linear-gradient(135deg, #FF5722 0%, #E91E63 100%); 
+        color: white; 
+        --card-color: #FF5722;
+        --card-color-dark: #E91E63;
+    }
+    .kpi-ico.revenue { 
+        background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%); 
+        color: white; 
+        --card-color: #4CAF50;
+        --card-color-dark: #8BC34A;
+    }
+    .kpi-ico.manufacturers { 
+        background: linear-gradient(135deg, #2196F3 0%, #03A9F4 100%); 
+        color: white; 
+        --card-color: #2196F3;
+        --card-color-dark: #03A9F4;
+    }
+    .kpi-ico.pending { 
+        background: linear-gradient(135deg, #9C27B0 0%, #E91E63 100%); 
+        color: white; 
+        --card-color: #9C27B0;
+        --card-color-dark: #E91E63;
+    }
     
     .stats-grid .stat-details {
         min-width: 0;
@@ -69,43 +156,50 @@
     }
     
     .stats-grid .stat-value {
+        margin: 0 0 4px 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 26px;
+        font-weight: 800;
+        color: #1a1a2e;
+        letter-spacing: -0.5px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .stats-grid .stat-label {
         margin: 0;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        font-size: 28px;
-        font-weight: 800;
-        color: #1a1a2e;
-        letter-spacing: -0.5px;
-    }
-    
-    .stats-grid .stat-label {
-        margin: 4px 0 0 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-size: 12px;
+        font-size: 11px;
         color: #6b7280;
         font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.8px;
+        font-family: 'Poppins', sans-serif;
     }
 
     /* Content Cards - Powerful */
     .content-card {
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        border: 1px solid rgba(0,0,0,0.02);
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        border-radius: 24px;
+        box-shadow: 
+            0 8px 32px rgba(0,0,0,0.08),
+            0 2px 8px rgba(0,0,0,0.04);
+        border: none;
         overflow: hidden;
+        transition: all 0.3s ease;
     }
     
     .content-card:hover {
-        box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+        box-shadow: 
+            0 12px 40px rgba(0,0,0,0.12),
+            0 4px 12px rgba(0,0,0,0.06);
     }
     
     .content-card .card-header {
-        padding: 20px 20px 16px 20px;
+        padding: 24px 24px 16px 24px;
         margin-bottom: 0;
         background: none;
         border: none;
@@ -117,6 +211,7 @@
         font-weight: 700;
         color: #1a1a2e;
         margin: 0;
+        font-family: 'Poppins', sans-serif;
     }
 
     /* Admin Table */
