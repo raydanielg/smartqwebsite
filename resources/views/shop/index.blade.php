@@ -6,16 +6,22 @@
 <!-- Alibaba-Style Hero Section -->
 <section class="bg-gray-100 py-4">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Top Quick Links -->
-        <div class="flex items-center gap-6 mb-4 text-sm">
-            <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-[#FF6A00]">
-                <i class="far fa-edit"></i> Request for Quotation
+        <!-- Top Quick Links - Mobile Friendly Flex -->
+        <div class="flex flex-wrap items-center gap-2 mb-4 text-xs sm:text-sm">
+            <a href="{{ route('shop') }}" class="flex items-center gap-1.5 px-3 py-1.5 bg-[#FF6A00] text-white rounded-full hover:bg-[#e65c00] transition-colors shadow-sm">
+                <i class="fas fa-rocket text-xs"></i> <span class="font-medium">Get Started</span>
             </a>
-            <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-[#FF6A00]">
-                <i class="fas fa-crown"></i> Top Ranking
+            <a href="#" class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white text-gray-700 rounded-full hover:text-[#FF6A00] hover:bg-orange-50 transition-colors border border-gray-200 shadow-sm">
+                <i class="far fa-edit text-xs"></i> <span>RFQ</span>
             </a>
-            <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-[#FF6A00]">
-                <i class="fas fa-magic"></i> Fast customization
+            <a href="#" class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white text-gray-700 rounded-full hover:text-[#FF6A00] hover:bg-orange-50 transition-colors border border-gray-200 shadow-sm">
+                <i class="fas fa-crown text-xs"></i> <span>Top</span>
+            </a>
+            <a href="#" class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white text-gray-700 rounded-full hover:text-[#FF6A00] hover:bg-orange-50 transition-colors border border-gray-200 shadow-sm">
+                <i class="fas fa-magic text-xs"></i> <span>Custom</span>
+            </a>
+            <a href="#" class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white text-gray-700 rounded-full hover:text-[#FF6A00] hover:bg-orange-50 transition-colors border border-gray-200 shadow-sm">
+                <i class="fas fa-fire text-xs"></i> <span>Deals</span>
             </a>
         </div>
 
@@ -55,17 +61,21 @@
             <!-- Center - Main Hero Image & Products -->
             <div class="col-span-12 lg:col-span-6 space-y-4">
                 <!-- Main Hero Image -->
-                <div class="relative rounded-xl overflow-hidden shadow-lg group" style="height: 200px;">
+                <div class="relative rounded-xl overflow-hidden shadow-lg group" style="height: 220px;">
                     <img src="{{ asset('34337.jpg') }}" alt="SmartQ Hero" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
-                        <div class="p-6 text-white">
-                            <span class="bg-[#FF6A00] text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">NEW ARRIVAL</span>
-                            <h2 class="text-2xl font-bold mb-1">Premium Collection 2025</h2>
-                            <p class="text-sm text-gray-200 mb-3">Discover quality products at unbeatable prices</p>
-                            <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors">
-                                Shop Now <i class="fas fa-arrow-right"></i>
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent flex items-center">
+                        <div class="p-4 sm:p-6 text-white max-w-[70%]">
+                            <span class="bg-[#FF6A00] text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 rounded-full mb-2 inline-block">NEW ARRIVAL</span>
+                            <h2 class="text-lg sm:text-2xl font-bold mb-1 leading-tight">Premium Collection 2025</h2>
+                            <p class="text-xs sm:text-sm text-gray-200 mb-3 hidden sm:block">Discover quality products at unbeatable prices</p>
+                            <a href="{{ route('shop') }}" class="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 bg-white text-gray-900 rounded-full text-xs sm:text-sm font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+                                Shop Now <i class="fas fa-arrow-right text-xs"></i>
                             </a>
                         </div>
+                    </div>
+                    <!-- Mobile floating badge -->
+                    <div class="absolute top-3 right-3 sm:hidden">
+                        <span class="bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full animate-pulse">HOT</span>
                     </div>
                 </div>
 

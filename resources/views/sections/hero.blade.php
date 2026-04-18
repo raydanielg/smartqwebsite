@@ -50,37 +50,53 @@
                 </div>
             </div>
             
-            <!-- Hero Image/Illustration -->
+            <!-- Hero Image -->
             <div class="relative animate-fadeIn hidden lg:block">
-                <div class="relative">
-                    <!-- Main Image Container -->
-                    <div class="relative bg-white rounded-2xl shadow-2xl p-6 transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                        <div class="aspect-square bg-gradient-to-br from-[#8B4513] to-[#654321] rounded-xl flex items-center justify-center">
-                            <i class="fas fa-shipping-fast text-white text-8xl"></i>
+                <div class="relative group">
+                    <!-- Main Hero Image -->
+                    <div class="relative rounded-2xl shadow-2xl overflow-hidden">
+                        <img src="{{ asset('34337.jpg') }}" alt="SmartQ Premium Collection" class="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700">
+                        
+                        <!-- Overlay Badge -->
+                        <div class="absolute top-6 right-6 bg-[#FF6A00] text-white px-4 py-2 rounded-full font-bold shadow-lg animate-pulse">
+                            NEW 2025
                         </div>
                         
-                        <!-- Floating Cards -->
-                        <div class="absolute -top-6 -right-6 bg-white rounded-xl shadow-lg p-4 animate-float">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-check text-green-600"></i>
-                                </div>
+                        <!-- Bottom Info Bar -->
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                            <div class="flex items-center justify-between text-white">
                                 <div>
-                                    <div class="text-sm font-semibold">Delivered</div>
-                                    <div class="text-xs text-gray-500">Just now</div>
+                                    <h3 class="text-xl font-bold">Premium Collection</h3>
+                                    <p class="text-sm text-gray-300">Quality products from China to Tanzania</p>
                                 </div>
+                                <a href="{{ route('shop') }}" class="px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors">
+                                    Shop Now <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
                             </div>
                         </div>
-                        
-                        <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 animate-float" style="animation-delay: 1s;">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-[#8B4513]/10 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-box text-[#8B4513]"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-semibold">500+ Packages</div>
-                                    <div class="text-xs text-gray-500">This month</div>
-                                </div>
+                    </div>
+                    
+                    <!-- Floating Stats Cards -->
+                    <div class="absolute -top-4 -left-4 bg-white rounded-xl shadow-xl p-4 animate-float">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-[#FF6A00]/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shipping-fast text-[#FF6A00] text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-gray-900">3-7 Days</div>
+                                <div class="text-xs text-gray-500">Fast Delivery</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-xl p-4 animate-float" style="animation-delay: 1s;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-gray-900">1000+</div>
+                                <div class="text-xs text-gray-500">Happy Clients</div>
                             </div>
                         </div>
                     </div>
