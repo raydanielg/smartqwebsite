@@ -33,138 +33,93 @@
         .stats-grid { grid-template-columns: 1fr; }
     }
 
-    /* KPI Cards - Powerful Modern Style */
+    /* KPI Cards - Clean Malkia Style */
     .stat-card {
-        background: linear-gradient(145deg, #ffffff, #f8f9fa);
-        border-radius: 20px;
-        padding: 24px 20px;
-        box-shadow: 
-            0 10px 40px rgba(0,0,0,0.08),
-            0 2px 8px rgba(0,0,0,0.04);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: none;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .stat-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--card-color, #FFC107), var(--card-color-dark, #FF9800));
-        opacity: 0;
-        transition: opacity 0.3s ease;
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        transition: all 0.3s ease;
+        border: 1px solid #f1f5f9;
     }
     
     .stat-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 
-            0 20px 60px rgba(0,0,0,0.12),
-            0 8px 20px rgba(0,0,0,0.08);
-    }
-    
-    .stat-card:hover::before {
-        opacity: 1;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        border-color: #e2e8f0;
     }
 
     .kpi-card {
         display: flex;
-        gap: 16px;
-        align-items: center;
+        gap: 14px;
+        align-items: flex-start;
     }
     
     .kpi-ico {
-        width: 60px;
-        height: 60px;
-        border-radius: 16px;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        box-shadow: 
-            0 8px 24px rgba(0,0,0,0.15),
-            inset 0 2px 4px rgba(255,255,255,0.3);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .kpi-ico::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .stat-card:hover .kpi-ico::after {
-        opacity: 1;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
     }
     
     .kpi-ico i {
-        font-size: 26px;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        font-size: 20px;
     }
     
-    /* Powerful Color Variants for Icons */
+    /* Soft Color Variants for Icons - Malkia Style */
     .kpi-ico.users { 
-        background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%); 
-        color: white; 
-        --card-color: #FFC107;
-        --card-color-dark: #FF9800;
+        background: #dbeafe;
+        border-color: #bfdbfe;
+        color: #2563eb;
     }
     .kpi-ico.products { 
-        background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%); 
-        color: white; 
-        --card-color: #FF9800;
-        --card-color-dark: #FF5722;
+        background: #fef3c7;
+        border-color: #fde68a;
+        color: #d97706;
     }
     .kpi-ico.orders { 
-        background: linear-gradient(135deg, #FF5722 0%, #E91E63 100%); 
-        color: white; 
-        --card-color: #FF5722;
-        --card-color-dark: #E91E63;
+        background: #fee2e2;
+        border-color: #fecaca;
+        color: #dc2626;
     }
     .kpi-ico.revenue { 
-        background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%); 
-        color: white; 
-        --card-color: #4CAF50;
-        --card-color-dark: #8BC34A;
+        background: #d1fae5;
+        border-color: #a7f3d0;
+        color: #059669;
     }
     .kpi-ico.manufacturers { 
-        background: linear-gradient(135deg, #2196F3 0%, #03A9F4 100%); 
-        color: white; 
-        --card-color: #2196F3;
-        --card-color-dark: #03A9F4;
+        background: #e0e7ff;
+        border-color: #c7d2fe;
+        color: #4f46e5;
     }
     .kpi-ico.pending { 
-        background: linear-gradient(135deg, #9C27B0 0%, #E91E63 100%); 
-        color: white; 
-        --card-color: #9C27B0;
-        --card-color-dark: #E91E63;
+        background: #fce7f3;
+        border-color: #fbcfe8;
+        color: #db2777;
     }
     
     .stats-grid .stat-details {
         min-width: 0;
         flex: 1;
+        padding-top: 2px;
     }
     
     .stats-grid .stat-value {
-        margin: 0 0 4px 0;
+        margin: 0 0 2px 0;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        font-size: 26px;
-        font-weight: 800;
-        color: #1a1a2e;
-        letter-spacing: -0.5px;
+        font-size: 22px;
+        font-weight: 700;
+        color: #1e293b;
+        letter-spacing: -0.3px;
         font-family: 'Poppins', sans-serif;
+        line-height: 1.2;
     }
     
     .stats-grid .stat-label {
@@ -172,44 +127,40 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        font-size: 11px;
-        color: #6b7280;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
+        font-size: 12px;
+        color: #64748b;
+        font-weight: 500;
+        letter-spacing: 0.2px;
         font-family: 'Poppins', sans-serif;
     }
 
-    /* Content Cards - Powerful */
+    /* Content Cards - Clean Malkia Style */
     .content-card {
-        background: linear-gradient(145deg, #ffffff, #f8f9fa);
-        border-radius: 24px;
-        box-shadow: 
-            0 8px 32px rgba(0,0,0,0.08),
-            0 2px 8px rgba(0,0,0,0.04);
-        border: none;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        border: 1px solid #f1f5f9;
         overflow: hidden;
         transition: all 0.3s ease;
     }
     
     .content-card:hover {
-        box-shadow: 
-            0 12px 40px rgba(0,0,0,0.12),
-            0 4px 12px rgba(0,0,0,0.06);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        border-color: #e2e8f0;
     }
     
     .content-card .card-header {
-        padding: 24px 24px 16px 24px;
+        padding: 16px 20px;
         margin-bottom: 0;
         background: none;
         border: none;
-        border-bottom: 1px solid #f3f4f6;
+        border-bottom: 1px solid #f1f5f9;
     }
     
     .content-card .card-header h3 {
-        font-size: 18px;
-        font-weight: 700;
-        color: #1a1a2e;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1e293b;
         margin: 0;
         font-family: 'Poppins', sans-serif;
     }
@@ -277,18 +228,18 @@
             gap: 12px;
         }
         .kpi-ico {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
         }
         .kpi-ico i {
-            font-size: 20px;
+            font-size: 18px;
         }
         .stats-grid .stat-value {
-            font-size: 22px;
+            font-size: 20px;
         }
         .stats-grid .stat-label {
-            font-size: 10px;
+            font-size: 11px;
         }
     }
     
@@ -297,14 +248,14 @@
             grid-template-columns: 1fr;
         }
         .kpi-ico {
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
         }
         .kpi-ico i {
-            font-size: 18px;
+            font-size: 16px;
         }
         .stats-grid .stat-value {
-            font-size: 20px;
+            font-size: 18px;
         }
     }
 </style>
@@ -493,12 +444,12 @@
                 datasets: [{
                     label: 'Sales',
                     data: chartData.length ? chartData : [0, 0, 0, 0, 0, 0, 0],
-                    borderColor: '#FFC107',
-                    backgroundColor: 'rgba(255, 193, 7, 0.15)',
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.15)',
                     tension: 0.35,
                     fill: true,
                     pointRadius: 3,
-                    pointBackgroundColor: '#FFC107',
+                    pointBackgroundColor: '#3b82f6',
                     pointBorderColor: '#fff',
                     pointBorderWidth: 1,
                 }]
@@ -535,7 +486,7 @@
         const labels = total > 0 ? ['Pending', 'Processing', 'Completed'] : ['No data'];
         const values = total > 0 ? [pending, processing, completed] : [1];
         const colors = total > 0 
-            ? ['#FFC107', '#2196F3', '#4CAF50'] 
+            ? ['#3b82f6', '#f59e0b', '#10b981'] 
             : ['#e5e7eb'];
         
         new Chart(pieEl, {
