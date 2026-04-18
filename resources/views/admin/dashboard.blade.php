@@ -402,28 +402,24 @@
             gap: 8px;
         }
         
-        .filter-btn {
-            padding: 6px 14px;
-            border: 1px solid #E5E7EB;
-            background: white;
-            border-radius: 6px;
-            font-size: 13px;
-            cursor: pointer;
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
         }
         
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: linear-gradient(135deg, #FFC107, #FFA000);
-            color: white;
-            border-color: #FFC107;
+        .doughnut-container {
+            height: 200px;
+            display: flex;
+            justify-content: center;
         }
         
         .chart-legend {
             display: flex;
             justify-content: center;
             gap: 24px;
-            margin-top: 20px;
-            padding-top: 20px;
+            margin-top: 16px;
+            padding-top: 16px;
             border-top: 1px solid #E5E7EB;
         }
         
@@ -778,15 +774,12 @@
                         <div class="chart-header">
                             <h3 class="chart-title">
                                 <i class="fas fa-chart-line"></i>
-                                Sales Trend (Last 14 Days)
+                                Sales Trend
                             </h3>
-                            <div class="chart-filters">
-                                <button class="filter-btn active">14 Days</button>
-                                <button class="filter-btn">30 Days</button>
-                                <button class="filter-btn">90 Days</button>
-                            </div>
                         </div>
-                        <canvas id="salesChart" height="300"></canvas>
+                        <div class="chart-container">
+                            <canvas id="salesChart"></canvas>
+                        </div>
                     </div>
                     <div class="chart-card">
                         <div class="chart-header">
@@ -795,7 +788,9 @@
                                 Order Distribution
                             </h3>
                         </div>
-                        <canvas id="distributionChart" height="280"></canvas>
+                        <div class="chart-container doughnut-container">
+                            <canvas id="distributionChart"></canvas>
+                        </div>
                         <div class="chart-legend">
                             <div class="legend-item">
                                 <span class="legend-dot" style="background: #FFC107;"></span>
