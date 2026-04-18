@@ -266,53 +266,70 @@
             text-align: center;
         }
         
-        /* Pagination Styles */
+        /* Pagination Styles - Override Laravel Defaults */
         .pagination {
-            display: flex;
-            list-style: none;
-            gap: 8px;
-            margin: 0;
-            padding: 0;
-            justify-content: center;
+            display: flex !important;
+            list-style: none !important;
+            gap: 8px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            justify-content: center !important;
         }
         
         .pagination li {
-            margin: 0;
+            margin: 0 !important;
         }
         
         .pagination li a,
-        .pagination li span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 40px;
-            height: 40px;
-            padding: 0 12px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #64748b;
-            background: #f8fafc;
-            border: none;
-            text-decoration: none;
-            transition: all 0.2s ease;
+        .pagination li span,
+        .pagination .page-link {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-width: 40px !important;
+            height: 40px !important;
+            padding: 0 12px !important;
+            border-radius: 10px !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            color: #64748b !important;
+            background: #f8fafc !important;
+            border: none !important;
+            text-decoration: none !important;
+            transition: all 0.2s ease !important;
+            box-shadow: none !important;
         }
         
-        .pagination li:hover a {
-            background: #e2e8f0;
-            color: #475569;
+        .pagination li:hover a,
+        .pagination .page-link:hover {
+            background: #e2e8f0 !important;
+            color: #475569 !important;
+            border: none !important;
         }
         
         .pagination li.active span,
-        .pagination li.active a {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        .pagination li.active a,
+        .pagination .active .page-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+            border: none !important;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
         }
         
-        .pagination li.disabled span {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .pagination li.disabled span,
+        .pagination .disabled .page-link {
+            opacity: 0.5 !important;
+            cursor: not-allowed !important;
+            background: #f8fafc !important;
+        }
+        
+        /* Pagination text */
+        .pagination .text-sm,
+        .pagination-results {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 12px;
+            text-align: center;
         }
         
         /* Pagination Bar Container */
