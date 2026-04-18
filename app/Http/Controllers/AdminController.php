@@ -236,6 +236,37 @@ class AdminController extends Controller
             'perPage'
         ));
     }
+    
+    // Update Product
+    public function updateProduct(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'stock_quantity' => 'required|integer|min:0',
+            'is_active' => 'required|boolean',
+        ]);
+        
+        $product->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'stock_quantity' => $request->stock_quantity,
+            'is_active' => $request->is_active,
+        ]);
+        
+        return redirect()->back()->with('success', 'Product updated successfully!');
+    }
+    
+    // Delete Product
+    public function deleteProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+        
+        return redirect()->back()->with('success', 'Product deleted successfully!');
+    }
 
     // Manufacturers Management - Real Data
     public function manufacturers()

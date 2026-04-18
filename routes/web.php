@@ -88,6 +88,8 @@ Route::prefix('admin')->middleware(['auth', 'check.role:admin,superadmin'])->gro
     
     // Shop Control
     Route::get('/products', [AdminController::class, 'products'])->name('admin.products');
+    Route::put('/products/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+    Route::delete('/products/{id}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
     Route::get('/manufacturers', [AdminController::class, 'manufacturers'])->name('admin.manufacturers');
     Route::post('/manufacturers/{id}/verify', [AdminController::class, 'verifyManufacturer'])->name('admin.manufacturers.verify');
     Route::get('/categories', [AdminController::class, 'categories'])->name('admin.categories');

@@ -411,10 +411,10 @@
             <div class="product-footer">
                 <span class="product-price">TZS {{ number_format($product->final_price, 0) }}</span>
                 <div class="product-actions">
-                    <button class="btn-action btn-edit">
+                    <button class="btn-action btn-edit" onclick="openEditModal({{ $product->id }}, '{{ addslashes($product->name) }}', {{ $product->price }}, {{ $product->stock_quantity ?? 0 }}, {{ $product->is_active ? 1 : 0 }})" title="Edit Product">
                         <i class="fa-solid fa-pen"></i>
                     </button>
-                    <button class="btn-action btn-delete">
+                    <button class="btn-action btn-delete" onclick="openDeleteModal({{ $product->id }}, '{{ addslashes($product->name) }}')" title="Delete Product">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
@@ -440,4 +440,109 @@
     </div>
 </div>
 @endif
+
+<!-- Edit Product Modal -->
+<div id="editModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div class="modal-content" style="background-color: white; margin: 5% auto; padding: 0; border-radius: 16px; width: 90%; max-width: 600px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+        <div style="padding: 24px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #1e293b;">
+                <i class="fa-solid fa-pen" style="margin-right: 8px; color: #667eea;"></i>
+                Edit Product
+            </h3>
+            <button onclick="closeEditModal()" style="background: none; border: none; font-size: 24px; color: #94a3b8; cursor: pointer;">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <form id="editForm" method="POST" style="padding: 24px;">
+            @csrf
+            @method('PUT')
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 8px;">Product Name</label>
+                <input type="text" id="editName" name="name" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 15px; font-family: 'Poppins', sans-serif;">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                <div>
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 8px;">Price (TZS)</label>
+                    <input type="number" id="editPrice" name="price" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 15px;">
+                </div>
+                <div>
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 8px;">Stock Quantity</label>
+                    <input type="number" id="editStock" name="stock_quantity" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 15px;">
+                </div>
+            </div>
+            <div style="margin-bottom: 24px;">
+                <label style="display: block; font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 8px;">Status</label>
+                <select id="editStatus" name="is_active" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 15px;">
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+            </div>
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <button type="button" onclick="closeEditModal()" style="padding: 12px 24px; border: 2px solid #e2e8f0; background: white; color: #64748b; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                    Cancel
+                </button>
+                <button type="submit" style="padding: 12px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                    <i class="fa-solid fa-save" style="margin-right: 8px;"></i>Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div class="modal-content" style="background-color: white; margin: 10% auto; padding: 0; border-radius: 16px; width: 90%; max-width: 400px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+        <div style="padding: 32px 24px; text-align: center;">
+            <div style="width: 64px; height: 64px; background: #fee2e2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                <i class="fa-solid fa-trash" style="font-size: 28px; color: #ef4444;"></i>
+            </div>
+            <h3 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 700; color: #1e293b;">Delete Product?</h3>
+            <p style="margin: 0; color: #64748b; font-size: 14px;">Are you sure you want to delete <strong id="deleteProductName" style="color: #1e293b;"></strong>? This action cannot be undone.</p>
+        </div>
+        <div style="padding: 16px 24px 24px; display: flex; gap: 12px;">
+            <button onclick="closeDeleteModal()" style="flex: 1; padding: 12px; border: 2px solid #e2e8f0; background: white; color: #64748b; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                Cancel
+            </button>
+            <form id="deleteForm" method="POST" style="flex: 1;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" style="width: 100%; padding: 12px; background: #ef4444; color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                    <i class="fa-solid fa-trash" style="margin-right: 8px;"></i>Delete
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openEditModal(id, name, price, stock, status) {
+        document.getElementById('editForm').action = '/admin/products/' + id;
+        document.getElementById('editName').value = name;
+        document.getElementById('editPrice').value = price;
+        document.getElementById('editStock').value = stock;
+        document.getElementById('editStatus').value = status ? '1' : '0';
+        document.getElementById('editModal').style.display = 'block';
+    }
+    
+    function closeEditModal() {
+        document.getElementById('editModal').style.display = 'none';
+    }
+    
+    function openDeleteModal(id, name) {
+        document.getElementById('deleteForm').action = '/admin/products/' + id;
+        document.getElementById('deleteProductName').textContent = name;
+        document.getElementById('deleteModal').style.display = 'block';
+    }
+    
+    function closeDeleteModal() {
+        document.getElementById('deleteModal').style.display = 'none';
+    }
+    
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+        if (event.target.className === 'modal') {
+            event.target.style.display = 'none';
+        }
+    }
+</script>
 @endsection
