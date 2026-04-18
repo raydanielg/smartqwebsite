@@ -50,16 +50,8 @@
         </div>
 
         <div class="nav-section">
-            <span class="nav-label">ORDERS & USERS</span>
+            <span class="nav-label">MANAGEMENT</span>
             <ul class="nav-list">
-                <li class="nav-item {{ request()->routeIs('admin.orders*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.orders') }}" class="nav-link">
-                        <div class="nav-icon" style="background: linear-gradient(135deg, #FF5722, #FF9800);">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <span class="nav-text">Orders</span>
-                    </a>
-                </li>
                 <li class="nav-item {{ request()->routeIs('admin.users*') ? 'active' : '' }}">
                     <a href="{{ route('admin.users') }}" class="nav-link">
                         <div class="nav-icon" style="background: linear-gradient(135deg, #00BCD4, #009688);">
