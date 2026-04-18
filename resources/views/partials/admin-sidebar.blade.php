@@ -97,7 +97,7 @@
 
         <div class="nav-section">
             <ul class="nav-list">
-                <li class="nav-item sign-out">
+                <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <div class="nav-icon" style="background: linear-gradient(135deg, #f44336, #e91e63);">
                             <i class="fas fa-sign-out-alt"></i>

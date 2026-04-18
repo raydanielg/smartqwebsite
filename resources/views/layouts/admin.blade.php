@@ -64,8 +64,9 @@
             display: flex;
             flex-direction: column;
             position: fixed;
+            top: 0;
+            left: 0;
             height: 100vh;
-            overflow-y: auto;
             z-index: 1000;
         }
         
@@ -76,6 +77,7 @@
             align-items: center;
             gap: 12px;
             border-bottom: 1px solid #e0e0e0;
+            flex-shrink: 0;
         }
         
         .brand-logo {
@@ -113,10 +115,18 @@
         .sidebar-nav {
             padding: 16px 12px;
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
         }
         
         .nav-section {
-            margin-bottom: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .nav-section:last-child {
+            margin-top: auto;
+            margin-bottom: 0;
         }
         
         .nav-label {
@@ -178,10 +188,6 @@
         .nav-text {
             font-size: 14px;
             font-weight: 500;
-        }
-        
-        .nav-item.sign-out {
-            margin-top: auto;
         }
         
         /* Main Content Area */
