@@ -76,19 +76,24 @@
         <div class="nav-section">
             <span class="nav-label">MANAGEMENT</span>
             <ul class="nav-list">
-                <li class="nav-item {{ request()->routeIs('admin.users*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.users') }}" class="nav-link">
-                        <div class="nav-icon simple">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <span class="nav-text">Users</span>
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link" onclick="toggleSubmenu(event)">
+                        <span class="nav-icon simple"><i class="fa-solid fa-users-gear"></i></span>
+                        <span class="nav-text">Management</span>
+                        <i class="fa-solid fa-chevron-right submenu-arrow"></i>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <div class="nav-icon simple">
-                            <i class="fas fa-user-shield"></i>
-                        </div>
+                    <ul class="submenu">
+                        <li class="submenu-item">
+                            <a href="{{ route('admin.users') }}" class="submenu-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-users"></i> Users
+                            </a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('admin.staff') }}" class="submenu-link {{ request()->routeIs('admin.staff*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-user-tie"></i> Staff
+                            </a>
+                        </li>
+                    </ul>
                         <span class="nav-text">Staff</span>
                     </a>
                 </li>
@@ -123,13 +128,39 @@
                         <span class="nav-text">Payment</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <div class="nav-icon simple">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <span class="nav-text">Shipping</span>
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link" onclick="toggleSubmenu(event)">
+                        <span class="nav-icon simple"><i class="fa-solid fa-gear"></i></span>
+                        <span class="nav-text">Settings</span>
+                        <i class="fa-solid fa-chevron-right submenu-arrow"></i>
                     </a>
+                    <ul class="submenu">
+                        <li class="submenu-item">
+                            <a href="{{ route('admin.settings') }}" class="submenu-link {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
+                                <i class="fa-solid fa-sliders"></i> General
+                            </a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('admin.settings.appearance') }}" class="submenu-link {{ request()->routeIs('admin.settings.appearance') ? 'active' : '' }}">
+                                <i class="fa-solid fa-palette"></i> Appearance
+                            </a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('admin.settings.payment') }}" class="submenu-link {{ request()->routeIs('admin.settings.payment') ? 'active' : '' }}">
+                                <i class="fa-solid fa-credit-card"></i> Payment
+                            </a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('admin.settings.shipping') }}" class="submenu-link {{ request()->routeIs('admin.settings.shipping') ? 'active' : '' }}">
+                                <i class="fa-solid fa-truck"></i> Shipping
+                            </a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('admin.settings.notifications') }}" class="submenu-link {{ request()->routeIs('admin.settings.notifications') ? 'active' : '' }}">
+                                <i class="fa-regular fa-bell"></i> Notifications
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">

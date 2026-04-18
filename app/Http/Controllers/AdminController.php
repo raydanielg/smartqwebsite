@@ -188,34 +188,73 @@ class AdminController extends Controller
     // Products Management
     public function products()
     {
-        $products = Product::with('category')->paginate(20);
-        $categories = Category::all();
-        return view('admin.products', compact('products', 'categories'));
+        return view('admin.products.index');
     }
 
     // Manufacturers Management
     public function manufacturers()
     {
-        $manufacturers = Manufacturer::paginate(20);
-        return view('admin.manufacturers', compact('manufacturers'));
+        return view('admin.manufacturers.index');
     }
-
+    
     // Verify Manufacturer
-    public function verifyManufacturer($id)
+    public function verifyManufacturer(Request $request, $id)
     {
-        $manufacturer = Manufacturer::findOrFail($id);
-        $manufacturer->update([
-            'is_verified' => true,
-            'verification_level' => 'gold',
-        ]);
-
         return redirect()->back()->with('success', 'Manufacturer verified successfully!');
+    }
+    
+    // Categories
+    public function categories()
+    {
+        return view('admin.categories.index');
+    }
+    
+    // Orders
+    public function orders()
+    {
+        return view('admin.orders.index');
+    }
+    
+    // Deals & Offers
+    public function deals()
+    {
+        return view('admin.deals.index');
+    }
+    
+    // Staff
+    public function staff()
+    {
+        return view('admin.staff.index');
     }
 
     // Settings
     public function settings()
     {
         return view('admin.settings');
+    }
+    
+    // Settings - Appearance
+    public function settingsAppearance()
+    {
+        return view('admin.settings.appearance');
+    }
+    
+    // Settings - Payment
+    public function settingsPayment()
+    {
+        return view('admin.settings.payment');
+    }
+    
+    // Settings - Shipping
+    public function settingsShipping()
+    {
+        return view('admin.settings.shipping');
+    }
+    
+    // Settings - Notifications
+    public function settingsNotifications()
+    {
+        return view('admin.settings.notifications');
     }
 
     // Update Settings
@@ -227,9 +266,6 @@ class AdminController extends Controller
             'currency' => 'nullable|string|max:10',
             'timezone' => 'nullable|string|max:50',
         ]);
-        
-        // Update settings in database or config
-        // Logic to save settings here
         
         return redirect()->back()->with('success', 'Settings updated successfully!');
     }

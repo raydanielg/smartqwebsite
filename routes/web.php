@@ -68,6 +68,10 @@ Route::prefix('admin')->middleware(['auth', 'check.role:admin,superadmin'])->gro
     // Settings (Accessible to all admin users)
     Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
     Route::post('/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
+    Route::get('/settings/appearance', [AdminController::class, 'settingsAppearance'])->name('admin.settings.appearance');
+    Route::get('/settings/payment', [AdminController::class, 'settingsPayment'])->name('admin.settings.payment');
+    Route::get('/settings/shipping', [AdminController::class, 'settingsShipping'])->name('admin.settings.shipping');
+    Route::get('/settings/notifications', [AdminController::class, 'settingsNotifications'])->name('admin.settings.notifications');
     
     // Super Admin Only Routes
     Route::middleware(['check.role:superadmin'])->group(function () {
@@ -82,12 +86,16 @@ Route::prefix('admin')->middleware(['auth', 'check.role:admin,superadmin'])->gro
     Route::post('/users/{id}', [AdminController::class, 'editUser'])->name('admin.users.edit');
     Route::delete('/users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
     
-    // Products Management
+    // Shop Control
     Route::get('/products', [AdminController::class, 'products'])->name('admin.products');
-    
-    // Manufacturers Management
     Route::get('/manufacturers', [AdminController::class, 'manufacturers'])->name('admin.manufacturers');
     Route::post('/manufacturers/{id}/verify', [AdminController::class, 'verifyManufacturer'])->name('admin.manufacturers.verify');
+    Route::get('/categories', [AdminController::class, 'categories'])->name('admin.categories');
+    Route::get('/deals', [AdminController::class, 'deals'])->name('admin.deals');
+    Route::get('/orders', [AdminController::class, 'orders'])->name('admin.orders');
+    
+    // Management
+    Route::get('/staff', [AdminController::class, 'staff'])->name('admin.staff');
 });
 
 // Role-based Dashboards
