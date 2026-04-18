@@ -61,13 +61,19 @@ Route::prefix('admin')->middleware(['auth', 'check.role:admin,superadmin'])->gro
     // Dashboard
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     
+    // Profile (Accessible to all admin users)
+    Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::post('/profile', [AdminController::class, 'updateProfile'])->name('admin.profile.update');
+    
+    // Settings (Accessible to all admin users)
+    Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+    Route::post('/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
+    
     // Super Admin Only Routes
     Route::middleware(['check.role:superadmin'])->group(function () {
         Route::get('/super-dashboard', [AdminController::class, 'superDashboard'])->name('admin.super.dashboard');
         Route::get('/roles', [AdminController::class, 'roles'])->name('admin.roles');
         Route::post('/roles/{id}/permissions', [AdminController::class, 'updateRolePermissions'])->name('admin.roles.permissions');
-        Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
-        Route::post('/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
     });
     
     // Users Management
