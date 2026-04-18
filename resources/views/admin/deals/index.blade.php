@@ -213,7 +213,7 @@
 
 @section('content')
 <div class="page-header">
-    <h1>Deals & Offers</h1>
+    <h1>Deals & Offers ({{ $activeDeals ?? 0 }})</h1>
     <button class="btn-add" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
         <i class="fa-solid fa-plus"></i>
         Create Deal
@@ -227,41 +227,36 @@
 </div>
 
 <div class="deals-grid">
+    @forelse($deals as $deal)
     @php
-        $deals = [
-            ['title' => 'Flash Sale Weekend', 'desc' => 'Up to 50% off on electronics', 'discount' => '50', 'type' => 'flash', 'used' => 156, 'total' => 200, 'days' => 2, 'hours' => 14],
-            ['title' => 'Summer Collection', 'desc' => '20% off all fashion items', 'discount' => '20', 'type' => 'seasonal', 'used' => 89, 'total' => 300, 'days' => 15, 'hours' => 0],
-            ['title' => 'New User Special', 'desc' => 'First order discount', 'discount' => '25', 'type' => 'normal', 'used' => 234, 'total' => 500, 'days' => 30, 'hours' => 0],
-            ['title' => 'Clearance Sale', 'desc' => 'End of season sale', 'discount' => '70', 'type' => 'flash', 'used' => 45, 'total' => 100, 'days' => 3, 'hours' => 22],
-        ];
+        $discountPercent = $deal->price > 0 ? round((($deal->price - $deal->sale_price) / $deal->price) * 100) : 0;
+        $dealType = $discountPercent >= 50 ? 'flash' : ($discountPercent >= 30 ? 'seasonal' : 'normal');
     @endphp
-    
-    @foreach($deals as $deal)
     <div class="deal-card animate__animated animate__fadeInUp" style="animation-delay: {{ $loop->index * 100 }}ms;">
-        <div class="deal-banner {{ $deal['type'] }}">
+        <div class="deal-banner {{ $dealType }}">
             <div class="discount-badge">
-                <span class="percent">{{ $deal['discount'] }}%</span>
+                <span class="percent">{{ $discountPercent }}%</span>
                 <span class="off">OFF</span>
             </div>
         </div>
         <div class="deal-content">
-            <h3 class="deal-title">{{ $deal['title'] }}</h3>
-            <p class="deal-desc">{{ $deal['desc'] }}</p>
+            <h3 class="deal-title">{{ $deal->name }}</h3>
+            <p class="deal-desc">{{ $deal->category->name ?? 'General' }} • {{ $deal->sku ?? 'N/A' }}</p>
             
-            <div class="deal-progress">
-                <div class="progress-header">
-                    <span class="progress-label">Deal Usage</span>
-                    <span class="progress-value">{{ $deal['used'] }}/{{ $deal['total'] }}</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: {{ ($deal['used']/$deal['total'])*100 }}%"></div>
+            <div style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 12px; color: #64748b;">Price:</span>
+                    <div>
+                        <span style="text-decoration: line-through; color: #94a3b8; font-size: 13px; margin-right: 8px;">TZS {{ number_format($deal->price, 0) }}</span>
+                        <span style="font-weight: 700; color: #667eea; font-size: 16px;">TZS {{ number_format($deal->sale_price, 0) }}</span>
+                    </div>
                 </div>
             </div>
             
             <div class="deal-footer">
-                <div class="deal-timer">
-                    <i class="fa-solid fa-clock"></i>
-                    Ends in {{ $deal['days'] }}d {{ $deal['hours'] }}h
+                <div class="deal-stats">
+                    <i class="fa-solid fa-box" style="margin-right: 4px;"></i>
+                    {{ $deal->stock_quantity ?? 0 }} in stock
                 </div>
                 <div class="deal-actions">
                     <button class="btn-deal btn-edit-deal">Edit</button>
@@ -270,6 +265,16 @@
             </div>
         </div>
     </div>
-    @endforeach
+    @empty
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px; color: #64748b;">
+            <i class="fa-solid fa-percent" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+            <h3>No active deals</h3>
+            <p>Create your first deal to get started</p>
+        </div>
+    @endforelse
+</div>
+
+<div style="margin-top: 24px;">
+    {{ $deals->links() }}
 </div>
 @endsection

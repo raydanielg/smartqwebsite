@@ -99,15 +99,15 @@
         <div class="nav-section">
             <span class="nav-label">SETTINGS</span>
             <ul class="nav-list">
-                <li class="nav-item has-submenu {{ request()->routeIs('admin.settings*') ? 'active' : '' }}">
+                <li class="nav-item has-submenu {{ request()->routeIs('admin.settings*') ? 'active open' : '' }}">
                     <a href="#" class="nav-link" onclick="toggleSubmenu(event)">
                         <div class="nav-icon simple">
                             <i class="fas fa-cog"></i>
                         </div>
                         <span class="nav-text">Settings</span>
-                        <i class="fas fa-chevron-right submenu-arrow"></i>
+                        <i class="fas fa-chevron-right submenu-arrow" style="{{ request()->routeIs('admin.settings*') ? 'transform: rotate(90deg);' : '' }}"></i>
                     </a>
-                    <ul class="submenu">
+                    <ul class="submenu" style="{{ request()->routeIs('admin.settings*') ? 'display: block; max-height: 500px;' : '' }}">
                         <li class="submenu-item">
                             <a href="{{ route('admin.settings') }}" class="submenu-link {{ request()->routeIs('admin.settings') && !request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                                 <i class="fas fa-sliders-h"></i> General
