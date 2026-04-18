@@ -24,42 +24,280 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/images/logo.png" alt="SmartQ Logo" width="200">
 </p>
 
-## About Laravel
+<h1 align="center">SmartQ E-Commerce Platform</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  <strong>Alibaba-Style Multi-Vendor E-Commerce Platform with B2B & B2C Features</strong>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/Laravel-8.x-red.svg" alt="Laravel 8.x"></a>
+  <a href="#"><img src="https://img.shields.io/badge/PHP-8.0+-blue.svg" alt="PHP 8.0+"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Tailwind-CSS-38B2AC.svg" alt="Tailwind CSS"></a>
+  <a href="#"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License MIT"></a>
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ✨ Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🛍️ **Shop Features**
+- **Alibaba-Style Mega Menu** - Hierarchical categories with real images
+- **Super Deals Carousel** - Auto-rotating deals with countdown timers
+- **Advanced Product Search** - Multi-category filtering
+- **Shopping Cart** - Session-based cart with AJAX updates
+- **Checkout System** - Complete order management
+- **Mobile Responsive** - Fully optimized for all devices
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🔐 **Admin Panel**
+- **Role-Based Access Control** - Superadmin, Admin, Seller, Manufacturer roles
+- **Dashboard Analytics** - Sales charts and statistics
+- **Product Management** - CRUD operations with image uploads
+- **User Management** - Complete user administration
+- **Order Management** - Track and manage all orders
+- **Site Settings** - Dynamic configuration
 
-## Laravel Sponsors
+### 🏢 **B2B Features**
+- **Manufacturer Profiles** - Verified supplier listings
+- **Tax Exemption System** - B2B tax management
+- **Bulk Ordering** - Wholesale pricing support
+- **RFQ (Request for Quote)** - Custom order requests
+- **Order Protection** - Secure transaction system
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. 
+### 👤 **User Features**
+- **Multi-Role System** - Buyer, Seller, Manufacturer
+- **Dashboard per Role** - Custom dashboards for each user type
+- **Profile Management** - Complete user profiles
+- **Order History** - Track all purchases
+- **Wishlist** - Save favorite products
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- PHP >= 8.0
+- Composer
+- MySQL/MariaDB
+- Node.js & NPM (for asset compilation)
+
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/smartq.git
+cd smartq
+
+# 2. Install PHP dependencies
+composer install
+
+# 3. Install JavaScript dependencies
+npm install
+
+# 4. Create environment file
+cp .env.example .env
+
+# 5. Generate application key
+php artisan key:generate
+
+# 6. Configure database in .env file
+DB_DATABASE=smartq
+DB_USERNAME=root
+DB_PASSWORD=your_password
+
+# 7. Run migrations and seeders
+php artisan migrate --seed
+
+# 8. Compile assets
+npm run dev
+
+# 9. Start the development server
+php artisan serve
+```
+
+### Access URLs
+- **Landing Page**: `http://localhost:8000/`
+- **Shop**: `http://localhost:8000/shop`
+- **Admin Panel**: `http://localhost:8000/admin`
+- **Login**: `http://localhost:8000/login`
+
+---
+
+## 👥 Default Accounts (After Seeding)
+
+| Role | Email | Password |
+|------|-------|----------|
+| Super Admin | superadmin@smartq.com | password |
+| Admin | admin@smartq.com | password |
+| Seller | seller@smartq.com | password |
+| Manufacturer | manufacturer@smartq.com | password |
+| Buyer | buyer@smartq.com | password |
+
+---
+
+## 📁 Project Structure
+
+```
+smartq/
+├── app/
+│   ├── Http/Controllers/     # Controllers
+│   │   ├── AdminController.php
+│   │   ├── ShopController.php
+│   │   └── ...
+│   ├── Models/               # Eloquent Models
+│   │   ├── User.php
+│   │   ├── Product.php
+│   │   ├── Category.php
+│   │   └── ...
+│   └── ...
+├── database/
+│   ├── migrations/           # Database migrations
+│   └── seeders/            # Database seeders
+├── resources/
+│   └── views/              # Blade templates
+│       ├── admin/          # Admin panel views
+│       ├── shop/           # Shop views
+│       └── ...
+├── public/                 # Public assets
+│   ├── images/             # Uploaded images
+│   └── index.php          # Entry point
+├── routes/
+│   └── web.php            # Web routes
+└── ...
+```
+
+---
+
+## 🎨 Key Pages
+
+### Landing Page
+- Hero slider with promotional content
+- Service showcase
+- Featured categories
+- Testimonials
+- FAQ section
+- Contact information
+
+### Shop
+- Product grid with filters
+- Category mega menu
+- Super deals section
+- Product details
+- Shopping cart
+- Checkout process
+
+### Admin Panel
+- Dashboard with charts
+- User management
+- Product management
+- Order management
+- Settings configuration
+
+---
+
+## 🔧 Configuration
+
+### Environment Variables
+Key configurations in `.env`:
+
+```env
+APP_NAME=SmartQ
+APP_ENV=local
+APP_DEBUG=true
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=smartq
+DB_USERNAME=root
+DB_PASSWORD=
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+```
+
+---
+
+## 📦 Database Seeders
+
+The following seeders populate your database with sample data:
+
+- `RoleSeeder` - Default roles and permissions
+- `CategoryMegaMenuSeeder` - Hierarchical categories
+- `ProductRealImagesSeeder` - Products with real images
+- `DatabaseSeeder` - All sample data
+
+Run seeders:
+```bash
+php artisan db:seed
+```
+
+---
+
+## 🛡️ Security Features
+
+- **CSRF Protection** - All forms protected
+- **Role-Based Middleware** - Route protection
+- **Password Hashing** - Bcrypt encryption
+- **SQL Injection Prevention** - Parameterized queries
+- **XSS Protection** - Blade escaping
+
+---
+
+## 📱 Responsive Design
+
+Fully responsive across all devices:
+- **Desktop** - Full mega menu, grid layouts
+- **Tablet** - Optimized grid, touch-friendly
+- **Mobile** - Collapsible menu, stacked layouts
+
+---
+
+## 🚧 Future Enhancements
+
+- [ ] Payment gateway integration (Stripe, PayPal)
+- [ ] Real-time notifications
+- [ ] Chat system between buyers and sellers
+- [ ] API for mobile apps
+- [ ] Multi-language support
+- [ ] Advanced analytics dashboard
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👨‍💻 Developer
+
+**SmartQ Team**
+- Website: [www.smartq.co.tz](https://www.smartq.co.tz)
+- Email: info@smartq.co.tz
+- Location: Dar es Salaam, Tanzania
+
+---
+
+<p align="center">
+  <strong>Made with ❤️ in Tanzania</strong>
+</p>
+
+<p align="center">
+  <em>SmartQ - Your Ultimate B2B & B2C E-Commerce Solution</em>
+</p>
