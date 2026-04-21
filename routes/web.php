@@ -22,11 +22,14 @@ use App\Http\Controllers\SitemapController;
 // Sitemap
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
-// Landing Page
-Route::get('/', [LandingController::class, 'index'])->name('landing');
+// Homepage - Direct to Shop (Main Site)
+Route::get('/', [ShopController::class, 'index'])->name('landing');
 
 // Shop Routes
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+
+// Landing Page (Optional - can still access via /welcome)
+Route::get('/welcome', [LandingController::class, 'index'])->name('welcome');
 Route::get('/shop/category/{slug}', [ShopController::class, 'category'])->name('shop.category');
 Route::get('/shop/product/{slug}', [ShopController::class, 'show'])->name('shop.product');
 
