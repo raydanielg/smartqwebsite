@@ -27,33 +27,40 @@
 
         <!-- Main Hero Grid -->
         <div class="grid grid-cols-12 gap-4">
-            <!-- Left Sidebar - Categories (Scrollable - 6 visible) -->
+            <!-- Left Sidebar - Categories -->
             <div class="col-span-12 lg:col-span-3">
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <!-- Mobile: Horizontal Scroll Categories -->
+                <div class="lg:hidden mb-4">
+                    <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide" style="-webkit-overflow-scrolling: touch;">
+                        @foreach($categories->take(8) as $cat)
+                        <a href="{{ route('shop.category', $cat->slug) }}" class="flex-shrink-0 flex items-center gap-2 px-3 py-2 bg-white rounded-full shadow-sm border border-gray-200 hover:border-[#FF6A00] hover:text-[#FF6A00] transition-colors">
+                            <i class="{{ $cat->icon }} text-sm"></i>
+                            <span class="text-xs font-medium whitespace-nowrap">{{ $cat->name }}</span>
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+                
+                <!-- Desktop: Full Sidebar Categories -->
+                <div class="hidden lg:block bg-white rounded-lg shadow-sm overflow-hidden sticky top-4">
                     <div class="bg-[#FF6A00] text-white px-4 py-3 font-semibold flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <i class="fas fa-list"></i> Categories
                         </div>
-                        <span class="text-xs bg-white/20 px-2 py-1 rounded">{{ $categories->count() }} total</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded">{{ $categories->count() }}</span>
                     </div>
-                    <div class="divide-y divide-gray-100 max-h-[320px] overflow-y-auto scrollbar-thin">
-                        @foreach($categories->take(12) as $cat)
+                    <div class="divide-y divide-gray-100 max-h-[calc(100vh-200px)] overflow-y-auto">
+                        @foreach($categories as $cat)
                         <a href="{{ route('shop.category', $cat->slug) }}" class="flex items-center gap-3 px-4 py-3 hover:bg-orange-50 transition-colors group">
-                            <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-orange-100">
-                                <i class="{{ $cat->icon }} text-gray-600 group-hover:text-[#FF6A00] text-lg"></i>
+                            <div class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-orange-100">
+                                <i class="{{ $cat->icon }} text-gray-600 group-hover:text-[#FF6A00]"></i>
                             </div>
                             <div class="flex-1 min-w-0">
                                 <span class="text-sm font-medium text-gray-700 group-hover:text-[#FF6A00] block truncate">{{ $cat->name }}</span>
-                                <span class="text-xs text-gray-400">{{ rand(50, 500) }} items</span>
                             </div>
-                            <i class="fas fa-chevron-right text-xs text-gray-400 ml-auto flex-shrink-0"></i>
+                            <i class="fas fa-chevron-right text-xs text-gray-400"></i>
                         </a>
                         @endforeach
-                    </div>
-                    <div class="px-4 py-2 bg-gray-50 border-t text-center">
-                        <a href="#" class="text-xs text-[#FF6A00] hover:underline font-medium">
-                            View all categories <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
                     </div>
                 </div>
             </div>
